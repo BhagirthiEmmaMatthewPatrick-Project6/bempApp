@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 
-class Guest extends Component {
+class CreateGuest extends Component {
     constructor(){
         super();
         this.state = {
@@ -155,4 +155,4 @@ class Guest extends Component {
 }
 
 
-export default Guest;
+export default CreateGuest;
