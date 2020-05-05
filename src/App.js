@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
+import Guest from './components/Guest';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello...</h1>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      
+    }
+  }
+  render(){
+    return (
+      <div className="App">
+        <Guest />
+      </div>
+    );
+  }  
 }
 
 export default App;
