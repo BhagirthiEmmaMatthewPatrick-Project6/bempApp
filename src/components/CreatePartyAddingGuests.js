@@ -20,11 +20,18 @@ class CreatePartyAddingGuests extends Component{
         dbRef.on('value', (response) => {
             const data = response.val();
 
-            // save to state 
+            const guestArray = []
+            for(let key in data){
+                guestArray.push({Guests:data[key] })
+            }
             //data into array / for loop / push array/ then setstate?
             //data.name/ data.email / data. allergies
             this.setState({
-                guestInfo:''
+                guestInfo:[{
+                    guestName:'',
+                    guestEmail:'',
+                    guestAllergies:{}
+                }]
             })
         })
 
