@@ -52,6 +52,10 @@ class App extends Component {
           {/* <Route path="/about" component={CreateParty} />
           <Route exact path="/" component={ViewGuest} />
           <Route exact path="/" component={ViewParty} /> */}
+          <main>
+            <h1>Love In the Time of Allergies</h1>
+            <p>Love having friends over that have dietary restrictions, but hate it when you accidentally send them to the hospital out of negligence? If you answered yes, then you're in the right place. Here you are able to create wonderful parties that put your guests food allergies first.</p>
+          </main>
         </div>
       </Router>
     );
