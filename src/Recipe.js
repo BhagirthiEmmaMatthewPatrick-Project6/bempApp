@@ -6,7 +6,11 @@ class Recipes extends Component {
     constructor() {
         super();
         this.state = {
-            recipes: []
+            recipes: [],
+            queryCategory: "",
+            intolerances: [],
+            diet: [],
+
         };
     }
 
@@ -23,13 +27,15 @@ class Recipes extends Component {
         axios({
             method: 'GET',
             url: url,
+            params: {
             "apiKey": key,
             format: 'json',
             query: "pizza",
             intolerances: "gluten",
             diet: " "
+            }
         }).then((res) => {
-            console.log(res.data.results);
+            
             this.setState({
                 recipes: res.data.results
             })
