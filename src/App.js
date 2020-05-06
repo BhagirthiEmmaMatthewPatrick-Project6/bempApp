@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import CreateGuest from './components/CreateGuest';
+import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
+import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
-
 
 class App extends Component {
   constructor(){
@@ -21,6 +22,7 @@ class App extends Component {
   render(){
     return (
       <Router>
+      <CreatePartyAddingGuests />
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -42,6 +44,8 @@ class App extends Component {
             </NavLink>
             <NavLink className="link" activeClassName="" to="/">
               Create Party
+              {/* This is the API call */}
+              <CreateParty />
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
