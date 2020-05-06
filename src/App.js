@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import CreateGuest from './components/CreateGuest';
+import Recipe from './Recipe.js'
 import ViewGuests from './components/ViewGuests'
 // import FocusGuest from './components/FocusGuest';
-
 
 class App extends Component {
   constructor(){
@@ -42,6 +42,8 @@ class App extends Component {
             </NavLink>
             <NavLink className="link" activeClassName="" to="/">
               Create Party
+              {/* This is the API call */}
+              <Recipe />
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
