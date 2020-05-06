@@ -12,6 +12,10 @@ class Recipes extends Component {
 
 
     componentDidMount() {
+        this.getRecipes();
+    }
+
+    getRecipes = () => {
         const url = "https://api.edamam.com/search?q=pasta&app_id=3543772f&app_key=b9b71abdb0e3fe794b96dca1ba1d68c5&Health=Gluten";
         const key = "b9b71abdb0e3fe794b96dca1ba1d68c5";
         const id = "3543772f";
@@ -21,8 +25,11 @@ class Recipes extends Component {
             "api_id": id,
             "api_key": key,
             format: 'json',
+            params: {
+                
+            }
         }).then((res) => {
-            console.log(res.data.hits);
+            
             this.setState({
                 recipes: res.data.hits
             })
@@ -30,13 +37,14 @@ class Recipes extends Component {
     }
 
 
-
     render() {
         return (
-            <ul>
-                {this.state.recipes.map((recipe) => {
+            <ul className="recipeGallery">
+                {this.state.recipes.map((recipeObj) => {
+                     console.log(recipeObj.recipe.image);
                     return (
-                        <li></li>
+                        
+                        <li><img src={recipeObj.recipe.image} alt=""/></li>
                     )
 
                 })}

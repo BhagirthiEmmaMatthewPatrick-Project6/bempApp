@@ -1,0 +1,18 @@
+ul {
+    list-style: none;
+}
+
+
+.recipeGallery {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(5, auto);
+    grid-gap: 10px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    width: 150px;
+    height: 150px;
+}
