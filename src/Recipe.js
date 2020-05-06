@@ -7,7 +7,6 @@ class Recipes extends Component {
         super();
         this.state = {
             recipes: [],
-            queryCategory: "",
             intolerances: [],
             diet: [],
 
@@ -21,7 +20,7 @@ class Recipes extends Component {
 
     getRecipes = () => {
         // Spoonacular API call
-        const url = 'https://api.spoonacular.com/recipes/search?apiKey=ac3ee15e730b4a6c9dbc8bfa56524854&query=pizza&intolerances=gluten';
+        const url = 'https://api.spoonacular.com/recipes/search?apiKey=ac3ee15e730b4a6c9dbc8bfa56524854&query=dinner&intolerances=gluten';
         const key = 'ac3ee15e730b4a6c9dbc8bfa56524854';
 
         axios({
@@ -30,7 +29,6 @@ class Recipes extends Component {
             params: {
             "apiKey": key,
             format: 'json',
-            query: "pizza",
             intolerances: "gluten",
             diet: " "
             }
