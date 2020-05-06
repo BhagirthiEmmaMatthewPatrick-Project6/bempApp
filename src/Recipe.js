@@ -16,22 +16,22 @@ class Recipes extends Component {
     }
 
     getRecipes = () => {
-        const url = "https://api.edamam.com/search?q=pasta&app_id=3543772f&app_key=b9b71abdb0e3fe794b96dca1ba1d68c5&Health=Gluten";
-        const key = "b9b71abdb0e3fe794b96dca1ba1d68c5";
-        const id = "3543772f";
+        // Spoonacular API call
+        const url = 'https://api.spoonacular.com/recipes/search?apiKey=ac3ee15e730b4a6c9dbc8bfa56524854&query=pizza&intolerances=gluten';
+        const key = 'ac3ee15e730b4a6c9dbc8bfa56524854';
+
         axios({
             method: 'GET',
             url: url,
-            "api_id": id,
-            "api_key": key,
+            "apiKey": key,
             format: 'json',
-            params: {
-                
-            }
+            query: "pizza",
+            intolerances: "gluten",
+            diet: " "
         }).then((res) => {
-            
+            console.log(res.data.results);
             this.setState({
-                recipes: res.data.hits
+                recipes: res.data.results
             })
         })
     }
@@ -41,10 +41,13 @@ class Recipes extends Component {
         return (
             <ul className="recipeGallery">
                 {this.state.recipes.map((recipeObj) => {
-                     console.log(recipeObj.recipe.image);
+                     console.log(recipeObj);
                     return (
                         
-                        <li><img src={recipeObj.recipe.image} alt=""/></li>
+                        <li>
+                            <h2><a href={recipeObj.sourceUrl}>{recipeObj.title}</a></h2>
+                            <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
+                        </li>
                     )
 
                 })}
