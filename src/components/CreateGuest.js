@@ -120,7 +120,6 @@ class CreateGuest extends Component {
     e.preventDefault();
     const allergiesArray = this.populateAllergies();
     this.handleUploadImage(e);
-    // console.log(allergiesArray);
     this.setState(
       {
         allergies: allergiesArray,
@@ -138,10 +137,6 @@ class CreateGuest extends Component {
       }
     );
 
-  };
-
-  getChoice = (event) => {
-    event.preventDefault();
   };
 
   render() {
