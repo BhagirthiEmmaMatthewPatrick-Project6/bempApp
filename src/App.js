@@ -6,6 +6,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import './App.scss';
+import Home from './components/Home';
 import CreateGuest from './components/CreateGuest';
 import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
@@ -27,7 +28,7 @@ class App extends Component {
         <div className="App">
           {/* Navigation */}
           <nav>
-            <NavLink exact className="link" activeClassName="" to="/">
+            <NavLink exact className="link" activeClassName="" to="/home">
               Home
             </NavLink>
 
@@ -49,6 +50,7 @@ class App extends Component {
           </nav>
           
           {/* Routes */}
+          <Route path="/Home" component={Home} />
           <Route path="/createGuest" component={CreateGuest} />
           {/* <Route path="/about" component={CreateParty} /> */}
           <Route path="/guests" component={ViewGuests}/>{/* Not making it exact so we can overlap guest ID Info  */}
