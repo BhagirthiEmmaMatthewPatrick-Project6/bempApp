@@ -39,7 +39,7 @@ class App extends Component {
               Create Party{/* This is the API call */}{/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/parties">
+            <NavLink className="link" activeClassName="" to="/createParty">
               View Party
             </NavLink>
 

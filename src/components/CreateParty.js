@@ -98,14 +98,15 @@ class CreateParty extends Component {
 }
 
     getUserKey = (event) => {
-        console.log(event.target.id);
+        // console.log(event.target);
+        // console.log(event.target.id);
         // console.log(key);
         //click div to get guestID, but I get all guestIDs from database not the one I clicked
-        return (
+
             this.setState({
                 key: event.target.id
             })
-        )
+
     }
 
     // getChoice = (event) =>{
@@ -156,7 +157,7 @@ class CreateParty extends Component {
                     {/* Populate with list of guests in data base */}
 
                 </section>
-                    <CreatePartyAddingGuests getChoice={this.getUserKey} />
+                    <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />
                 <ul className="recipeGallery">
                     {this.state.recipes.map((recipeObj) => {
                         return (
