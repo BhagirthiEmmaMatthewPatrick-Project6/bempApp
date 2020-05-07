@@ -13,8 +13,9 @@ class CreateParty extends Component {
             diet: [],
             userInputPartyName:'',
             userInputAddress:'',
-            userInputDetails:''
-
+            userInputDetails:'',
+            guests:[],
+            addedGuests:[]
         };
     }
 
@@ -98,21 +99,17 @@ class CreateParty extends Component {
 }
 
     getUserKey = (event) => {
-        // console.log(event.target);
-        // console.log(event.target.id);
-        // console.log(key);
-        //click div to get guestID, but I get all guestIDs from database not the one I clicked
-
+        const key = event.target.id
+        firebase.database().ref('/Guests/'+key).on('value',(response)=>{
+            const addedPerson= response.val()
+            const addedGuests =this.state.addedGuests
+            if (addedGuests.indexOf(addedPerson) === -1) addedGuests.push(addedPerson)
+            // if (addedGuests.includes(addedPerson) === false) addedGuests.push(addedPerson);
             this.setState({
-                key: event.target.id
+                addedGuests
             })
-
+        })
     }
-
-    // getChoice = (event) =>{
-    //     event.preventDefault();
-    // }
-
 
     render() {
         return (
