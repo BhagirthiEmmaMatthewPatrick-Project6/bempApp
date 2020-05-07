@@ -32,7 +32,7 @@ class CreatePartyAddingGuests extends Component{
             //data into array / for loop / push array/ then setstate?
             //data.name/ data.email / data. allergies
             this.setState({
-               guest
+                guest
             })
             console.log(this.state.guestID);
         })
@@ -54,7 +54,7 @@ class CreatePartyAddingGuests extends Component{
     // }
 
     render(){
-
+        
         return(
             this.state.guest.map((guest)=>{
                 // console.log(guest.guestID);
