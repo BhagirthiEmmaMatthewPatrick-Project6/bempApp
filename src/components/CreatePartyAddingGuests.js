@@ -40,16 +40,17 @@ class CreatePartyAddingGuests extends Component{
     }
 
     getUserKey = (event) =>{
-        console.log(event.target.id);
+        // console.log(event.target.value);
 
-        // return(
-        //     this.state.guest.map((key)=>{
-        //         console.log(key.guestID);
-        //         this.setState({
-        //             key:event.target.id
-        //         })
-        //     })
-        // )
+        //click div to get guestID, but I get all guestIDs from database not the one I clicked
+        return(
+            this.state.guest.map((key)=>{
+                console.log(key.guestID);
+                this.setState({
+                    key:event.target.id
+                })
+            })
+        )
     }
 
     render(){
@@ -58,7 +59,8 @@ class CreatePartyAddingGuests extends Component{
             this.state.guest.map((guest)=>{
                 // console.log(guest);
                 return ( 
-            <div onClick={(e) =>this.props.getChoice(e, this.state.guestID)}>
+            // <div onClick={(e) =>this.props.getChoice(e, this.state.guestID)}>
+            <div onClick={this.getUserKey}>
                 <p>Name:{guest.guestInfo.name}</p>
                 <p>Email:{guest.guestInfo.email}</p>
                 <p>Diet:{guest.guestInfo.diet}</p>

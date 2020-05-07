@@ -9,7 +9,7 @@ import './App.scss';
 import CreateGuest from './components/CreateGuest';
 import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
-import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
+// import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
   render(){
     return (
       <Router>
-      <CreatePartyAddingGuests />
+      {/* <CreatePartyAddingGuests /> */}
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -49,7 +49,7 @@ class App extends Component {
               >
               Create Party
               {/* This is the API call */}
-              <CreateParty />
+              {/* <CreateParty /> */}
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
