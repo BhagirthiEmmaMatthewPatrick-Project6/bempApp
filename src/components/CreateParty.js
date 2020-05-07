@@ -58,8 +58,10 @@ class CreateParty extends Component {
         })
     }
 
-    getChoice = (event) =>{
+    getChoice = (event,key) =>{
         event.preventDefault();
+        // const key =
+        //setState of allergies and diet from clicked info?
     }
 
 

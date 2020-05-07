@@ -9,7 +9,6 @@ import './App.scss';
 import CreateGuest from './components/CreateGuest';
 import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
-import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
 class App extends Component {
@@ -22,7 +21,7 @@ class App extends Component {
   render(){
     return (
       <Router>
-      <CreatePartyAddingGuests />
+      {/* <CreatePartyAddingGuests /> */}
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -42,10 +41,13 @@ class App extends Component {
             >
               Create Guest
             </NavLink>
-            <NavLink className="link" activeClassName="" to="/">
+            <NavLink 
+              className="link" 
+              activeClassName="" 
+              to="/createParty"
+              >
               Create Party
               {/* This is the API call */}
-              <CreateParty />
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
@@ -56,7 +58,7 @@ class App extends Component {
           </nav>
           {/* Routes */}
           <Route path="/createGuest" component={CreateGuest} />
-          {/* <Route path="/about" component={CreateParty} /> */}
+          <Route path="/createParty" component={CreateParty} />
           <Route exact path="/guests" component={ViewGuests}/>
           {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
           {/* <Route exact path="/" component={ViewParty} /> */}
