@@ -9,22 +9,20 @@ class CreateParty extends Component {
         super();
         this.state = {
             recipes: [],
-            userInputPartyName:'',
-            userInputAddress:'',
-            userInputDetails:'',
-            guests:[],
+            partyName:'',
+            partyAddress:'',
+            partyDetails:'',
             guestsKeys:[],
             addedGuests:[],
             dietList:[],
-            intoleranceList:[]
+            intoleranceList:[],
+            showGuestList:false
         };
     }
 
-   
 
 
     componentDidMount() {
-        // this.getRecipes();
         
     }
 
@@ -35,8 +33,6 @@ class CreateParty extends Component {
         const key = 'ac3ee15e730b4a6c9dbc8bfa56524854';
 
         const intoleranceAxios = this.state.intoleranceList.join()
-        // console.log(intoleranceAxios);
-
         const dietAxios = this.state.dietList.join()
 
         axios({
@@ -50,47 +46,19 @@ class CreateParty extends Component {
                 diet: dietAxios
             }
         }).then((res) => {
-            
             this.setState({
                 recipes: res.data.results
             })
-        }).catch((error) =>{
+        }).catch((error)=>{
             alert (error)
         })
     } 
 
-    handleUserParty = (event) => {
+    updateState = (event) => {
         this.setState({
-            userInputPartyName: event.target.value  
+            [event.target.id] : event.target.value  
         })
     }
-
-    handleUserAddress = (event) => {
-        this.setState({
-            userInputAddress: event.target.value
-        })
-    }
-
-    handleUserDetails = (event) => {
-        this.setState({
-            userInputDetails: event.target.value
-        })
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-        if (this.state.userParty && this.state.userAddress && this.state.UserDetails !== '') {
-            const dbRef = firebase.database().ref();
-            dbRef.push(this.state.userParty);
-            dbRef.push(this.state.userAddress);
-            dbRef.push(this.state.userDetails);
-            this.setState({
-                userInputPartyName: '',
-                userInputAddress: '',
-                userInputDetails: ''
-            });
-    }
-}
 
     getUserKey = (event) => {
         const key = event.target.id
@@ -116,11 +84,11 @@ class CreateParty extends Component {
                 // console.log(response.val().diet);
                 const diet = response.val().diet
                 // dietList.push(diet)
-                if (dietList.includes(diet) === false) dietList.push(diet);
+                if (dietList.includes(diet) === false && diet !== undefined) dietList.push(diet);
             })
         }
         this.setState({
-           dietList
+            dietList
         })
     }
 
@@ -128,14 +96,10 @@ class CreateParty extends Component {
         const intoleranceList = []
         for (let i = 0; i < this.state.guestsKeys.length; i++) {
             firebase.database().ref('/Guests/' + this.state.guestsKeys[i]).on('value', (response) => {
-                // console.log(response.val().diet);
                 const intolerance = response.val().allergies
                 for (let i = 0; i < intolerance.length; i++) {
-                        if (intoleranceList.includes(intolerance[i]) === false) intoleranceList.push(intolerance[i]);
+                        if (intoleranceList.includes(intolerance[i]) === false && intolerance[i] !== undefined) intoleranceList.push(intolerance[i]);
                 }
-                // intolerance.map((allergy)=>{
-                // })
-                // dietList.push(diet)
             })
         }
         this.setState({
@@ -157,91 +121,128 @@ class CreateParty extends Component {
         })
     }
 
+    submitParty=(e)=>{
+        e.preventDefault()
+        // console.log('hello it me');
+        if (this.state.partyName && this.state.partyAddress && this.state.partyDetails !== '') {
+            const party ={}
+            party.partyName = this.state.partyName
+            party.partyAddress = this.state.partyAddress
+            party.partyDetails = this.state.partyDetails
+            party.intoleranceList = this.state.intoleranceList
+            party.dietList = this.state.dietList
+            party.addedGuests = this.state.addedGuests
+            // console.log(party);
+            
+            firebase.database().ref('/ Parties').push(party)
+
+            this.setState({
+                partyName :'',
+                partyAddress :'',
+                partyDetails :'',
+                intoleranceList: [],
+                dietList: [],
+                addedGuests:[],
+                recipes:[],
+                guestKeys:[],
+                showGuestList:false,
+            })
+        }
+        
+    }
+
+    toggleAddGuests=(e)=>{
+        e.preventDefault()
+        this.setState({
+            showGuestList:!this.state.showGuestList
+        })
+    }
+
     render() {
-        // const intoleranceAxios = this.state.intoleranceList.join()
-        // console.log(intoleranceAxios);
         return (
-            <div>
-                <section>
-                {/* form for creating party */}
-                {/* create party form will only submit after guests have been added and API call is done. */}
-                    <form className="formOne" action="">
+            <section className="createPartySection">
+                {/*Form*/}
+                    <form className="createPartyForm" action="">
                         <label htmlFor="Name of Party">Name of Party</label>
-                        <input
-                            type="text"
-                            id="partyName"
-                            value={this.state.userInputPartyName} onChange={this.handleUserParty}
-                            name="partyName"
-                            placeholder="Party Name"
-                        />
+                        <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
+
                         <label htmlFor="Address">Address</label>
-                        <input
-                            type="text"
-                            id="address"
-                            value={this.state.userInputPartyAddress} onChange={this.handleUserAddress}
-                            name="address"
-                            placeholder="Address"
-                        />
+                        <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
+
                         <label htmlFor="Details">Details</label>
-                        <input
-                            type="text"
-                            id="details"
-                            value={this.state.userInputDetails} onChange={this.handleUserDetails}
-                            name="details"
-                            placeholder="ie. Date and Time"
-                        />
-                        <label htmlFor="">Get Recipes</label>
-                            {/* name from firebase */}
-                            <label htmlFor=""></label>
-                            <input type="checkbox"/>
-                            <button type="submit" onClick={(e)=> this.getRecipes(e)}>Get Recipes</button>
-                        <button type="submit">Create Party</button>
+                        <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="ie. Date and Time"/>
+
+
+                        <label htmlFor="getRecipesButton">Get Recipes</label>
+                        <button id="getRecipeButton" type="submit" onClick={(e)=> this.getRecipes(e)}>Get Recipes</button>
+
+                        
+
+                        {/*Adding Guests Component*/}
+                        <button type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
+                        {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
+                        {/*Displaying Guests*/}
+                        <section className="invitedGuestsSection">
+                            <h2>Guest List</h2>
+                            {this.state.addedGuests.map((invitedGuests)=>{
+                                return(
+                                    <ul>
+                                        <li>
+                                            <h3>{invitedGuests.name}</h3>
+                                            <p>{invitedGuests.email}</p>
+                                        </li>
+                                    </ul>
+                                )
+                            })}
+                        </section>
+
+                        {/*Diet List*/}
+                        <section className="dietsListSection">
+                            <h2>Diet List</h2>
+                            <ul>
+                                {this.state.dietList.map((diet) => {
+                                    return (
+                                            <li>
+                                                <p>{diet}</p>
+                                            </li>
+                                    )
+                                })}
+                            </ul>
+                        </section>
+
+                        
+                        {/*Intolerance List*/}
+                        <section className="intoleranceListSection">
+                            <h2>Intolerance List</h2>
+                            <ul>
+                                {this.state.intoleranceList.map((item) => {
+                                    return (
+                                            <li>
+                                                <p>{item}</p>
+                                            </li>
+                                    )
+                                })}
+                            </ul>
+                        </section>
+
+                        {/*Recipe API CALL */}
+                        <section className="recipeGalarySection">
+                            <h2>Suggested Recipes</h2>
+                            <ul className="recipeGalleryUL">
+                                {this.state.recipes.map((recipeObj) => {
+                                    return (
+                                        <li>
+                                            <h2><a href={recipeObj.sourceUrl}>{recipeObj.title}</a></h2>
+                                            <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </section>
+
+                        <button id="createParty" type="submit" onClick={(e)=>this.submitParty(e)}>Create Party</button>
                     </form>
-
-                    {/* Form for adding guests */}
-                    {/* Populate with list of guests in data base */}
-
-                </section>
-                    <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />
-                <section className="invitedGuests">
-                    {this.state.addedGuests.map((invitedGuests)=>{
-                        return(
-                            <ul>
-                                <li>
-                                    <h3>{invitedGuests.name}</h3>
-                                    <p>{invitedGuests.email}</p>
-                                </li>
-                            </ul>
-
-                        )
-                    })}
-                </section>
-                <section className="dietsListSection">
-                    {this.state.dietList.map((diet) => {
-                        return (
-                            <ul>
-                                <li>
-                                    <p>{diet}</p>
-                                </li>
-                            </ul>
-
-                        )
-                    })}
-                </section>
-                <ul className="recipeGallery">
-                    {this.state.recipes.map((recipeObj) => {
-                        return (
-                            
-                            <li>
-                                <h2><a href={recipeObj.sourceUrl}>{recipeObj.title}</a></h2>
-                                <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
-                            </li>
-                        )
-
-                    })}
-
-                </ul>
-            </div>
+            </section>
         )
     }
 

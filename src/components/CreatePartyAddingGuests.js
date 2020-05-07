@@ -1,22 +1,11 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-// I need to import firebase, yeah?
 
 class CreatePartyAddingGuests extends Component{
     constructor(){
         super()
         this.state = {
-            guest:[
-                {
-                    guestInfo : {
-                        allergies: [],
-                        diet:'',
-                        email: '',
-                        name: '',
-                        petFriendly:false,
-                        key:''
-                }
-            }],
+            guest:[]
         }
     }
     componentDidMount(){
@@ -27,10 +16,7 @@ class CreatePartyAddingGuests extends Component{
             const guest = []
             for (let key in data){
                 guest.push({ guestInfo: data[key], guestID: key })
-                // guest[data]['key'] = key
             }
-            //data into array / for loop / push array/ then setstate?
-            //data.name/ data.email / data. allergies
             this.setState({
                 guest
             })
@@ -39,33 +25,18 @@ class CreatePartyAddingGuests extends Component{
 
     }
 
-    // getUserKey = (event) =>{
-    //     // console.log(event.target.value);
-
-    //     //click div to get guestID, but I get all guestIDs from database not the one I clicked
-    //     return(
-    //         this.state.guest.map((key)=>{
-    //             console.log(key.guestID);
-    //             this.setState({
-    //                 key:event.target.id
-    //             })
-    //         })
-    //     )
-    // }
-
     render(){
-        
         return(
-            this.state.guest.map((guest)=>{
-                // console.log(guest.guestID);
-                return ( 
-            // <div onClick={(e) =>this.props.getChoice(e, this.state.guestID)}>
-            <div className="wrapper" id={guest.guestID} onClick={(e)=>this.props.getChoice(e)}>
-                <p className="child">Name:{guest.guestInfo.name}</p>
-                <p className="child">Email:{guest.guestInfo.email}</p>
-            </div>
-                )
-            }) 
+            <ul className="wrapper">
+                {this.state.guest.map((guest)=>{
+                    return (    
+                        <li key={'cpag_'+guest.guestID} onClick={(e)=>this.props.getChoice(e)} id={guest.guestID} className="child">
+                            <p id={guest.guestID} className="child">Name:{guest.guestInfo.name}</p>
+                            <p id={guest.guestID} className="child">Email:{guest.guestInfo.email}</p>
+                        </li>
+                    )
+                })}
+            </ul>
         )
     }
 }

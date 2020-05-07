@@ -35,9 +35,9 @@ class CreateGuest extends Component {
     this.state.isEggFree
       ? allergiesArray.push("egg")
       : console.log("dont push");
-    this.state.isGlutenFree
-      ? allergiesArray.push("gluten")
-      : console.log("dont push");
+    // this.state.isGlutenFree Does not work with API(?)
+    //   ? allergiesArray.push("gluten")
+    //   : console.log("dont push");
     this.state.isGrainFree
       ? allergiesArray.push("grain")
       : console.log("dont push");
@@ -247,7 +247,7 @@ class CreateGuest extends Component {
                 Egg
               </label>
             </li>
-            <li>
+            {/* <li>
               <label>
                 <input
                   type="checkbox"
@@ -257,7 +257,7 @@ class CreateGuest extends Component {
                 />{" "}
                 Gluten
               </label>
-            </li>
+            </li> */}
             <li>
               <label>
                 <input
