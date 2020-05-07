@@ -35,11 +35,11 @@ class App extends Component {
               Create Guest
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/">
+            <NavLink className="link" activeClassName="" to="/createParty">
               Create Party{/* This is the API call */}{/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/createParty">
+            <NavLink className="link" activeClassName="" to="/">
               View Party
             </NavLink>
 

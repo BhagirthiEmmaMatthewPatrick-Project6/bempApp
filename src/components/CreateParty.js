@@ -15,6 +15,7 @@ class CreateParty extends Component {
             userInputAddress:'',
             userInputDetails:'',
             guests:[],
+            guestsKeys:[],
             addedGuests:[]
         };
     }
@@ -100,14 +101,26 @@ class CreateParty extends Component {
 
     getUserKey = (event) => {
         const key = event.target.id
-        firebase.database().ref('/Guests/'+key).on('value',(response)=>{
-            const addedPerson= response.val()
-            const addedGuests =this.state.addedGuests
-            if (addedGuests.indexOf(addedPerson) === -1) addedGuests.push(addedPerson)
-            // if (addedGuests.includes(addedPerson) === false) addedGuests.push(addedPerson);
-            this.setState({
-                addedGuests
+        const guestsKeys = this.state.guestsKeys
+        if (guestsKeys.includes(key) === false) guestsKeys.push(key);
+        this.setState({
+            guestsKeys
+        },()=>{
+            this.convertKeys()
+        }
+        )
+    }
+
+    convertKeys=()=>{
+        const addedGuests = []
+        for (let i=0; i <this.state.guestsKeys.length;i++){
+            firebase.database().ref('/Guests/'+this.state.guestsKeys[i]).on('value',(response)=>{
+                const profile = response.val()
+                addedGuests.push(profile)
             })
+        }
+        this.setState({
+            addedGuests
         })
     }
 
