@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import CreateGuest from './components/CreateGuest';
-import Recipe from './Recipe.js'
+import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
 import ViewGuestsFocus from './components/ViewGuestsFocus';
+// import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
   render(){
     return (
       <Router>
+      {/* <CreatePartyAddingGuests /> */}
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -51,6 +53,8 @@ class App extends Component {
           {/* <Route path="/about" component={CreateParty} /> */}
           <Route path="/guests" component={ViewGuests}/>{/* Not making it exact so we can overlap guest ID Info  */}
           <Route path="/guests/:id" component={ViewGuestsFocus}/>
+          <Route path="/createParty" component={CreateParty} />
+          {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
           {/* <Route exact path="/" component={ViewParty} /> */}
         </div>
       </Router>
