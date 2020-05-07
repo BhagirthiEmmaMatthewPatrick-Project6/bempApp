@@ -7,7 +7,8 @@ class CreatePartyAddingGuests extends Component{
         super()
         this.state = {
             guest:[
-                {guestInfo : {
+                {
+                    guestInfo : {
                     guestName: '',
                     guestEmail: '',
                     guestAllergies: []
@@ -30,21 +31,28 @@ class CreatePartyAddingGuests extends Component{
             this.setState({
                guest
             })
+            console.log(guest);
         })
 
     }
 
+    getUserKey = (event) =>{
+        console.log(event.target.value);        
+    }
+
     render(){
 
+        // console.log(this.state.guest);
         return(
             this.state.guest.map((guest)=>{
+                // console.log(guest);
                 return ( 
             <div>
                 <p>Name:{guest.guestInfo.name}</p>
                 <p>Email:{guest.guestInfo.email}</p>
                 <ul>
                     {/* map over allergies */}
-                    <li>{guest.guestInfo.allergies}</li>
+                            <li>{guest.guestInfo.allergies}</li>
                     {/* <li>{Guest.intolerence}</li> */}
                 </ul> 
                 {/* Button, if clicked display nothing? */}

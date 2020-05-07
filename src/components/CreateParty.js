@@ -10,9 +10,14 @@ class CreateParty extends Component {
             recipes: [],
             intolerances: [],
             diet: [],
+            userInputPartyName:'',
+            userInputAddress:'',
+            userInputDetails:''
 
         };
     }
+
+   
 
 
     componentDidMount() {
@@ -40,6 +45,21 @@ class CreateParty extends Component {
                 recipes: res.data.results
             })
         })
+    } 
+    
+    // handleSubmit - () => {}??
+
+    handleUserInput = (event) => {
+        console.log(event.target.id);
+        this.setState({
+            userInputPartyName: event.target.id,
+            userInputAddress: event.target.id,
+            userInputDetails: event.target.id
+        })
+    }
+
+    getChoice = (event) =>{
+        event.preventDefault();
     }
 
 
@@ -50,28 +70,31 @@ class CreateParty extends Component {
                 {/* form for creating party */}
                 {/* create party form will only submit after guests have been added and API call is done. */}
                     <form className="formOne" action="">
-                        <label htmlFor="">Name of Party</label>
+                        <label htmlFor="Name of Party">Name of Party</label>
                         <input
                             type="text"
-                            // value=""
+                            id="partyName"
+                            value={this.state.userInputPartyName} onChange={this.handleUserInput}
                             name="partyName"
                             placeholder="Party Name"
                         />
-                        <label htmlFor="">Address</label>
+                        <label htmlFor="Address">Address</label>
                         <input
                             type="text"
-                            // value=""
+                            id="address"
+                            value={this.state.userInputPartyAddress} onChange={this.handleUserInput}
                             name="address"
                             placeholder="Address"
                         />
-                        <label htmlFor="">Details</label>
+                        <label htmlFor="Details">Details</label>
                         <input
                             type="text"
-                            // value=""
+                            id="details"
+                            value={this.state.userInputDetails} onChange={this.handleUserInput}
                             name="details"
                             placeholder="ie. Date and Time"
                         />
-                        <label htmlFor="">Add Guests</label>
+                        <label htmlFor="Add Guests">Add Guests</label>
                             {/* name from firebase */}
                             <label htmlFor=""></label>
                             <input type="checkbox"/>
@@ -82,11 +105,10 @@ class CreateParty extends Component {
                     {/* Form for adding guests */}
                     {/* Populate with list of guests in data base */}
 
-                    <CreatePartyAddingGuests />
                 </section>
+                    <CreatePartyAddingGuests getChoice={this.getChoice} />
                 <ul className="recipeGallery">
                     {this.state.recipes.map((recipeObj) => {
-                        console.log(recipeObj);
                         return (
                             
                             <li>
