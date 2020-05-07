@@ -27,10 +27,12 @@ class CreateParty extends Component {
         dbRef.on('value', (response) => {
 
             const data = response.val();
-            const intolerances = []
+            const intolerances = [],
+            const diets = [],
             for (let key in data) {
                 
                 intolerances.push({key})
+                diets.push({key})
             }
             
             this.setState({
