@@ -108,6 +108,10 @@ class CreateGuest extends Component {
     
   };
 
+  getChoice = (event) =>{
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
