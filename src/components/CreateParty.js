@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CreatePartyAddingGuests from './CreatePartyAddingGuests'
+import firebase from 'firebase'
 
 
 class CreateParty extends Component {
@@ -26,8 +27,8 @@ class CreateParty extends Component {
         dbRef.on('value', (response) => {
 
             const data = response.val();
-            const intolerances = [],
-            const diet = [],
+            const intolerances = []
+            const diet = []
             for (let key in data) {
                 
                 intolerances.push({key})

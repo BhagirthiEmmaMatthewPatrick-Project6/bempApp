@@ -22,11 +22,7 @@ class App extends Component {
   render(){
     return (
       <Router>
-<<<<<<< HEAD
       <CreatePartyAddingGuests />
-=======
-      {/* <CreatePartyAddingGuests /> */}
->>>>>>> c3b5b9b15fe551f952897dd225076300df828cca
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -53,10 +49,7 @@ class App extends Component {
               >
               Create Party
               {/* This is the API call */}
-<<<<<<< HEAD
               <CreateParty />
-=======
->>>>>>> c3b5b9b15fe551f952897dd225076300df828cca
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
