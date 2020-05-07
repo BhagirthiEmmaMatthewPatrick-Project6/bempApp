@@ -35,7 +35,8 @@ class CreateParty extends Component {
             }
             
             this.setState({
-                intolerances
+                intolerances,
+                diet
             })
         })
     }
@@ -79,6 +80,21 @@ class CreateParty extends Component {
             userInputDetails: event.target.value
         })
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        if (this.state.userParty && this.state.userAddress && this.state.UserDetails !== '') {
+            const dbRef = firebase.database().ref();
+            dbRef.push(this.state.userParty);
+            dbRef.push(this.state.userAddress);
+            dbRef.push(this.state.userDetails);
+            this.setState({
+                userInputPartyName: '',
+                userInputAddress: '',
+                userInputDetails: ''
+            });
+    }
+}
 
 
     // getChoice = (event) =>{
