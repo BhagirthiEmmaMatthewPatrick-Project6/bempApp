@@ -9,9 +9,12 @@ class CreatePartyAddingGuests extends Component{
             guest:[
                 {
                     guestInfo : {
-                    guestName: '',
-                    guestEmail: '',
-                    guestAllergies: []
+                        allergies: [],
+                        diet:'',
+                        email: '',
+                        name: '',
+                        petFriendly:false,
+                        key:''
                 }
             }],
         }
@@ -31,31 +34,41 @@ class CreatePartyAddingGuests extends Component{
             this.setState({
                guest
             })
-            
+            console.log(this.state.guestID);
         })
 
     }
 
     getUserKey = (event) =>{
-              
+        console.log(event.target.id);
+
+        // return(
+        //     this.state.guest.map((key)=>{
+        //         console.log(key.guestID);
+        //         this.setState({
+        //             key:event.target.id
+        //         })
+        //     })
+        // )
     }
 
     render(){
 
-        // console.log(this.state.guest);
         return(
             this.state.guest.map((guest)=>{
                 // console.log(guest);
                 return ( 
-            <div>
+            <div onClick={(e) =>this.props.getChoice(e, this.state.guestID)}>
                 <p>Name:{guest.guestInfo.name}</p>
                 <p>Email:{guest.guestInfo.email}</p>
-                <ul>
-                    {/* map over allergies */}
-                            <li>{guest.guestInfo.allergies}</li>
-                    {/* <li>{Guest.intolerence}</li> */}
-                </ul> 
-                {/* Button, if clicked display nothing? */}
+                <p>Diet:{guest.guestInfo.diet}</p>
+                <div>
+                    <p>List of Allergies:</p>
+                    <ul>{guest.guestInfo.allergies.map((guestAllergies)=>{
+                    // console.log(guestAllergies);
+                    return <li>{guestAllergies}</li>
+                    })}</ul>
+                </div>
             </div>
                 )
             }) 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CreatePartyAddingGuests from './CreatePartyAddingGuests';
-import firebase from 'firebase';
+import CreatePartyAddingGuests from './CreatePartyAddingGuests'
 
 
 class CreateParty extends Component {
@@ -28,11 +27,11 @@ class CreateParty extends Component {
 
             const data = response.val();
             const intolerances = [],
-            const diets = [],
+            const diet = [],
             for (let key in data) {
                 
                 intolerances.push({key})
-                diets.push({key})
+                diet.push({key})
             }
             
             this.setState({

@@ -22,7 +22,11 @@ class App extends Component {
   render(){
     return (
       <Router>
+<<<<<<< HEAD
       <CreatePartyAddingGuests />
+=======
+      {/* <CreatePartyAddingGuests /> */}
+>>>>>>> c3b5b9b15fe551f952897dd225076300df828cca
         <div className="App">
           {/* Navigation */}
           <nav>
@@ -42,10 +46,17 @@ class App extends Component {
             >
               Create Guest
             </NavLink>
-            <NavLink className="link" activeClassName="" to="/">
+            <NavLink 
+              className="link" 
+              activeClassName="" 
+              to="/createParty"
+              >
               Create Party
               {/* This is the API call */}
+<<<<<<< HEAD
               <CreateParty />
+=======
+>>>>>>> c3b5b9b15fe551f952897dd225076300df828cca
             </NavLink>
             <NavLink className="link" activeClassName="" to="/parties">
               View Party
@@ -56,7 +67,7 @@ class App extends Component {
           </nav>
           {/* Routes */}
           <Route path="/createGuest" component={CreateGuest} />
-          {/* <Route path="/about" component={CreateParty} /> */}
+          <Route path="/createParty" component={CreateParty} />
           <Route exact path="/guests" component={ViewGuests}/>
           {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
           {/* <Route exact path="/" component={ViewParty} /> */}
