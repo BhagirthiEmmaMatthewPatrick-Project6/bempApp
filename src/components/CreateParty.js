@@ -9,14 +9,14 @@ class CreateParty extends Component {
         super();
         this.state = {
             recipes: [],
-            intolerances: [],
-            diet: [],
             userInputPartyName:'',
             userInputAddress:'',
             userInputDetails:'',
             guests:[],
             guestsKeys:[],
-            addedGuests:[]
+            addedGuests:[],
+            dietList:[],
+            intoleranceList:[]
         };
     }
 
@@ -25,44 +25,37 @@ class CreateParty extends Component {
 
     componentDidMount() {
         // this.getRecipes();
-        const dbRef = firebase.database().ref('/Guests');
-        dbRef.on('value', (response) => {
-
-            const data = response.val();
-            const intolerances = []
-            const diet = []
-            for (let key in data) {
-                
-                intolerances.push({key})
-                diet.push({key})
-            }
-            
-            this.setState({
-                intolerances,
-                diet
-            })
-        })
+        
     }
 
-    getRecipes = () => {
+    getRecipes = (e) => {
+        e.preventDefault();
         // Spoonacular API call
-        const url = 'https://api.spoonacular.com/recipes/search?apiKey=ac3ee15e730b4a6c9dbc8bfa56524854&query=dinner&intolerances=gluten';
+        const url = 'https://api.spoonacular.com/recipes/search';
         const key = 'ac3ee15e730b4a6c9dbc8bfa56524854';
+
+        const intoleranceAxios = this.state.intoleranceList.join()
+        // console.log(intoleranceAxios);
+
+        const dietAxios = this.state.dietList.join()
 
         axios({
             method: 'GET',
             url: url,
             params: {
-            "apiKey": key,
-            format: 'json',
-            intolerances: "gluten",
-            diet: " "
+                "apiKey": key,
+                query:'dinner',
+                format: 'json',
+                intolerances: intoleranceAxios ,
+                diet: dietAxios
             }
         }).then((res) => {
             
             this.setState({
                 recipes: res.data.results
             })
+        }).catch((error) =>{
+            alert (error)
         })
     } 
 
@@ -107,9 +100,49 @@ class CreateParty extends Component {
             guestsKeys
         },()=>{
             this.convertKeys()
+            this.createIntolerancesList()
+            this.createDietList()
+        // },()=>{
+            // this.createIntolerancesList()
+            // this.createDietList()
         }
         )
     }
+
+    createDietList = () =>{
+        const dietList = []
+        for (let i = 0; i < this.state.guestsKeys.length; i++) {
+            firebase.database().ref('/Guests/' + this.state.guestsKeys[i]).on('value', (response) => {
+                // console.log(response.val().diet);
+                const diet = response.val().diet
+                // dietList.push(diet)
+                if (dietList.includes(diet) === false) dietList.push(diet);
+            })
+        }
+        this.setState({
+           dietList
+        })
+    }
+
+    createIntolerancesList = () => {
+        const intoleranceList = []
+        for (let i = 0; i < this.state.guestsKeys.length; i++) {
+            firebase.database().ref('/Guests/' + this.state.guestsKeys[i]).on('value', (response) => {
+                // console.log(response.val().diet);
+                const intolerance = response.val().allergies
+                for (let i = 0; i < intolerance.length; i++) {
+                        if (intoleranceList.includes(intolerance[i]) === false) intoleranceList.push(intolerance[i]);
+                }
+                // intolerance.map((allergy)=>{
+                // })
+                // dietList.push(diet)
+            })
+        }
+        this.setState({
+            intoleranceList
+        })
+    }
+    
 
     convertKeys=()=>{
         const addedGuests = []
@@ -125,6 +158,8 @@ class CreateParty extends Component {
     }
 
     render() {
+        // const intoleranceAxios = this.state.intoleranceList.join()
+        // console.log(intoleranceAxios);
         return (
             <div>
                 <section>
@@ -155,11 +190,11 @@ class CreateParty extends Component {
                             name="details"
                             placeholder="ie. Date and Time"
                         />
-                        <label htmlFor="Add Guests">Add Guests</label>
+                        <label htmlFor="">Get Recipes</label>
                             {/* name from firebase */}
                             <label htmlFor=""></label>
                             <input type="checkbox"/>
-                            <button type="submit" onClick={this.getRecipes}>Add Guests</button>
+                            <button type="submit" onClick={(e)=> this.getRecipes(e)}>Get Recipes</button>
                         <button type="submit">Create Party</button>
                     </form>
 
@@ -168,6 +203,31 @@ class CreateParty extends Component {
 
                 </section>
                     <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />
+                <section className="invitedGuests">
+                    {this.state.addedGuests.map((invitedGuests)=>{
+                        return(
+                            <ul>
+                                <li>
+                                    <h3>{invitedGuests.name}</h3>
+                                    <p>{invitedGuests.email}</p>
+                                </li>
+                            </ul>
+
+                        )
+                    })}
+                </section>
+                <section className="dietsListSection">
+                    {this.state.dietList.map((diet) => {
+                        return (
+                            <ul>
+                                <li>
+                                    <p>{diet}</p>
+                                </li>
+                            </ul>
+
+                        )
+                    })}
+                </section>
                 <ul className="recipeGallery">
                     {this.state.recipes.map((recipeObj) => {
                         return (
