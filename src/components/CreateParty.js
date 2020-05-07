@@ -60,8 +60,7 @@ class CreateParty extends Component {
         })
     }
 
-    getUserKey = (event) => {
-        const key = event.target.id
+    getUserKey = (key) => {
         const guestsKeys = this.state.guestsKeys
         if (guestsKeys.includes(key) === false) guestsKeys.push(key);
         this.setState({
@@ -70,9 +69,6 @@ class CreateParty extends Component {
             this.convertKeys()
             this.createIntolerancesList()
             this.createDietList()
-        // },()=>{
-            // this.createIntolerancesList()
-            // this.createDietList()
         }
         )
     }
