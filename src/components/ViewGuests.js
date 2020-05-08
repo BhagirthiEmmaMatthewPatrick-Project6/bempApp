@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
 import {Link} from 'react-router-dom'
-import ViewGuestsFocus from './ViewGuestsFocus'
 
 class ViewGuests extends Component{
     constructor(){
@@ -54,7 +53,7 @@ class ViewGuests extends Component{
                             <Link className='viewGuestsLink' key={'link'+guest.guestID} to={'/guests/'+guest.guestID}>
                             <li key={guest.guestID} className='viewGuestsLI' id={guest.guestID} onClick={(e)=>this.focusUser(e)}>
                                 <div className="imageContainer">
-                                    {/* <img src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/> */}
+                                    <img src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/>
                                 </div>
                                 <h3>{guest.guestInfo.name}</h3>
                                 <p>{guest.guestInfo.email}</p>

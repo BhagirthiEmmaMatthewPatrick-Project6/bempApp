@@ -16,7 +16,8 @@ class CreateParty extends Component {
             addedGuests:[],
             dietList:[],
             intoleranceList:[],
-            showGuestList:false
+            showGuestList:false,
+            photoURL:'https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg',
         };
     }
 
@@ -128,9 +129,10 @@ class CreateParty extends Component {
             party.intoleranceList = this.state.intoleranceList
             party.dietList = this.state.dietList
             party.addedGuests = this.state.addedGuests
+            party.photoURL = this.state.photoURL
             // console.log(party);
             
-            firebase.database().ref('/ Parties').push(party)
+            firebase.database().ref('/Parties').push(party)
 
             this.setState({
                 partyName :'',
@@ -142,6 +144,7 @@ class CreateParty extends Component {
                 recipes:[],
                 guestKeys:[],
                 showGuestList:false,
+                photoURL:'https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg',
             })
         }
         
@@ -170,8 +173,10 @@ class CreateParty extends Component {
 
 
                         {/*Adding Guests Component*/}
-                        <button className="addGuests" type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
-                        {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
+                        <ul className="addGuestsUL">
+                            <button className="addGuests" type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
+                            {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
+                        </ul>
                         {/*Displaying Guests*/}
                         <section className="invitedGuestsSection">
                         <h2>Guest List</h2>

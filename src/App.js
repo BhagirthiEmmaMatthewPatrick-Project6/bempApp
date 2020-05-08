@@ -11,6 +11,8 @@ import CreateGuest from './components/CreateGuest';
 import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
 import ViewGuestsFocus from './components/ViewGuestsFocus';
+import ViewParties from './components/ViewParties'
+import ViewPartiesFocus from './components/ViewPartiesFocus'
 // import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
@@ -40,7 +42,7 @@ class App extends Component {
               Create Party{/* This is the API call */}{/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/">
+            <NavLink className="link" activeClassName="" to="/viewParties">
               View Party
             </NavLink>
 
@@ -53,11 +55,14 @@ class App extends Component {
           <Route path="/Home" component={Home} />
           <Route path="/createGuest" component={CreateGuest} />
           {/* <Route path="/about" component={CreateParty} /> */}
-          <Route path="/guests" component={ViewGuests}/>{/* Not making it exact so we can overlap guest ID Info  */}
+          <Route exact path="/guests" component={ViewGuests}/>
           <Route path="/guests/:id" component={ViewGuestsFocus}/>
+
           <Route path="/createParty" component={CreateParty} />
           {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
-          {/* <Route exact path="/" component={ViewParty} /> */}
+          <Route exact path="/viewParties" component={ViewParties}/>
+          <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+
         </div>
       </Router>
     );
