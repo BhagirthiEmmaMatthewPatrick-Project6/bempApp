@@ -31,6 +31,7 @@ class App extends Component {
           {/* Navigation */}
           <nav>
             <NavLink
+          
               exact
               className="link"
               activeClassName="currentPage"
@@ -40,6 +41,7 @@ class App extends Component {
             </NavLink>
 
             <NavLink
+            
               exact
               className="link"
               activeClassName="currentPage"
@@ -49,6 +51,7 @@ class App extends Component {
             </NavLink>
 
             <NavLink
+            
               className="link"
               activeClassName="currentPage"
               to="/createParty"
@@ -57,7 +60,7 @@ class App extends Component {
               {/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="currentPage" to="/viewParties">
+            <NavLink className="link" activeClassName="currentPage" to="/viewParties"> 
               View Party
             </NavLink>
 
@@ -65,6 +68,7 @@ class App extends Component {
               className="link"
               activeClassName="currentPage"
               to="/guests"
+            
             >
               View Guests
             </NavLink>

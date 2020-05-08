@@ -18,6 +18,7 @@ class CreateParty extends Component {
             intoleranceList:[],
             showGuestList:false,
             photoURL:'https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg',
+            error:false
         };
     }
 
@@ -36,6 +37,10 @@ class CreateParty extends Component {
         const intoleranceAxios = this.state.intoleranceList.join()
         const dietAxios = this.state.dietList.join()
 
+        this.setState({
+            recipes:[]
+        })
+
         axios({
             method: 'GET',
             url: url,
@@ -47,9 +52,15 @@ class CreateParty extends Component {
                 diet: dietAxios
             }
         }).then((res) => {
-            this.setState({
-                recipes: res.data.results
-            })
+            const foodData = res.data.results
+            foodData.length === 0 
+                ? this.setState({
+                    error: true
+                })
+                : this.setState({
+                    recipes: res.data.results
+                })
+
         }).catch((error)=>{
             alert (error)
         })
@@ -227,6 +238,7 @@ class CreateParty extends Component {
                         {/*Recipe API CALL */}
                         <section className="recipeGallerySection">
                             <h2>Suggested Recipes</h2>
+                            {this.state.error ? <h3>Sorry, We couldn't find anything recipes. Maybe try serving water?</h3> : null}
                             <ul className="recipeGalleryUL">
                                 {this.state.recipes.map((recipeObj) => {
                                     return (
