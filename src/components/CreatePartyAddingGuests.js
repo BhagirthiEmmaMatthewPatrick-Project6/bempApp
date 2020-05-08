@@ -27,17 +27,21 @@ class CreatePartyAddingGuests extends Component{
 
     render(){
         return(
-            <>
+            <ul className="viewUL">
                 {this.state.guest.map((guest)=>{
-                    return (    
-                        <li classname="existingGuest" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
-                            <img src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
-                            <p>{guest.guestInfo.name}</p>
-                            <p>{guest.guestInfo.email}</p>
-                        </li>
+                    return (
+                        <div className="viewLIContainer">
+                            <li classname="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
+                                <div className="imageContainer">
+                                    <img src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
+                                </div>
+                                <p>{guest.guestInfo.name}</p>
+                                <p>{guest.guestInfo.email}</p>
+                            </li>
+                        </div>
                     )
                 })}
-            </>
+            </ul>
         )
     }
 }

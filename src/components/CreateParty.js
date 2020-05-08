@@ -175,24 +175,26 @@ class CreateParty extends Component {
 
                         {/*Adding Guests Component*/}
                             <button className="addGuests" type="submit" onClick={(e) => this.toggleAddGuests(e)}>Add Existing Guests</button>
-                        <ul className="addGuestsUL">
+                        <section className="viewSection">
                             {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
- 
-                        </ul>
+                        </section>
+
                         {/*Displaying Guests*/}
-                        <section className="invitedGuestsSection">
-                        <h2>Guest List</h2>
-                            {this.state.addedGuests.map((invitedGuests)=>{
-                                return(
-                                    <ul className="guestList">
-                                        <li>
-                                            <img src={invitedGuests.photoURL} alt={`Photo of ${invitedGuests.name}`}/>
-                                            <h3>{invitedGuests.name}</h3>
-                                            <p>{invitedGuests.email}</p>
-                                        </li>
-                                    </ul>
-                                )
-                            })}
+                        <section className="viewSection">
+                            <h2>Added Guest List</h2>
+                            <ul className="viewUL">
+                                {this.state.addedGuests.map((invitedGuests)=>{
+                                    return(
+                                        <div className="viewLIContainer">
+                                            <li className="viewLI">
+                                                <img src={invitedGuests.photoURL} alt={`Photo of ${invitedGuests.name}`}/>
+                                                <h3>{invitedGuests.name}</h3>
+                                                <p>{invitedGuests.email}</p>
+                                            </li>
+                                        </div>
+                                    )
+                                })}
+                            </ul>
                         </section>
 
                         {/*Diet List*/}
