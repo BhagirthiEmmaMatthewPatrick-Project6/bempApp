@@ -109,6 +109,7 @@ class CreateParty extends Component {
         const addedGuests = []
         for (let i=0; i <this.state.guestsKeys.length;i++){
             firebase.database().ref('/Guests/'+this.state.guestsKeys[i]).on('value',(response)=>{
+
                 const profile = response.val()
                 addedGuests.push(profile)
             })
@@ -173,19 +174,20 @@ class CreateParty extends Component {
 
 
                         {/*Adding Guests Component*/}
+                            <button className="addGuests" type="submit" onClick={(e) => this.toggleAddGuests(e)}>Add Existing Guests</button>
                         <ul className="addGuestsUL">
-                            <button className="addGuests" type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
                             {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
+ 
                         </ul>
                         {/*Displaying Guests*/}
                         <section className="invitedGuestsSection">
                         <h2>Guest List</h2>
                             {this.state.addedGuests.map((invitedGuests)=>{
-                                
                                 return(
                                     <ul className="guestList">
                                         <li>
-                                            <h2>{invitedGuests.name}</h2>
+                                            <img src={invitedGuests.photoURL} alt={`Photo of ${invitedGuests.name}`}/>
+                                            <h3>{invitedGuests.name}</h3>
                                             <p>{invitedGuests.email}</p>
                                         </li>
                                     </ul>

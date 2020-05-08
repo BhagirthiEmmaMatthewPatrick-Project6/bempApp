@@ -30,9 +30,10 @@ class CreatePartyAddingGuests extends Component{
             <>
                 {this.state.guest.map((guest)=>{
                     return (    
-                        <li key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID} className="child">
-                            <p className="child">{guest.guestInfo.name}</p>
-                            <p className="child">{guest.guestInfo.email}</p>
+                        <li classname="existingGuest" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
+                            <img src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
+                            <p>{guest.guestInfo.name}</p>
+                            <p>{guest.guestInfo.email}</p>
                         </li>
                     )
                 })}
