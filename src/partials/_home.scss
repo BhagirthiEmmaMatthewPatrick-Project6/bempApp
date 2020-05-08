@@ -1,6 +1,32 @@
 // Styling for the home page
 
 header {
-    height: 90vh;
+    height: 70vh;
+    // Image from unsplash by Brooke Lark
+    background-image: url('../assets/header.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
+h1 {
+    width: 65%;
+}
+
+.headingText {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 50px;
+    height: 100%;
+
+}
+
+.homeIntro {
+    padding: 50px 0;
+    text-align: center;
+    line-height: 35px;
+}
+
+html {
+    background-color: $backgroundColor;
+}
