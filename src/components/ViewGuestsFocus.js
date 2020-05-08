@@ -5,23 +5,20 @@ class ViewGuestsFocus extends Component{
     constructor(){
         super();
         this.state={
-            name:'',
-            email:'',
-            photoURL:'',
+            focusedUser:{
+                name:'',
+                email:'',
+                photoURL:'',
+            }
         }
     }
 
     syncGuests=()=>{
         firebase.database().ref('/Guests/'+this.props.match.params.id).on('value',(results)=>{
             console.log(results.val());
-            // const guests = []
-            // const data = results.val()
-            // for (let key in data){
-            //     guests.push({guestInfo: data[key], guestID : key})
-            // }
-            // this.setState({
-            //     guests
-            // })   
+            this.setState({
+                focusedUser: results.val()
+            })
         })
     }
 
@@ -39,8 +36,8 @@ class ViewGuestsFocus extends Component{
     render(){
         return(
             <section className="viewGuestFocusSection">
-                <h2>This is working</h2>
-                <p>{this.props.match.params.id}</p>
+                <h2>{this.state.focusedUser.name}</h2>
+                <p>{this.state.focusedUser.email}</p>
             </section>
         )
     }
