@@ -141,23 +141,24 @@ class CreateGuest extends Component {
 
   render() {
     return (
-      <div>
+      <section className="createGuestSection wrapper">
         <h2>Create Guest Form</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form className="createGuestForm" onSubmit={this.handleSubmit}>
           {/* Image input */}
           <h4>Upload an image of your choice</h4>
-          <label for="img">Select image:</label>
-          <input
-            value={this.state.image}
-            type="file"
-            onChange={(e) => {
-            this.handleImageChange(e)
-            }}
-          />
-          <br />
-          <p></p>
+          <div className="imageInput">
+            <label for="img">Select image:</label>
+            <input
+              value={this.state.image}
+              type="file"
+              onChange={(e) => {
+                this.handleImageChange(e);
+              }}
+            />
+          </div>
           {/* Name input */}
           <input
+            className="textInput"
             type="text"
             value={this.state.name}
             name="name"
@@ -167,6 +168,7 @@ class CreateGuest extends Component {
           <br />
           {/* email Input */}
           <input
+            className="textInput"
             type="email"
             value={this.state.email}
             name="email"
@@ -178,6 +180,7 @@ class CreateGuest extends Component {
           {/* Pet friendliness input */}
           <label>
             <input
+              className="petFriendlinessInput"
               type="checkbox"
               value={this.state.isPetFriendly}
               name="isPetFriendly"
@@ -187,71 +190,73 @@ class CreateGuest extends Component {
             Is Pet Friendly ?
           </label>
           <br />
-          <p></p>
           {/* Diet Input */}
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Gluten free"
-              checked={this.state.diet === "Gluten free"}
-              onChange={this.handleChange}
-            />{" "}
-            Gluten Free
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Vegetarian"
-              checked={this.state.diet === "Vegetarian"}
-              onChange={this.handleChange}
-            />{" "}
-            Vegetarian
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Vegan"
-              checked={this.state.diet === "Vegan"}
-              onChange={this.handleChange}
-            />{" "}
-            Vegan
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Pescetarian"
-              checked={this.state.diet === "Pescetarian"}
-              onChange={this.handleChange}
-            />{" "}
-            Pescetarian
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Paleo"
-              checked={this.state.diet === "Paleo"}
-              onChange={this.handleChange}
-            />{" "}
-            Paleo
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="diet"
-              value="Whole30"
-              checked={this.state.diet === "Whole30"}
-              onChange={this.handleChange}
-            />{" "}
-            Whole30
-          </label>
+          <h4>Diet Choices</h4>
+          <div className="dietInput">
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Gluten free"
+                checked={this.state.diet === "Gluten free"}
+                onChange={this.handleChange}
+              />{" "}
+              Gluten Free
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Vegetarian"
+                checked={this.state.diet === "Vegetarian"}
+                onChange={this.handleChange}
+              />{" "}
+              Vegetarian
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Vegan"
+                checked={this.state.diet === "Vegan"}
+                onChange={this.handleChange}
+              />{" "}
+              Vegan
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Pescetarian"
+                checked={this.state.diet === "Pescetarian"}
+                onChange={this.handleChange}
+              />{" "}
+              Pescetarian
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Paleo"
+                checked={this.state.diet === "Paleo"}
+                onChange={this.handleChange}
+              />{" "}
+              Paleo
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="diet"
+                value="Whole30"
+                checked={this.state.diet === "Whole30"}
+                onChange={this.handleChange}
+              />{" "}
+              Whole30
+            </label>
+          </div>
           {/* Dietary Restrictions Input */}
           <h4>Intolerances</h4>
-          <ul>
+          <ul className="intolerances">
             <li>
               <label>
                 <input
@@ -390,9 +395,9 @@ class CreateGuest extends Component {
           <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
         </form>
 
-        <h2>Guest Information</h2>
+        <h2 className="secondaryH2">Guest Information</h2>
         <div className="guestInformation">
-          <img  id="guestImg" src="" alt=""/>
+          <img id="guestImg" src="" alt="" />
           <p>Your name: {this.state.name}</p>
           <p>Your email id: {this.state.email}</p>
           <p>
@@ -402,7 +407,7 @@ class CreateGuest extends Component {
           <p>Your diet: {this.state.diet}</p>
           <p>Your dietary restictions: {this.state.allergies}</p>
         </div>
-      </div>
+      </section>
     );
   }
 }
