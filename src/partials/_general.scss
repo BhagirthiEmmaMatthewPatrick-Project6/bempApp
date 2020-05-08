@@ -38,7 +38,6 @@ nav,
 button, 
 input, 
 label,
-h2,
 h3 {
     font-size: 2rem;
 }
@@ -47,8 +46,13 @@ p {
     font-size: 1.8rem;
 }
 
+h2,
 .homeIntro p {
     font-size: 2.5rem;
+}
+
+h2 {
+    text-align: center;
 }
 
 button {

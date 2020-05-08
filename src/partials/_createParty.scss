@@ -24,23 +24,18 @@
 
 // Existing guests to add to the party
 
-.guestList {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(5, auto);
-    grid-gap: 10px;
+.addGuestsUL {
+    display: flex;
     justify-content: space-between;
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
-    grid-auto-flow: dense;
-    margin: 0;
+    flex-wrap: wrap;
 }
 
-.guestList li {
+.addGuestsUL li {
     background-color: #fff;
-    width: 300px;
-    height: 200px;
+    border: 2px solid $mainColor;
+    border-radius: 2px;
 }
+
 
 h2 {
     padding-bottom: 25px;
@@ -67,8 +62,4 @@ img {
 .recipeGallery a {
     width: 60%;
     display: inline-block;
-}
-
-.addGuestsUL{
-    border:1px solid green;
 }
