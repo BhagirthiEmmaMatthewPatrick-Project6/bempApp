@@ -25,65 +25,69 @@ class App extends Component {
   }
   render(){
     return (
-      <Router>
-        {/* <CreatePartyAddingGuests /> */}
-        <div className="App">
-          {/* Navigation */}
-          <nav>
-            <NavLink
-              exact
-              className="link"
-              activeClassName="currentPage"
-              to="/home"
-            >
-              Home
-            </NavLink>
+      <body>
+        <Router>
+          {/* <CreatePartyAddingGuests /> */}
+          <div className="App">
+            {/* Navigation */}
+            <nav>
+              <div className="wrapper">
+              <NavLink
+                exact
+                className="link"
+                activeClassName="currentPage"
+                to="/home"
+              >
+                Home
+              </NavLink>
 
-            <NavLink
-              exact
-              className="link"
-              activeClassName="currentPage"
-              to="/createGuest"
-            >
-              Create Guest
-            </NavLink>
+              <NavLink
+                exact
+                className="link"
+                activeClassName="currentPage"
+                to="/createGuest"
+              >
+                Create Guest
+              </NavLink>
 
-            <NavLink
-              className="link"
-              activeClassName="currentPage"
-              to="/createParty"
-            >
-              Create Party{/* This is the API call */}
-              {/* <Recipe /> */}
-            </NavLink>
+              <NavLink
+                className="link"
+                activeClassName="currentPage"
+                to="/createParty"
+              >
+                Create Party{/* This is the API call */}
+                {/* <Recipe /> */}
+              </NavLink>
 
-            <NavLink className="link" activeClassName="currentPage" to="/viewParties">
-              View Party
-            </NavLink>
+              <NavLink className="link" activeClassName="currentPage" to="/viewParties">
+                View Parties
+              </NavLink>
 
-            <NavLink
-              className="link"
-              activeClassName="currentPage"
-              to="/guests"
-            >
-              View Guests
-            </NavLink>
-          </nav>
+              <NavLink
+                className="link"
+                activeClassName="currentPage"
+                to="/guests"
+              >
+                View Guests
+              </NavLink>
+              </div>
+            </nav>
 
-          {/* Routes */}
-          <Route path="/Home" component={Home} />
-          <Route path="/createGuest" component={CreateGuest} />
+            {/* Routes */}
+            <Route path="/Home" component={Home} />
+            <Route path="/createGuest" component={CreateGuest} />
 
-          <Route path="/createParty" component={CreateParty} />
+            <Route path="/createParty" component={CreateParty} />
 
-          <Route exact path="/guests" component={ViewGuests} />
-          <Route path="/guests/:id" component={ViewGuestsFocus} />
+            <Route exact path="/guests" component={ViewGuests} />
+            <Route path="/guests/:id" component={ViewGuestsFocus} />
 
-          <Route exact path="/viewParties" component={ViewParties}/>
-          <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+            <Route exact path="/viewParties" component={ViewParties}/>
+            <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </body>
     );
   }  
 }

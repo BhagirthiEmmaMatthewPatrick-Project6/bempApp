@@ -45,18 +45,17 @@ class ViewGuests extends Component{
 
     render(){
         return(
-            <section className="viewGuestsSection">
+            <section className="viewSection wrapper">
                 <h2>Guest List</h2>
-                <ul className="viewGuestsUL">
+                <ul className="viewUL">
                     {this.state.guests.map((guest)=>{
                         return(
-                            <Link className='viewGuestsLink' key={'link'+guest.guestID} to={'/guests/'+guest.guestID}>
-                            <li key={guest.guestID} className='viewGuestsLI' id={guest.guestID} onClick={(e)=>this.focusUser(e)}>
+                            <Link className='viewLILink' key={'link'+guest.guestID} to={'/guests/'+guest.guestID}>
+                            <li key={guest.guestID} className='viewLI' id={guest.guestID} onClick={(e)=>this.focusUser(e)}>
                                 <div className="imageContainer">
                                     <img src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/>
                                 </div>
                                 <h3>{guest.guestInfo.name}</h3>
-                                <p>{guest.guestInfo.email}</p>
                             </li>
                             </Link>
                         )

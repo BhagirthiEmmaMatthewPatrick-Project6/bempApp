@@ -51,13 +51,13 @@ class ViewParties extends Component{
 
     render(){
         return(
-            <section className="viewPartiesSection">
+            <section className="viewSection wrapper">
                 <h2>Parties</h2>
-                <ul className="viewPartiesUL">
+                <ul className="viewUL">
                     {this.state.parties.map((party)=>{
                         return(
-                            <Link className='viewPartiesLink' key={'link'+party.partyID} to={'/viewParties/'+party.partyID}>
-                            <li key={party.partyID} className='viewPartyLI' id={party.partyID} onClick={(e)=>this.focusUser(e)}>
+                            <Link className='viewLILink' key={'link'+party.partyID} to={'/viewParties/'+party.partyID}>
+                            <li key={party.partyID} className='viewLI' id={party.partyID} onClick={(e)=>this.focusUser(e)}>
                                 <div className="imageContainer">
                                     <img src={party.partyInfo.photoURL} alt={party.partyInfo.partyDetails}/>
                                 </div>
