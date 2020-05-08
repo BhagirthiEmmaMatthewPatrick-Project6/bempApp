@@ -8,7 +8,7 @@ function Home() {
             </div>
             <div className="wrapper homeIntro">
                 <p>Make sure to account for your guest's dietary needs at your next party.
-                Create guest profiles with any allergies or diets, and then create your party with the guests attending. Search for recipes that will accomodate them and make your next party a great success.</p>
+                Create guest profiles with allergies and diets, add them to your party, and search for recipes that will accomodate their needs.</p>
             </div>
         </header>
     )
