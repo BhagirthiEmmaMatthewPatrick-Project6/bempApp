@@ -57,7 +57,7 @@ class App extends Component {
               {/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="currentPage" to="/">
+            <NavLink className="link" activeClassName="currentPage" to="/viewParties">
               View Party
             </NavLink>
 
@@ -73,12 +73,12 @@ class App extends Component {
           {/* Routes */}
           <Route path="/Home" component={Home} />
           <Route path="/createGuest" component={CreateGuest} />
-          {/* <Route path="/about" component={CreateParty} /> */}
-          <Route path="/guests" component={ViewGuests} />
-          {/* Not making it exact so we can overlap guest ID Info  */}
-          <Route path="/guests/:id" component={ViewGuestsFocus} />
+
           <Route path="/createParty" component={CreateParty} />
-          {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
+
+          <Route exact path="/guests" component={ViewGuests} />
+          <Route path="/guests/:id" component={ViewGuestsFocus} />
+
           <Route exact path="/viewParties" component={ViewParties}/>
           <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
 
