@@ -119,7 +119,7 @@ class CreateGuest extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const allergiesArray = this.populateAllergies();
-    this.handleUploadImage(e);
+    // this.handleUploadImage(e);
     this.setState(
       {
         allergies: allergiesArray,
@@ -136,7 +136,6 @@ class CreateGuest extends Component {
         });
       }
     );
-
   };
 
   render() {
@@ -155,6 +154,9 @@ class CreateGuest extends Component {
                 this.handleImageChange(e);
               }}
             />
+            <button onClick={(e) => {
+              this.handleUploadImage(e)
+            }}>Upload</button>
           </div>
           {/* Name input */}
           <input

@@ -8,16 +8,18 @@ class CreateParty extends Component {
     constructor() {
         super();
         this.state = {
-            recipes: [],
-            partyName:'',
-            partyAddress:'',
-            partyDetails:'',
-            guestsKeys:[],
-            addedGuests:[],
-            dietList:[],
-            intoleranceList:[],
-            showGuestList:false,
-            photoURL:'https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg',
+          recipes: [],
+          partyName: "",
+          partyAddress: "",
+          partyDetails: "",
+          guestsKeys: [],
+          addedGuests: [],
+          dietList: [],
+          intoleranceList: [],
+          showGuestList: false,
+          files: null,
+          photoURL:
+            "https://media3.s-nbcnews.com/j/newscms/2019_05/2736521/190131-stock-taco-bar-food-ew-1220p_bc7c9fc25ecd393bfa3d7d35f216edfc.fit-1240w.jpg",
         };
     }
 
