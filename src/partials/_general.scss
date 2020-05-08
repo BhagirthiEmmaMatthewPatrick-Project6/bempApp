@@ -2,6 +2,7 @@ html {
     font-size: 62.5%;
     font-family: $mainFont;
     color: #2E2F40;
+    background-color: lighten($accentColor, 32%);
 }
 
 ul {
@@ -33,20 +34,36 @@ h1 {
     color: $mainColor;
 }
 
-nav {
+nav, 
+button, 
+input, 
+label,
+h2,
+h3 {
     font-size: 2rem;
 }
 
 p {
+    font-size: 1.8rem;
+}
+
+.homeIntro p {
     font-size: 2.5rem;
+}
+
+button {
+    width: 200px;
+    background-color: $mainColor;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 
 .viewGuestFocusSection{
     border:1px solid red;
-}
-
-.child{
-    border:1px solid blue;
-    background:white;
 }
