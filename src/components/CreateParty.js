@@ -156,35 +156,31 @@ class CreateParty extends Component {
 
     render() {
         return (
-            <section className="createPartySection">
+            <section className="createPartySection wrapper">
                 {/*Form*/}
                     <form className="createPartyForm" action="">
-                        <label htmlFor="Name of Party">Name of Party</label>
+                        <label htmlFor="Name of Party"></label>
                         <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
 
-                        <label htmlFor="Address">Address</label>
+                        <label htmlFor="Address"></label>
                         <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
 
-                        <label htmlFor="Details">Details</label>
-                        <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="ie. Date and Time"/>
+                        <label htmlFor="Details"></label>
+                        <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
 
-
-                        <label htmlFor="getRecipesButton">Get Recipes</label>
-                        <button id="getRecipeButton" type="submit" onClick={(e)=> this.getRecipes(e)}>Get Recipes</button>
-
-                        
 
                         {/*Adding Guests Component*/}
-                        <button type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
+                        <button className="addGuests" type="submit" onClick={(e)=>this.toggleAddGuests(e)}>Add Existing Guests</button>
                         {this.state.showGuestList ? <CreatePartyAddingGuests getChoice={(e)=>this.getUserKey(e)} />:null}
                         {/*Displaying Guests*/}
                         <section className="invitedGuestsSection">
-                            <h2>Guest List</h2>
+                        <h2>Guest List</h2>
                             {this.state.addedGuests.map((invitedGuests)=>{
+                                
                                 return(
-                                    <ul>
+                                    <ul className="guestList">
                                         <li>
-                                            <h3>{invitedGuests.name}</h3>
+                                            <h2>{invitedGuests.name}</h2>
                                             <p>{invitedGuests.email}</p>
                                         </li>
                                     </ul>
@@ -219,16 +215,18 @@ class CreateParty extends Component {
                                     )
                                 })}
                             </ul>
+                        <label htmlFor="getRecipesButton"></label>
+                        <button id="getRecipeButton" type="submit" onClick={(e) => this.getRecipes(e)}>Get Recipes</button>
                         </section>
 
                         {/*Recipe API CALL */}
-                        <section className="recipeGalarySection">
+                        <section className="recipeGallerySection">
                             <h2>Suggested Recipes</h2>
                             <ul className="recipeGalleryUL">
                                 {this.state.recipes.map((recipeObj) => {
                                     return (
                                         <li>
-                                            <h2><a href={recipeObj.sourceUrl}>{recipeObj.title}</a></h2>
+                                            <h3><a rel="noopener noreferrer" target="_blank" href={recipeObj.sourceUrl}>{recipeObj.title}</a></h3>
                                             <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
                                         </li>
                                     )
