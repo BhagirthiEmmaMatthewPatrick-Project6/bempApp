@@ -27,7 +27,7 @@ class CreatePartyAddingGuests extends Component{
 
     render(){
         return(
-            <ul className="wrapper guestList">
+            <>
                 {this.state.guest.map((guest)=>{
                     return (    
                         <li key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID} className="child">
@@ -36,7 +36,7 @@ class CreatePartyAddingGuests extends Component{
                         </li>
                     )
                 })}
-            </ul>
+            </>
         )
     }
 }

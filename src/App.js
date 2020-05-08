@@ -11,6 +11,8 @@ import CreateGuest from './components/CreateGuest';
 import CreateParty from './components/CreateParty'
 import ViewGuests from './components/ViewGuests'
 import ViewGuestsFocus from './components/ViewGuestsFocus';
+import ViewParties from './components/ViewParties'
+import ViewPartiesFocus from './components/ViewPartiesFocus'
 // import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
@@ -77,7 +79,9 @@ class App extends Component {
           <Route path="/guests/:id" component={ViewGuestsFocus} />
           <Route path="/createParty" component={CreateParty} />
           {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
-          {/* <Route exact path="/" component={ViewParty} /> */}
+          <Route exact path="/viewParties" component={ViewParties}/>
+          <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+
         </div>
       </Router>
     );

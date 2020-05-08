@@ -8,7 +8,7 @@ class CreateGuest extends Component {
     super();
     this.state = {
       files: null,
-      url: '',
+      photoURL: '',
       name: "",
       email: "",
       isPetFriendly: false,
@@ -107,9 +107,9 @@ class CreateGuest extends Component {
           .child(file.name)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
+            // console.log(url);
             this.setState({
-              url: url,
+              photoURL: url,
             });
             document.getElementById('guestImg').src= url;
           });
@@ -127,7 +127,7 @@ class CreateGuest extends Component {
       () => {
         const dbRef = firebase.database().ref(`/Guests/`);
         dbRef.push({
-          url: this.state.url,
+          photoURL: this.state.photoURL,
           name: this.state.name,
           email: this.state.email,
           petFriendly: this.state.isPetFriendly,
