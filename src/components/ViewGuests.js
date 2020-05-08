@@ -56,7 +56,6 @@ class ViewGuests extends Component{
                                     <img src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/>
                                 </div>
                                 <h3>{guest.guestInfo.name}</h3>
-                                <p>{guest.guestInfo.email}</p>
                             </li>
                             </Link>
                         )

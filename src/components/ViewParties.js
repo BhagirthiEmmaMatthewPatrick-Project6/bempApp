@@ -51,7 +51,7 @@ class ViewParties extends Component{
 
     render(){
         return(
-            <section className="viewPartiesSection">
+            <section className="viewPartiesSection wrapper">
                 <h2>Parties</h2>
                 <ul className="viewPartiesUL">
                     {this.state.parties.map((party)=>{

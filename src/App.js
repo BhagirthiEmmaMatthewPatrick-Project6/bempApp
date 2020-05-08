@@ -58,7 +58,7 @@ class App extends Component {
             </NavLink>
 
             <NavLink className="link" activeClassName="currentPage" to="/viewParties">
-              View Party
+              View Parties
             </NavLink>
 
             <NavLink
