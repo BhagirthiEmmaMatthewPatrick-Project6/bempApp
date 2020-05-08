@@ -27,3 +27,12 @@ h1 {
     text-align: center;
     line-height: 35px;
 }
+
+nav {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.currentPage {
+    color: darken($accentColor, 20%);
+}

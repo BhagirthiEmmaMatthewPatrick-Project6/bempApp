@@ -24,37 +24,57 @@ class App extends Component {
   render(){
     return (
       <Router>
-      {/* <CreatePartyAddingGuests /> */}
+        {/* <CreatePartyAddingGuests /> */}
         <div className="App">
           {/* Navigation */}
           <nav>
-            <NavLink exact className="link" activeClassName="" to="/home">
+            <NavLink
+              exact
+              className="link"
+              activeClassName="currentPage"
+              to="/home"
+            >
               Home
             </NavLink>
 
-            <NavLink exact className="link" activeClassName="" to="/createGuest">
+            <NavLink
+              exact
+              className="link"
+              activeClassName="currentPage"
+              to="/createGuest"
+            >
               Create Guest
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/createParty">
-              Create Party{/* This is the API call */}{/* <Recipe /> */}
+            <NavLink
+              className="link"
+              activeClassName="currentPage"
+              to="/createParty"
+            >
+              Create Party{/* This is the API call */}
+              {/* <Recipe /> */}
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/">
+            <NavLink className="link" activeClassName="currentPage" to="/">
               View Party
             </NavLink>
 
-            <NavLink className="link" activeClassName="" to="/guests">
+            <NavLink
+              className="link"
+              activeClassName="currentPage"
+              to="/guests"
+            >
               View Guests
             </NavLink>
           </nav>
-          
+
           {/* Routes */}
           <Route path="/Home" component={Home} />
           <Route path="/createGuest" component={CreateGuest} />
           {/* <Route path="/about" component={CreateParty} /> */}
-          <Route path="/guests" component={ViewGuests}/>{/* Not making it exact so we can overlap guest ID Info  */}
-          <Route path="/guests/:id" component={ViewGuestsFocus}/>
+          <Route path="/guests" component={ViewGuests} />
+          {/* Not making it exact so we can overlap guest ID Info  */}
+          <Route path="/guests/:id" component={ViewGuestsFocus} />
           <Route path="/createParty" component={CreateParty} />
           {/* <Route exact path="/guests:id" component={FocusGuest}/> */}
           {/* <Route exact path="/" component={ViewParty} /> */}
