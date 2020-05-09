@@ -21,6 +21,7 @@
 .dietInput, 
 .intolerances {
     display: flex;
+    justify-content: space-between;
     margin: 10px 0;
     border: 1px solid $textColor;
     padding: 10px;

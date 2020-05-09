@@ -48,7 +48,8 @@ button {
     border: 1px solid $textColor;
     border-radius: 5px;
     color: #fff;
-    background-color: $textColor;
+    // background-color: $textColor;
+    background-color: darken($mainColor,5%);
     font-size: 1.8rem;
     padding: 10px 20px;
     text-transform: uppercase;

@@ -151,6 +151,7 @@ class CreateParty extends Component {
       party.dietList = this.state.dietList;
       party.addedGuests = this.state.addedGuests;
       party.photoURL = this.state.photoURL;
+      party.recipes = this.state.recipes
       // console.log(party);
 
       firebase.database().ref("/Parties").push(party);

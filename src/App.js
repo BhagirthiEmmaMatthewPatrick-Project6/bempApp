@@ -25,7 +25,6 @@ class App extends Component {
   }
   render(){
     return (
-      <body>
         <Router>
           {/* <CreatePartyAddingGuests /> */}
           <div className="App">
@@ -36,7 +35,7 @@ class App extends Component {
                 exact
                 className="link"
                 activeClassName="currentPage"
-                to="/home"
+                to="/"
               >
                 Home
               </NavLink>
@@ -74,7 +73,8 @@ class App extends Component {
             </nav>
 
             {/* Routes */}
-            <Route path="/Home" component={Home} />
+            <Route exact path="/" component={Home} />
+
             <Route path="/createGuest" component={CreateGuest} />
 
             <Route path="/createParty" component={CreateParty} />
@@ -87,7 +87,6 @@ class App extends Component {
 
           </div>
         </Router>
-      </body>
     );
   }  
 }
