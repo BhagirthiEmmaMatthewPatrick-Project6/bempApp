@@ -68,7 +68,6 @@ class CreateGuest extends Component {
     this.state.isWheatFree
       ? allergiesArray.push("shellfish")
       : console.log("dont push");
-
     return allergiesArray;
   };
 
@@ -95,31 +94,33 @@ class CreateGuest extends Component {
   handleUploadImage = (e) => {
     e.preventDefault();
     const bucketName = 'images';
-    const file = this.state.files[0];
-    firebase
-      .storage()
-      .ref(`${bucketName}/${file.name}`)
-      .put(file)
-      .then(() => {
-        firebase
-          .storage()
-          .ref(`${bucketName}`)
-          .child(file.name)
-          .getDownloadURL()
-          .then((url) => {
-            // console.log(url);
-            this.setState({
-              photoURL: url,
+    if(this.state.files[0]){
+      const file = this.state.files[0];
+      firebase
+        .storage()
+        .ref(`${bucketName}/${file.name}`)
+        .put(file)
+        .then(() => {
+          firebase
+            .storage()
+            .ref(`${bucketName}`)
+            .child(file.name)
+            .getDownloadURL()
+            .then((url) => {
+              // console.log(url);
+              this.setState({
+                photoURL: url,
+              });
+              document.getElementById("guestImg").src = url;
             });
-            document.getElementById('guestImg').src= url;
-          });
-      });
+        });
+    }
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const allergiesArray = this.populateAllergies();
-    this.handleUploadImage(e);
+    // this.handleUploadImage(e);
     this.setState(
       {
         allergies: allergiesArray,
@@ -127,159 +128,168 @@ class CreateGuest extends Component {
       () => {
         const dbRef = firebase.database().ref(`/Guests/`);
         dbRef.push({
-          photoURL: this.state.photoURL,
           name: this.state.name,
           email: this.state.email,
           petFriendly: this.state.isPetFriendly,
           diet: this.state.diet,
           allergies: this.state.allergies,
+          photoURL: this.state.photoURL
+            ? this.state.photoURL
+            : "https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png"
         });
       }
     );
-
   };
 
   render() {
     return (
       <section className="createGuestSection wrapper">
         <h2>Create Guest Form</h2>
-        <form className="createGuestForm" onSubmit={this.handleSubmit}>
-          {/* Image input */}
-          <h4>Upload an image of your choice</h4>
-          <div className="imageInput">
-            <label for="img">Select image:</label>
+        <div className="createGuestCenter">
+          <form className="createGuestForm" onSubmit={this.handleSubmit}>
+            {/* Image input */}
+            <h4>Upload an image of your choice</h4>
+            <div className="imageInput">
+              <label for="img">Select image:</label>
+              <input
+                value={this.state.image}
+                type="file"
+                onChange={(e) => {
+                  this.handleImageChange(e);
+                }}
+              />
+              <button
+                onClick={(e) => {
+                  this.handleUploadImage(e);
+                }}
+              >
+                Upload
+              </button>
+            </div>
+            {/* Name input */}
             <input
-              value={this.state.image}
-              type="file"
-              onChange={(e) => {
-                this.handleImageChange(e);
-              }}
-            />
-          </div>
-          {/* Name input */}
-          <input
-            className="textInput"
-            type="text"
-            value={this.state.name}
-            name="name"
-            placeholder="Name"
-            onChange={this.handleChange}
-          />
-          <br />
-          {/* email Input */}
-          <input
-            className="textInput"
-            type="email"
-            value={this.state.email}
-            name="email"
-            placeholder="Email"
-            onChange={this.handleChange}
-          />
-          <br />
-          <p></p>
-          {/* Pet friendliness input */}
-          <label>
-            <input
-              className="petFriendlinessInput"
-              type="checkbox"
-              value={this.state.isPetFriendly}
-              name="isPetFriendly"
-              checked={this.state.isPetFriendly}
+              className="textInput"
+              type="text"
+              value={this.state.name}
+              name="name"
+              placeholder="Name"
               onChange={this.handleChange}
             />
-            Is Pet Friendly ?
-          </label>
-          <br />
-          {/* Diet Input */}
-          <h4>Diet Choices</h4>
-          <div className="dietInput">
+            <br />
+            {/* email Input */}
+            <input
+              className="textInput"
+              type="email"
+              value={this.state.email}
+              name="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+            <br />
+            <p></p>
+            {/* Pet friendliness input */}
             <label>
               <input
-                type="radio"
-                name="diet"
-                value="Gluten free"
-                checked={this.state.diet === "Gluten free"}
+                className="petFriendlinessInput"
+                type="checkbox"
+                value={this.state.isPetFriendly}
+                name="isPetFriendly"
+                checked={this.state.isPetFriendly}
                 onChange={this.handleChange}
-              />{" "}
-              Gluten Free
+              />
+              Is Pet Friendly ?
             </label>
-            <label>
-              <input
-                type="radio"
-                name="diet"
-                value="Vegetarian"
-                checked={this.state.diet === "Vegetarian"}
-                onChange={this.handleChange}
-              />{" "}
-              Vegetarian
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="diet"
-                value="Vegan"
-                checked={this.state.diet === "Vegan"}
-                onChange={this.handleChange}
-              />{" "}
-              Vegan
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="diet"
-                value="Pescetarian"
-                checked={this.state.diet === "Pescetarian"}
-                onChange={this.handleChange}
-              />{" "}
-              Pescetarian
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="diet"
-                value="Paleo"
-                checked={this.state.diet === "Paleo"}
-                onChange={this.handleChange}
-              />{" "}
-              Paleo
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="diet"
-                value="Whole30"
-                checked={this.state.diet === "Whole30"}
-                onChange={this.handleChange}
-              />{" "}
-              Whole30
-            </label>
-          </div>
-          {/* Dietary Restrictions Input */}
-          <h4>Intolerances</h4>
-          <ul className="intolerances">
-            <li>
+            <br />
+            {/* Diet Input */}
+            <h4>Diet Choices</h4>
+            <div className="dietInput">
               <label>
                 <input
-                  type="checkbox"
-                  name="isDairyFree"
+                  type="radio"
+                  name="diet"
+                  value="Gluten free"
+                  checked={this.state.diet === "Gluten free"}
                   onChange={this.handleChange}
-                  checked={this.state.isDairyFree}
                 />{" "}
-                Dairy
+                Gluten Free
               </label>
-            </li>
-            <li>
               <label>
                 <input
-                  type="checkbox"
-                  name="isEggFree"
+                  type="radio"
+                  name="diet"
+                  value="Vegetarian"
+                  checked={this.state.diet === "Vegetarian"}
                   onChange={this.handleChange}
-                  checked={this.state.isEggFree}
                 />{" "}
-                Egg
+                Vegetarian
               </label>
-            </li>
-            {/* <li>
+              <label>
+                <input
+                  type="radio"
+                  name="diet"
+                  value="Vegan"
+                  checked={this.state.diet === "Vegan"}
+                  onChange={this.handleChange}
+                />{" "}
+                Vegan
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="diet"
+                  value="Pescetarian"
+                  checked={this.state.diet === "Pescetarian"}
+                  onChange={this.handleChange}
+                />{" "}
+                Pescetarian
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="diet"
+                  value="Paleo"
+                  checked={this.state.diet === "Paleo"}
+                  onChange={this.handleChange}
+                />{" "}
+                Paleo
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="diet"
+                  value="Whole30"
+                  checked={this.state.diet === "Whole30"}
+                  onChange={this.handleChange}
+                />{" "}
+                Whole30
+              </label>
+            </div>
+            {/* Dietary Restrictions Input */}
+            <h4>Intolerances</h4>
+            <ul className="intolerances">
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isDairyFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isDairyFree}
+                  />{" "}
+                  Dairy
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isEggFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isEggFree}
+                  />{" "}
+                  Egg
+                </label>
+              </li>
+              {/* <li>
               <label>
                 <input
                   type="checkbox"
@@ -290,122 +300,129 @@ class CreateGuest extends Component {
                 Gluten
               </label>
             </li> */}
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isGrainFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isGrainFree}
-                />{" "}
-                Grain
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isPeanutFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isPeanutFree}
-                />{" "}
-                Peanut
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isSeafoodFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isSeafoodFree}
-                />{" "}
-                Seafood
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isSesameFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isSesameFree}
-                />{" "}
-                Sesame
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isShellfishFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isShellfishFree}
-                />{" "}
-                Shellfish
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isSoyFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isSoyFree}
-                />{" "}
-                Soy
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isSulfiteFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isSulfiteFree}
-                />{" "}
-                Sulfite
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isTreeNutFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isTreeNutFree}
-                />{" "}
-                Tree Nut
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isWheatFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isWheatFree}
-                />{" "}
-                Wheat
-              </label>
-            </li>
-          </ul>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isGrainFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isGrainFree}
+                  />{" "}
+                  Grain
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isPeanutFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isPeanutFree}
+                  />{" "}
+                  Peanut
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isSeafoodFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isSeafoodFree}
+                  />{" "}
+                  Seafood
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isSesameFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isSesameFree}
+                  />{" "}
+                  Sesame
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isShellfishFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isShellfishFree}
+                  />{" "}
+                  Shellfish
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isSoyFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isSoyFree}
+                  />{" "}
+                  Soy
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isSulfiteFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isSulfiteFree}
+                  />{" "}
+                  Sulfite
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isTreeNutFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isTreeNutFree}
+                  />{" "}
+                  Tree Nut
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isWheatFree"
+                    onChange={this.handleChange}
+                    checked={this.state.isWheatFree}
+                  />{" "}
+                  Wheat
+                </label>
+              </li>
+            </ul>
 
-          <br />
-          <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
-        </form>
+            <br />
+            <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
+          </form>
 
-        <h2 className="secondaryH2">Guest Information</h2>
-        <div className="guestInformation">
-          <img id="guestImg" src="" alt="" />
-          <p>Your name: {this.state.name}</p>
-          <p>Your email id: {this.state.email}</p>
-          <p>
-            Your pet inclination:{" "}
-            {this.state.isPetFriendly ? "pet friendly" : " "}
-          </p>
-          <p>Your diet: {this.state.diet}</p>
-          <p>Your dietary restictions: {this.state.allergies}</p>
+          <h2 className="secondaryH2">Guest Information</h2>
+          <div className="guestInformation">
+            <div className="guestInfoCenter">
+              <img className="guestImage"
+                id="guestImg"
+                src="https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png"
+                alt=""
+              />
+              <p>Your name: {this.state.name}</p>
+              <p>Your email id: {this.state.email}</p>
+              <p>
+                Your pet inclination:{" "}
+                {this.state.isPetFriendly ? "pet friendly" : " "}
+              </p>
+              <p>Your diet: {this.state.diet}</p>
+              <p>Your dietary restictions: {this.state.allergies}</p>
+            </div>
+          </div>
         </div>
       </section>
     );
