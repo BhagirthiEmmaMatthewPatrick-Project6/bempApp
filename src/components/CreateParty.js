@@ -166,9 +166,7 @@ class CreateParty extends Component {
         recipes: [],
         guestsKeys: [],
         showGuestList: false,
-        photoURL: this.state.photoURL
-          ? this.state.photoURL
-          : "https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg",
+        photoURL: this.state.photoURL,
       });
     }
   };
