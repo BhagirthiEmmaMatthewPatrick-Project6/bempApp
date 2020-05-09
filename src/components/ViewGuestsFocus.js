@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import {Link} from 'react-router-dom'
 
 class ViewGuestsFocus extends Component{
     constructor(){
@@ -37,6 +38,7 @@ class ViewGuestsFocus extends Component{
         return(
             <section className="viewGuestFocusSection wrapper">
                 <div className="profileCard">
+                <Link className="link" activeClassName="currentPage" to="/guests">...go back</Link>
                     <div className="imageContainer">
                         <img src={this.state.focusedUser.photoURL} alt={this.state.focusedUser.name + ' profile picture'}/>
                     </div>

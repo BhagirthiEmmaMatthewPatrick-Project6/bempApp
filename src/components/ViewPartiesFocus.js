@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import {Link} from 'react-router-dom'
+
 
 class ViewPartiesFocus extends Component{
     constructor(){
@@ -42,6 +44,7 @@ class ViewPartiesFocus extends Component{
         
         return(
             <section className="viewPartiesFocusSection wrapper">
+                <Link className="link" activeClassName="currentPage" to="/viewParties">...go back</Link>
                 <div className="profileCard">
                     <div className="imageContainer">
                         <img src={this.state.focusedParty.photoURL} alt={this.state.focusedParty.partyDetails}/>
