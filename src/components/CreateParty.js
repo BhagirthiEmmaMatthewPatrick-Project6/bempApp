@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CreatePartyAddingGuests from './CreatePartyAddingGuests'
 import firebase from 'firebase'
-import mult from '../assets/mult.svg';
+import close from '../assets/close.svg';
 
 
 
@@ -164,7 +164,7 @@ class CreateParty extends Component {
         dietList: [],
         addedGuests: [],
         recipes: [],
-        guestKeys: [],
+        guestsKeys: [],
         showGuestList: false,
         photoURL: this.state.photoURL
           ? this.state.photoURL
@@ -290,7 +290,8 @@ class CreateParty extends Component {
                 return (
                   <div className="viewLIContainer">
                     <li className="viewLI" onClick={()=>this.removeKey(invitedGuests.key)}>
-                      <span aria-label="mult"><img className="mult" src={mult} alt="" /></span>
+                      {/* close by The Icon Z from the Noun Project */}
+                      <span aria-label="close"><img className="close" src={close} alt="" /></span>
                       <div className="imageContainer">
                       <img
                         className="guestImg"

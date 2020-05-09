@@ -1,6 +1,12 @@
 
 @media (max-width:1030px){
 
+    //Nav
+    nav a.link  {
+        font-size:1.5rem;
+        padding-top:8px;
+    }
+
     //Home
     header h1 {
         width:55%;
@@ -9,11 +15,17 @@
 
     .homeIntro p {
         font-size: 2rem;
+        
     }
     
 }
 
 @media (max-width:780px){
+
+    //Nav
+    nav a.link  {
+        font-size:1.3rem ;
+    }
 
     //Create Your Guest
     .createGuestSection {
@@ -44,6 +56,8 @@
 
 @media (max-width:600px){
 
+    
+
     //Create Your Guest
     .createGuestSection {
         .petFriend label,
@@ -64,6 +78,9 @@
 
 
 @media (max-width:500px){
+
+    // Nav
+    // Mobile/ Drop down
 
     //Home
     header h1 {

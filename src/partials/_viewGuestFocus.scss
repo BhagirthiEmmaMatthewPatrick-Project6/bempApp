@@ -1,0 +1,30 @@
+.viewPartiesFocusSection,
+.viewGuestFocusSection{
+    display:flex;
+    justify-content: center;
+    // align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding-top:2%;
+    margin-top:2%;
+
+    .link{
+        position: absolute;
+        top:0%;
+        left:0;
+    }
+}
+
+.profileCard{
+    display:flex;
+    flex-direction: column;
+    border:1px solid black;
+    border-radius: 15px;
+    padding:5%;
+    >*{
+        margin:1% 0;
+    }
+    img{
+        width:400px;
+    }
+}
