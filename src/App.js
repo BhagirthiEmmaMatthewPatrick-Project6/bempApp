@@ -25,56 +25,6 @@ class App extends Component {
   }
   render(){
     return (
-<<<<<<< HEAD
-      <Router>
-        {/* <CreatePartyAddingGuests /> */}
-        <div className="App">
-          {/* Navigation */}
-          <nav>
-            <NavLink
-          
-              exact
-              className="link"
-              activeClassName="currentPage"
-              to="/home"
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-            
-              exact
-              className="link"
-              activeClassName="currentPage"
-              to="/createGuest"
-            >
-              Create Guest
-            </NavLink>
-
-            <NavLink
-            
-              className="link"
-              activeClassName="currentPage"
-              to="/createParty"
-            >
-              Create Party{/* This is the API call */}
-              {/* <Recipe /> */}
-            </NavLink>
-
-            <NavLink className="link" activeClassName="currentPage" to="/viewParties"> 
-              View Party
-            </NavLink>
-
-            <NavLink
-              className="link"
-              activeClassName="currentPage"
-              to="/guests"
-            
-            >
-              View Guests
-            </NavLink>
-          </nav>
-=======
       <body>
         <Router>
           {/* <CreatePartyAddingGuests /> */}
@@ -122,7 +72,6 @@ class App extends Component {
               </NavLink>
               </div>
             </nav>
->>>>>>> master
 
             {/* Routes */}
             <Route path="/Home" component={Home} />

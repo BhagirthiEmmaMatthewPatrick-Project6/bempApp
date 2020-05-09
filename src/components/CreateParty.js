@@ -45,15 +45,26 @@ class CreateParty extends Component {
                 diet: dietAxios,
             },
         })
+        // Not sure why this isn't working....
             .then((res) => {
-
-                this.state.error
+                const foodData = res.data.results
+                foodData.length === 0
                 ? this.setState({
                     error:true
                 })
                 : this.setState({
                     recipes: res.data.results,
                 })
+
+            // if (foodData.length === 0){
+            //     this.setState({
+            //         error:true
+            //     }) 
+            // } else {
+            //     this.setState({
+            //         recipes: res.data.results 
+            //     })
+            // }
             })
             .catch((error) => {
                 alert(error);
@@ -216,6 +227,7 @@ class CreateParty extends Component {
     };
 
     render() {
+        console.log(this.state.error);
         return (
             <section className="createPartySection">
                 {/*Form*/}
@@ -335,7 +347,8 @@ class CreateParty extends Component {
 
                     <section className="recipeGallerySection">
                         <ul className="recipeGalleryUL">
-                            {this.state.error ?<h4>Sorry, we couldnt find any recipes, maybe try serving water?</h4> : null}
+                            {/* Does this need to be in a LI? */}
+                            {this.state.error ?<p>Sorry, we couldnt find any recipes, maybe try serving water?</p> : null}
                             {this.state.recipes.map((recipeObj) => {
                                 return (
                                     <li className="recipeLI">

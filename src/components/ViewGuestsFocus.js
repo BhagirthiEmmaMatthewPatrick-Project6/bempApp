@@ -7,7 +7,7 @@ class ViewGuestsFocus extends Component{
         this.state={
             focusedUser:{
                 name:'',
-                email:'',
+                email:'',                   
                 photoURL:'',
             }
         }
