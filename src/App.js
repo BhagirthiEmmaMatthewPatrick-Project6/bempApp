@@ -73,17 +73,17 @@ class App extends Component {
             </nav>
 
             {/* Routes */}
-            <Route exact path="/" component={Home} />
+            <Route exact path="/bempApp/" component={Home} />
 
-            <Route path="/createGuest" component={CreateGuest} />
+            <Route path="/bempApp/createGuest" component={CreateGuest} />
 
-            <Route path="/createParty" component={CreateParty} />
+            <Route path="/bempApp/createParty" component={CreateParty} />
 
-            <Route exact path="/guests" component={ViewGuests} />
-            <Route path="/guests/:id" component={ViewGuestsFocus} />
+            <Route exact path="/bempApp/guests" component={ViewGuests} />
+            <Route path="/bempApp/guests/:id" component={ViewGuestsFocus} />
 
-            <Route exact path="/viewParties" component={ViewParties}/>
-            <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+            <Route exact path="/bempApp/viewParties" component={ViewParties}/>
+            <Route path="/bempApp/viewParties/:id" component={ViewPartiesFocus}/>
 
           </div>
         </Router>

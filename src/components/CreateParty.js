@@ -290,7 +290,7 @@ class CreateParty extends Component {
                     <li className="viewLI" onClick={()=>this.removeKey(invitedGuests.key)}>
                       {/* close by The Icon Z from the Noun Project */}
                       <span aria-label="close"><img className="close" src={close} alt="" /></span>
-                      <div className="imageContainer">
+                      <div className="imageContainer profileImage">
                       <img
                         className="guestImg"
                         src={invitedGuests.photoURL}

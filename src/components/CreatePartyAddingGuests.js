@@ -21,7 +21,6 @@ class CreatePartyAddingGuests extends Component{
             this.setState({
                 guest
             })
-            console.log(this.state.guestID);
         })
 
     }
@@ -33,7 +32,7 @@ class CreatePartyAddingGuests extends Component{
                     return (
                         <div className="viewLIContainer">
                             <li classname="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
-                                <div className="imageContainer">
+                                <div className="imageContainer profileImage">
                                     {/* add by The Icon Z from the Noun Project */}
                                     <span aria-label="add"><img className="add" src={add} alt="" /></span>
                                     <img className="guestImg" src={guest.guestInfo.photoURL} alt={guest.guestInfo.name}/>

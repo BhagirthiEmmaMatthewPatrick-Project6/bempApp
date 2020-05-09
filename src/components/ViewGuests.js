@@ -52,7 +52,7 @@ class ViewGuests extends Component{
                         return(
                             <Link className='viewLILink' key={'link'+guest.guestID} to={'/guests/'+guest.guestID}>
                             <li key={guest.guestID} className='viewLI' id={guest.guestID} onClick={(e)=>this.focusUser(e)}>
-                                <div className="imageContainer">
+                                <div className="imageContainer profileImage">
                                     <img className="guestImg" src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/>
                                 </div>
                                 <h3>{guest.guestInfo.name}</h3>

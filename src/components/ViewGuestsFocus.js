@@ -16,7 +16,6 @@ class ViewGuestsFocus extends Component{
 
     syncGuests=()=>{
         firebase.database().ref('/Guests/'+this.props.match.params.id).on('value',(results)=>{
-            console.log(results.val());
             this.setState({
                 focusedUser: results.val()
             })
