@@ -84,7 +84,6 @@ class CreateGuest extends Component {
   };
 
   handleImageChange = (e) => {
-    console.log(e.target.files)
     const files = e.target.files;
     this.setState({
       files: files
@@ -147,10 +146,44 @@ class CreateGuest extends Component {
         <h2>Create Your Guests</h2>
         <div className="createGuestCenter">
           <form className="createGuestForm" onSubmit={this.handleSubmit}>
+            
+            {/* Name input */}
+            <label htmlFor="Guest name"></label>
+            <input
+              className="textInput"
+              type="text"
+              value={this.state.name}
+              name="name"
+              placeholder="Name"
+              onChange={this.handleChange}
+            />
+            {/* email Input */}
+            
+              <label htmlFor="Guest email"></label>
+              <input
+                className="textInput"
+                type="email"
+                value={this.state.email}
+                name="email"
+                placeholder="Email"
+                onChange={this.handleChange}
+              />
+            
+            {/* Pet friendliness input */}
+            <div className="petFriend">
+              <label htmlFor="">Are you ok with pets?</label>
+              <input
+                type="checkbox"
+                value={this.state.isPetFriendly}
+                name="isPetFriendly"
+                checked={this.state.isPetFriendly}
+                onChange={this.handleChange}
+              />
+            </div>
             {/* Image input */}
-            <h4>Upload an image of your choice</h4>
+            <p>Upload an image for your profile</p>
             <div className="imageInput">
-              <label for="img">Select image:</label>
+              <label htmlFor="select an image to upload"></label>
               <input
                 value={this.state.image}
                 type="file"
@@ -166,42 +199,8 @@ class CreateGuest extends Component {
                 Upload
               </button>
             </div>
-            {/* Name input */}
-            <input
-              className="textInput"
-              type="text"
-              value={this.state.name}
-              name="name"
-              placeholder="Name"
-              onChange={this.handleChange}
-            />
-            <br />
-            {/* email Input */}
-            <input
-              className="textInput"
-              type="email"
-              value={this.state.email}
-              name="email"
-              placeholder="Email"
-              onChange={this.handleChange}
-            />
-            <br />
-            <p></p>
-            {/* Pet friendliness input */}
-            <label>
-              <input
-                className="petFriendlinessInput"
-                type="checkbox"
-                value={this.state.isPetFriendly}
-                name="isPetFriendly"
-                checked={this.state.isPetFriendly}
-                onChange={this.handleChange}
-              />
-              Is Pet Friendly ?
-            </label>
-            <br />
             {/* Diet Input */}
-            <h4>Diet Choices</h4>
+            <h3 className="dietHeader">Diet</h3>
             <div className="dietInput">
               <label>
                 <input
@@ -261,11 +260,11 @@ class CreateGuest extends Component {
                   checked={this.state.diet === "Whole30"}
                   onChange={this.handleChange}
                 />{" "}
-                Whole30
+                Whole 30
               </label>
             </div>
             {/* Dietary Restrictions Input */}
-            <h4>Intolerances</h4>
+            <h3>Intolerances</h3>
             <ul className="intolerances">
               <li>
                 <label>
@@ -289,17 +288,6 @@ class CreateGuest extends Component {
                   Egg
                 </label>
               </li>
-              {/* <li>
-              <label>
-                <input
-                  type="checkbox"
-                  name="isGlutenFree"
-                  onChange={this.handleChange}
-                  checked={this.state.isGlutenFree}
-                />{" "}
-                Gluten
-              </label>
-            </li> */}
               <li>
                 <label>
                   <input
@@ -400,12 +388,10 @@ class CreateGuest extends Component {
                 </label>
               </li>
             </ul>
-
-            <br />
             <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
           </form>
 
-          <h2 className="secondaryH2">Guest Information</h2>
+          <h5>Guest Information</h5>
           <div className="guestInformation">
             <div className="guestInfoCenter">
               <img className="guestImage"
@@ -413,14 +399,14 @@ class CreateGuest extends Component {
                 src="https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png"
                 alt=""
               />
-              <p>Your name: {this.state.name}</p>
-              <p>Your email id: {this.state.email}</p>
+              <p>Name: {this.state.name}</p>
+              <p>Email: {this.state.email}</p>
               <p>
-                Your pet inclination:{" "}
+                Pets ok:{" "}
                 {this.state.isPetFriendly ? "pet friendly" : " "}
               </p>
-              <p>Your diet: {this.state.diet}</p>
-              <p>Your dietary restictions: {this.state.allergies}</p>
+              <p>Diet: {this.state.diet}</p>
+              <p>Intolerances: {this.state.allergies}</p>
             </div>
           </div>
         </div>
