@@ -1,3 +1,10 @@
+.createGuestForm {
+    background-image: url(../assets/guest.jpg);
+    background-position: top right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    padding-bottom: 225px;
+}
 
 .petFriend {
     width: 30%;
@@ -11,6 +18,10 @@
 
     input {
         justify-self: flex-start;
+    }
+
+    p {
+        margin-bottom: 10px;
     }
 }
 
