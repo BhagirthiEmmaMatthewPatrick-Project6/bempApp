@@ -145,7 +145,7 @@ class CreateGuest extends Component {
           <form className="createGuestForm" onSubmit={this.handleSubmit}>
             
             {/* Name input */}
-            <label htmlFor="Guest name"></label>
+            <label className="guestName" htmlFor="Guest Name"></label>
             <input
               className="textInput"
               type="text"
