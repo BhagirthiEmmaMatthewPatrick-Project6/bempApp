@@ -178,8 +178,8 @@ class CreateGuest extends Component {
               />
             </div>
             {/* Image input */}
-            <p>Upload an image for your profile</p>
             <div className="imageInput">
+            <p>Upload an image for your profile</p>
               <label htmlFor="select an image to upload"></label>
               <input
                 value={this.state.image}

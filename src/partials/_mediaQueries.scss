@@ -1,0 +1,127 @@
+
+@media (max-width:1030px){
+
+    //Home
+    header h1 {
+        width:55%;
+        font-size: 6rem;
+    }
+
+    .homeIntro p {
+        font-size: 2rem;
+    }
+    
+}
+
+@media (max-width:780px){
+
+    //Create Your Guest
+    .createGuestSection {
+        .petFriend label,
+        .dietInput label,
+        .intolerances label,
+        .dietHeader,
+        button,
+        h3,
+        h5,
+        input,
+        .guestInfoCenter p{
+            font-size:1.5rem;
+        }
+
+        .intolerances li:nth-child(10) label{
+            display:flex;
+            flex-direction: column;
+        }
+
+        .textInput,
+        .imageInput input,
+        .petFriend {
+            padding:5px 10px;
+        }
+    }
+}
+
+@media (max-width:600px){
+
+    //Create Your Guest
+    .createGuestSection {
+        .petFriend label,
+        .imageInput p,
+        .dietInput label,
+        .intolerances label,
+        .dietHeader,
+        button,
+        h3,
+        h5,
+        input,
+        .guestInfoCenter p{
+            font-size:1.3rem;
+        }
+
+    }
+}
+
+
+@media (max-width:500px){
+
+    //Home
+    header h1 {
+        width:60%;
+        font-size: 5rem;
+    }
+
+    .homeIntro p {
+        font-size: 1.7rem;
+    }
+
+    //Create Your Guest
+    .createGuestSection {
+
+        h2 {
+            font-size:2.5rem;
+        }
+
+        .textInput,
+        .imageInput input,
+        .petFriend {
+            width:100%;
+        }
+
+        .dietInput,
+        .intolerances{
+            flex-direction: column;
+            // align-items: center;
+        }
+
+        .intolerances{
+            align-items:unset;
+        }
+
+        .intolerances li:nth-child(10) label{
+            display:block;
+        }
+
+        .guestInformation .guestImage {
+            height:120px;
+            width:120px;
+        }
+
+
+
+    }
+}
+
+@media (max-width:375px){
+    //Home Page
+    header h1 {
+        font-size: 3.7rem;
+    }
+
+    .homeIntro p {
+        font-size: 1.5rem;
+    }
+}
+
+
+
