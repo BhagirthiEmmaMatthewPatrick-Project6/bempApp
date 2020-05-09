@@ -31,42 +31,48 @@ class CreateGuest extends Component {
   }
 
   populateAllergies = () => {
-    const allergiesArray = [];
-    if(this.state.isDairyFree){
-        allergiesArray.push("Dairy")
-    }
-    if(this.state.isEggFreee){
-      allergiesArray.push("Egg")
-    }
-    if(this.state.isGrainFree){
-      allergiesArray.push("Grain")
-    }
-    if(this.state.isPeanutFree){
-      allergiesArray.push("Peanut ")
-    }
-    if(this.state.isSeafoodFree){
-      allergiesArray.push("Seafood")
-    }
-    if(this.state.isSesameFree){
-      allergiesArray.push("Sesame")
-    }
-    if(this.state.isShellfishFree){
-      allergiesArray.push("Shellfish")
-    }
-    if(this.state.isSoyFree){
-      allergiesArray.push("Soy")
-    }
-    if(this.state.isSulfiteFree){
-      allergiesArray.push("Sulfite")
-    }
-    if(this.state.isTreeNutFree){
-      allergiesArray.push("Tree Nut")
-    }
-    if(this.state.isWheatFree){
-      allergiesArray.push("Wheat")
-    }  
-    return allergiesArray;
-  };
+      const allergiesArray = [];
+
+      if (this.state.isDairyFree) {
+        allergiesArray.push("Dairy");
+      }
+      if (this.state.isEggFreee) {
+        allergiesArray.push("Egg");
+      }
+      if (this.state.isGrainFree) {
+        allergiesArray.push("Grain");
+      }
+      if (this.state.isPeanutFree) {
+        allergiesArray.push("Peanut ");
+      }
+      if (this.state.isSeafoodFree) {
+        allergiesArray.push("Seafood");
+      }
+      if (this.state.isSesameFree) {
+        allergiesArray.push("Sesame");
+      }
+      if (this.state.isShellfishFree) {
+        allergiesArray.push("Shellfish");
+      }
+      if (this.state.isSoyFree) {
+        allergiesArray.push("Soy");
+      }
+      if (this.state.isSulfiteFree) {
+        allergiesArray.push("Sulfite");
+      }
+      if (this.state.isTreeNutFree) {
+        allergiesArray.push("Tree Nut");
+      }
+      if (this.state.isWheatFree) {
+        allergiesArray.push("Wheat");
+      }
+    
+      this.setState(
+        {
+          allergies: allergiesArray,
+        }
+      );
+  }
 
   handleChange = (e) => {
     // make a copy of current state before you run setState
@@ -74,10 +80,12 @@ class CreateGuest extends Component {
     type === "checkbox"
       ? this.setState({
           [name]: checked,
-        })
+        }, (() => {
+            this.populateAllergies();
+        }))
       : this.setState({
           [name]: value,
-        });
+        });    
   };
 
   handleImageChange = (e) => {
@@ -90,7 +98,7 @@ class CreateGuest extends Component {
   handleUploadImage = (e) => {
     e.preventDefault();
     const bucketName = 'images';
-    if(this.state.files[0]){
+    if(this.state.files){
       const file = this.state.files[0];
       firebase
         .storage()
@@ -103,7 +111,6 @@ class CreateGuest extends Component {
             .child(file.name)
             .getDownloadURL()
             .then((url) => {
-              // console.log(url);
               this.setState({
                 photoURL: url,
               });
@@ -115,29 +122,32 @@ class CreateGuest extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const allergiesArray = this.populateAllergies();
-    // this.handleUploadImage(e);
-    this.setState(
-      {
-        allergies: allergiesArray,
-      },
-      () => {
-        const dbRef = firebase.database().ref(`/Guests/`);
-        dbRef.push({
-          name: this.state.name,
-          email: this.state.email,
-          petFriendly: this.state.isPetFriendly,
-          diet: this.state.diet,
-          allergies: this.state.allergies,
-          photoURL: this.state.photoURL
-            ? this.state.photoURL
-            : "https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png"
-        });
-      }
-    );
+    // const allergiesArray = this.populateAllergies();
+    // this.setState(
+    //   {
+    //     allergies: allergiesArray,
+    //   },
+    //   () => {
+        if(this.state.name && this.state.email){
+          const dbRef = firebase.database().ref(`/Guests/`);
+          dbRef.push({
+            name: this.state.name,
+            email: this.state.email,
+            petFriendly: this.state.isPetFriendly,
+            diet: this.state.diet,
+            allergies: this.state.allergies,
+            photoURL: this.state.photoURL
+          });
+        } else {
+          alert("Name and Email are mandatory fields");
+        }
+      // }
+    // );
   };
 
   render() {
+    const intolerances = this.state.allergies.toString();
+    console.log(intolerances);
     return (
       <section className="createGuestSection wrapper">
         <h2>Create Your Guests</h2>
