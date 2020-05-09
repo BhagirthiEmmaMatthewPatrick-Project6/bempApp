@@ -32,39 +32,39 @@ class CreateGuest extends Component {
 
   populateAllergies = () => {
     const allergiesArray = [];
-    this.state.isDairyFree
-      ? allergiesArray.push("Dairy")
-      : console.log("dont push");
-    this.state.isEggFree
-      ? allergiesArray.push("Egg")
-      : console.log("dont push");
-    this.state.isGrainFree
-      ? allergiesArray.push("Grain")
-      : console.log("dont push");
-    this.state.isPeanutFree
-      ? allergiesArray.push("Peanut")
-      : console.log("dont push");
-    this.state.isSeafoodFree
-      ? allergiesArray.push("Seafood")
-      : console.log("dont push");
-    this.state.isSesameFree
-      ? allergiesArray.push("Sesame")
-      : console.log("dont push");
-    this.state.isShellfishFree
-      ? allergiesArray.push("Shellfish")
-      : console.log("dont push");
-    this.state.isSoyFree
-      ? allergiesArray.push("Soy")
-      : console.log("dont push");
-    this.state.isSulfiteFree
-      ? allergiesArray.push("Sulfite")
-      : console.log("dont push");
-    this.state.isTreeNutFree
-      ? allergiesArray.push("Tree Nut")
-      : console.log("dont push");
-    this.state.isWheatFree
-      ? allergiesArray.push("Shellfish")
-      : console.log("dont push");
+    if(this.state.isDairyFree){
+        allergiesArray.push("Dairy")
+    }
+    if(this.state.isEggFreee){
+      allergiesArray.push("Egg")
+    }
+    if(this.state.isGrainFree){
+      allergiesArray.push("Grain")
+    }
+    if(this.state.isPeanutFree){
+      allergiesArray.push("Peanut ")
+    }
+    if(this.state.isSeafoodFree){
+      allergiesArray.push("Seafood")
+    }
+    if(this.state.isSesameFree){
+      allergiesArray.push("Sesame")
+    }
+    if(this.state.isShellfishFree){
+      allergiesArray.push("Shellfish")
+    }
+    if(this.state.isSoyFree){
+      allergiesArray.push("Soy")
+    }
+    if(this.state.isSulfiteFree){
+      allergiesArray.push("Sulfite")
+    }
+    if(this.state.isTreeNutFree){
+      allergiesArray.push("Tree Nut")
+    }
+    if(this.state.isWheatFree){
+      allergiesArray.push("Wheat")
+    }  
     return allergiesArray;
   };
 
@@ -145,7 +145,7 @@ class CreateGuest extends Component {
           <form className="createGuestForm" onSubmit={this.handleSubmit}>
             
             {/* Name input */}
-            <label htmlFor="Guest name"></label>
+            <label className="guestName" htmlFor="Guest Name"></label>
             <input
               className="textInput"
               type="text"
