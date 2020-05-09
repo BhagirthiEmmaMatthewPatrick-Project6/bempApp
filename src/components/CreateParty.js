@@ -18,7 +18,7 @@ class CreateParty extends Component {
       dietList: [],
       intoleranceList: [],
       showGuestList: false,
-      photoURL: ""
+      photoURL: "https://media3.s-nbcnews.com/j/newscms/2019_05/2736521/190131-stock-taco-bar-food-ew-1220p_bc7c9fc25ecd393bfa3d7d35f216edfc.fit-1240w.jpg"
     };
   }
 
@@ -213,38 +213,18 @@ class CreateParty extends Component {
     return (
       <section className="createPartySection">
         {/*Form*/}
+
           <form className="wrapper" action="">
           <h2>Create a Party</h2>
           <div className="createPartyForm">
           <label htmlFor="Name of Party"></label>
-          <input
-            type="text"
-            id="partyName"
-            value={this.state.partyName}
-            onChange={this.updateState}
-            name="partyName"
-            placeholder="Party Name"
-          />
+          <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
 
           <label htmlFor="Address"></label>
-          <input
-            type="text"
-            id="partyAddress"
-            value={this.state.partyAddress}
-            onChange={this.updateState}
-            name="address"
-            placeholder="Address"
-          />
+          <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
 
           <label htmlFor="Details"></label>
-          <input
-            type="text"
-            id="partyDetails"
-            value={this.state.partyDetails}
-            onChange={this.updateState}
-            name="details"
-            placeholder="Date and Time"
-          />
+          <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
 
           {/* Image Upload */}
           
@@ -268,6 +248,7 @@ class CreateParty extends Component {
           </div>
 
           {/*Adding Guests Component*/}
+
           <div className="addExistingGuests">
           <button
             className="addGuests"
@@ -279,8 +260,8 @@ class CreateParty extends Component {
           </div>
           <section className="viewSection">
             {this.state.showGuestList ? (
-              <CreatePartyAddingGuests getChoice={(e) => this.getUserKey(e)} />
-            ) : null}
+              <CreatePartyAddingGuests getChoice={(e) => this.getUserKey(e)}/>) 
+              : null}
           </section>
 
           {/*Displaying Guests*/}
@@ -291,6 +272,7 @@ class CreateParty extends Component {
                 return (
                   <div className="viewLIContainer">
                     <li className="viewLI">
+
                       <div className="imageContainer">
                       <img
                         className="guestImg"
@@ -344,6 +326,7 @@ class CreateParty extends Component {
           </section>
 
           {/*Recipe API CALL */}
+
           <section className="recipeGallerySection">
             <ul className="recipeGalleryUL">
               {this.state.recipes.map((recipeObj) => {
@@ -370,13 +353,7 @@ class CreateParty extends Component {
             </ul>
           </section>
 
-          <button
-            id="createParty"
-            type="submit"
-            onClick={(e) => this.submitParty(e)}
-          >
-            Create Party
-          </button>
+          <button id="createParty" type="submit" onClick={(e) => this.submitParty(e)}>Create Party</button>
         </form>
       </section>
     );

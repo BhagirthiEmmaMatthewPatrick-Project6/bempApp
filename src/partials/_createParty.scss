@@ -1,5 +1,6 @@
 // Create party form styling
 .createPartySection {
+
     padding: 50px 0;
     background-color: lighten($accentColor, 35%);
 
@@ -80,7 +81,6 @@ p.guestName {
 
 // Guests Added to the party 
 
-
 // API recipes 
 .intoleranceListSection button {
     margin-top: 20px;
@@ -119,8 +119,22 @@ p.guestName {
     }
 }
 
-
 .recipeGallery a {
     width: 60%;
     display: inline-block;
+}
+
+.imageInput{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap:wrap;
+    
+    input{
+        border:1px solid transparent;
+    }
+}
+
+.photoURLImage{
+    width:35%;
 }
