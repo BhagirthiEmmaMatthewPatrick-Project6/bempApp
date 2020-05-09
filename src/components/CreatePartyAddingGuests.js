@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import firebase from 'firebase'
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import add from '../assets/add.svg';
 
 class CreatePartyAddingGuests extends Component{
     constructor(){
@@ -27,16 +28,23 @@ class CreatePartyAddingGuests extends Component{
 
     render(){
         return(
-            <>
+            <ul className="viewUL">
                 {this.state.guest.map((guest)=>{
-                    return (    
-                        <li key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID} className="child">
-                            <p className="child">{guest.guestInfo.name}</p>
-                            <p className="child">{guest.guestInfo.email}</p>
-                        </li>
+                    return (
+                        <div className="viewLIContainer">
+                            <li classname="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
+                                <div className="imageContainer">
+                                    {/* add by The Icon Z from the Noun Project */}
+                                    <span aria-label="add"><img className="add" src={add} alt="" /></span>
+                                    <img className="guestImg" src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
+                                </div>
+                                <p className="guestName">{guest.guestInfo.name}</p>
+                                <p>{guest.guestInfo.email}</p>
+                            </li>
+                        </div>
                     )
                 })}
-            </>
+            </ul>
         )
     }
 }

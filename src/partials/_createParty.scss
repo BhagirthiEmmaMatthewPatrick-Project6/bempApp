@@ -1,74 +1,171 @@
 // Create party form styling
 .createPartySection {
+
     padding: 50px 0;
+    background-color: lighten($accentColor, 35%);
+
+        h2 {
+            padding-bottom: 25px;
+        }
 }
 
 .createPartyForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background-image: url(../assets/party.jpg);
+    background-position: top right;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    padding-bottom: 225px;
+    
         label {
             padding: 5px 0;
         }
+
         input {
-            width: 60%;
-            padding: 20px 10px 5px 10px;
+            width: 55%;
+            padding: 35px 10px 5px 10px;
             border-radius: 2px;
-            border: 1px solid lighten($mainColor, 50%);
+            border: 1px solid $textColor;
+            margin-right: 20px;
         }
 }
 
-.addGuests {
-    margin: 50px 0;
+.imageInput {
+    display: flex;
+    flex-direction: column;
+    
+        input {
+            background-color: #fff;
+        }
+
+        button {
+            margin-top: 10px;
+        }
 }
+
 
 // Existing guests to add to the party
-
-.guestList {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(5, auto);
-    grid-gap: 10px;
-    justify-content: space-between;
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
-    grid-auto-flow: dense;
-    margin: 0;
+.addExistingGuests {
+    text-align: center;
 }
 
-.guestList li {
-    background-color: #fff;
-    width: 300px;
-    height: 200px;
+.addGuests {
+    margin-top: 50px;
 }
 
-h2 {
-    padding-bottom: 25px;
+h3 {
+    padding: 50px 0 10px 0;
+    text-transform: uppercase;
 }
 
+p.guestName {
+    font-family: $secondaryFont;
+    color: $textColor;
+}
+
+.guestImg {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.add {
+    position: absolute;
+    cursor: pointer;
+    top: 12px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+// Guests Added to the party 
 
 // API recipes 
-.recipeGalleryUL {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(5, auto);
-    grid-gap: 10px;
-    justify-content: space-between;
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
-    grid-auto-flow: dense;
+.intoleranceListSection button {
+    margin-top: 20px;
 }
 
-img {
+.intoleranceListSection,
+.dietsListSection {
+
+    ul {
+        border:1px solid $textColor;
+        border-radius:15px;
+        background-color: #fff;
+        display:flex;
+        justify-content: space-between;
+        flex-wrap:wrap;
+        width:100%;
+        height:100%;
+        padding:2%;
+    }
+
+}
+
+.recipeGallerySection {
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:2% 0;
+    width:100%;
+}
+
+.recipeGalleryUL {
+    border:1px solid $textColor;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    width:100%;
+    height:100%;
+    padding:2%;
+    border-radius:15px;
+    background-color: #fff;
+}
+
+.recipeLI {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+    margin: 10px;
+    width: 300px;
+    height: auto;
+    background-color: lighten($secondaryColor, 40%);
+    box-shadow:0px 0px 15px rgba(152, 155, 146, 0.609);
+
+}
+
+.recipeLink {
+    color: $mainColor;
+    padding: 20px 25px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.recipeLI:nth-of-type(3n+2) {
+    margin:0 2% 20px 2%;
+
+}
+
+.recipeImg {
     width: 200px;
     height: 200px;
 }
 
 .recipeGallery a {
-    width: 60%;
     display: inline-block;
 }
 
-.addGuestsUL{
-    border:1px solid green;
+.imageInput{
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    
+}
+
+.photoURLImage{
+    width:35%;
 }

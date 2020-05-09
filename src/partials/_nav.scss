@@ -1,7 +1,17 @@
 nav {
     padding: 20px 0;
-    display: flex;
-    justify-content: space-around;
     background-color: lighten($secondaryColor, 35%);
+    // background-color: black;
+    height:70px;
+
+}
+nav .wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+nav .link{
+    font-weight:700;
+    text-transform: lowercase;
+}

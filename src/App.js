@@ -25,6 +25,7 @@ class App extends Component {
   }
   render(){
     return (
+<<<<<<< HEAD
       <Router>
         {/* <CreatePartyAddingGuests /> */}
         <div className="App">
@@ -73,21 +74,71 @@ class App extends Component {
               View Guests
             </NavLink>
           </nav>
+=======
+      <body>
+        <Router>
+          {/* <CreatePartyAddingGuests /> */}
+          <div className="App">
+            {/* Navigation */}
+            <nav>
+              <div className="wrapper">
+              <NavLink
+                exact
+                className="link"
+                activeClassName="currentPage"
+                to="/home"
+              >
+                Home
+              </NavLink>
 
-          {/* Routes */}
-          <Route path="/Home" component={Home} />
-          <Route path="/createGuest" component={CreateGuest} />
+              <NavLink
+                exact
+                className="link"
+                activeClassName="currentPage"
+                to="/createGuest"
+              >
+                Create Guest
+              </NavLink>
 
-          <Route path="/createParty" component={CreateParty} />
+              <NavLink
+                className="link"
+                activeClassName="currentPage"
+                to="/createParty"
+              >
+                Create Party{/* This is the API call */}
+                {/* <Recipe /> */}
+              </NavLink>
 
-          <Route exact path="/guests" component={ViewGuests} />
-          <Route path="/guests/:id" component={ViewGuestsFocus} />
+              <NavLink className="link" activeClassName="currentPage" to="/viewParties">
+                View Parties
+              </NavLink>
 
-          <Route exact path="/viewParties" component={ViewParties}/>
-          <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+              <NavLink
+                className="link"
+                activeClassName="currentPage"
+                to="/guests"
+              >
+                View Guests
+              </NavLink>
+              </div>
+            </nav>
+>>>>>>> master
 
-        </div>
-      </Router>
+            {/* Routes */}
+            <Route path="/Home" component={Home} />
+            <Route path="/createGuest" component={CreateGuest} />
+
+            <Route path="/createParty" component={CreateParty} />
+
+            <Route exact path="/guests" component={ViewGuests} />
+            <Route path="/guests/:id" component={ViewGuestsFocus} />
+
+            <Route exact path="/viewParties" component={ViewParties}/>
+            <Route path="/viewParties/:id" component={ViewPartiesFocus}/>
+
+          </div>
+        </Router>
+      </body>
     );
   }  
 }
