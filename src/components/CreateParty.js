@@ -17,7 +17,7 @@ class CreateParty extends Component {
       dietList: [],
       intoleranceList: [],
       showGuestList: false,
-      photoURL: ""
+      photoURL: "https://media3.s-nbcnews.com/j/newscms/2019_05/2736521/190131-stock-taco-bar-food-ew-1220p_bc7c9fc25ecd393bfa3d7d35f216edfc.fit-1240w.jpg"
     };
   }
 
@@ -212,69 +212,34 @@ class CreateParty extends Component {
     return (
       <section className="createPartySection wrapper">
         {/*Form*/}
+        <h2>Enter the fields below and hit submit to create a party!</h2>
         <form className="createPartyForm" action="">
           <label htmlFor="Name of Party"></label>
-          <input
-            type="text"
-            id="partyName"
-            value={this.state.partyName}
-            onChange={this.updateState}
-            name="partyName"
-            placeholder="Party Name"
-          />
+          <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
 
           <label htmlFor="Address"></label>
-          <input
-            type="text"
-            id="partyAddress"
-            value={this.state.partyAddress}
-            onChange={this.updateState}
-            name="address"
-            placeholder="Address"
-          />
+          <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
 
           <label htmlFor="Details"></label>
-          <input
-            type="text"
-            id="partyDetails"
-            value={this.state.partyDetails}
-            onChange={this.updateState}
-            name="details"
-            placeholder="Date and Time"
-          />
+          <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
 
           {/* Image Upload */}
-          <h4>Upload an image for the party</h4>
           <div className="imageInput">
+            <h4>Upload an image for the party</h4>
+            <div className="imageContainer photoURLImage">
+              <img src={this.state.photoURL} alt={this.state.partyDetails+' event picture'}/>
+            </div>
             <label for="img">Select image:</label>
-            <input
-              value={this.state.image}
-              type="file"
-              onChange={(e) => {
-                this.handleImageChange(e);
-              }}
-            />
-            <button
-              onClick={(e) => {
-                this.handleUploadImage(e);
-              }}
-            >
-              Upload
-            </button>
+            <input value={this.state.image} type="file" onChange={(e) => {this.handleImageChange(e);}}/>
+            <button onClick={(e) => {this.handleUploadImage(e);}}>Upload</button>
           </div>
 
           {/*Adding Guests Component*/}
-          <button
-            className="addGuests"
-            type="submit"
-            onClick={(e) => this.toggleAddGuests(e)}
-          >
-            Add Existing Guests
-          </button>
+          <button className="addGuests" type="submit" onClick={(e) => this.toggleAddGuests(e)}>Add Existing Guests</button>
           <section className="viewSection">
             {this.state.showGuestList ? (
-              <CreatePartyAddingGuests getChoice={(e) => this.getUserKey(e)} />
-            ) : null}
+              <CreatePartyAddingGuests getChoice={(e) => this.getUserKey(e)}/>) 
+              : null}
           </section>
 
           {/*Displaying Guests*/}
@@ -285,10 +250,7 @@ class CreateParty extends Component {
                 return (
                   <div className="viewLIContainer">
                     <li className="viewLI">
-                      <img
-                        src={invitedGuests.photoURL}
-                        alt={`Photo of ${invitedGuests.name}`}
-                      />
+                      <img src={invitedGuests.photoURL} alt={`Photo of ${invitedGuests.name}`}/>
                       <h3>{invitedGuests.name}</h3>
                       <p>{invitedGuests.email}</p>
                     </li>
@@ -335,40 +297,27 @@ class CreateParty extends Component {
           </section>
 
           {/*Recipe API CALL */}
-          <section className="recipeGallerySection">
+          <section className="viewSection">
             <h2>Suggested Recipes</h2>
-            <ul className="recipeGalleryUL">
+            <ul className="viewUL">
               {this.state.recipes.map((recipeObj) => {
                 return (
-                  <li>
-                    <h3>
-                      <a
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        href={recipeObj.sourceUrl}
-                      >
-                        {recipeObj.title}
-                      </a>
-                    </h3>
-                    <img
-                      src={`https://spoonacular.com/recipeImages/${
-                        recipeObj.id
-                      }-${"480x360"}.${"jpg"}`}
-                      alt={recipeObj.title}
-                    />
-                  </li>
+                  <div className="viewLIContainer">
+                    <li className="viewLI">
+                        <a rel="noopener noreferrer" target="_blank" href={recipeObj.sourceUrl}>
+                          <h3>{recipeObj.title}</h3>
+                        </a>
+                        <div className="imageContainer">
+                          <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
+                        </div>
+                    </li>
+                  </div>
                 );
               })}
             </ul>
           </section>
 
-          <button
-            id="createParty"
-            type="submit"
-            onClick={(e) => this.submitParty(e)}
-          >
-            Create Party
-          </button>
+          <button id="createParty" type="submit" onClick={(e) => this.submitParty(e)}>Create Party</button>
         </form>
       </section>
     );
