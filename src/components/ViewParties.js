@@ -56,7 +56,7 @@ class ViewParties extends Component{
                 <ul className="viewUL">
                     {this.state.parties.map((party)=>{
                         return(
-                            <Link className='viewLILink' key={'link'+party.partyID} to={'/viewParties/'+party.partyID}>
+                            <Link className='viewLILink' key={'link'+party.partyID} to={'/bempApp/viewParties/'+party.partyID}>
                             <li key={party.partyID} className='viewLI' id={party.partyID} onClick={(e)=>this.focusUser(e)}>
                                 <div className="imageContainer">
                                     <img src={party.partyInfo.photoURL} alt={party.partyInfo.partyDetails}/>

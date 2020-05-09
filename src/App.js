@@ -35,7 +35,7 @@ class App extends Component {
                 exact
                 className="link"
                 activeClassName="currentPage"
-                to="/"
+                to="/bempApp/"
               >
                 Home
               </NavLink>
@@ -44,7 +44,7 @@ class App extends Component {
                 exact
                 className="link"
                 activeClassName="currentPage"
-                to="/createGuest"
+                to="/bempApp/createGuest"
               >
                 Create Guest
               </NavLink>
@@ -52,20 +52,20 @@ class App extends Component {
               <NavLink
                 className="link"
                 activeClassName="currentPage"
-                to="/createParty"
+                to="/bempApp/createParty"
               >
                 Create Party{/* This is the API call */}
                 {/* <Recipe /> */}
               </NavLink>
 
-              <NavLink className="link" activeClassName="currentPage" to="/viewParties">
+              <NavLink className="link" activeClassName="currentPage" to="/bempApp/viewParties">
                 View Parties
               </NavLink>
 
               <NavLink
                 className="link"
                 activeClassName="currentPage"
-                to="/guests"
+                to="/bempApp/guests"
               >
                 View Guests
               </NavLink>
@@ -83,7 +83,7 @@ class App extends Component {
             <Route path="/bempApp/guests/:id" component={ViewGuestsFocus} />
 
             <Route exact path="/bempApp/viewParties" component={ViewParties}/>
-            <Route path="/bempApp/viewParties/:id" component={ViewPartiesFocus}/>
+            <Route path="/bempApp/Parties/:id" component={ViewPartiesFocus}/>
 
           </div>
         </Router>

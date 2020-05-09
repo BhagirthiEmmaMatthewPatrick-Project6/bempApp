@@ -50,7 +50,7 @@ class ViewGuests extends Component{
                 <ul className="viewUL">
                     {this.state.guests.map((guest)=>{
                         return(
-                            <Link className='viewLILink' key={'link'+guest.guestID} to={'/guests/'+guest.guestID}>
+                            <Link className='viewLILink' key={'link'+guest.guestID} to={'/bempApp/guests/'+guest.guestID}>
                             <li key={guest.guestID} className='viewLI' id={guest.guestID} onClick={(e)=>this.focusUser(e)}>
                                 <div className="imageContainer profileImage">
                                     <img className="guestImg" src={guest.guestInfo.photoURL} alt={'Profile pic of '+guest.guestInfo.name}/>
