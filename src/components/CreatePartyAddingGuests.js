@@ -36,7 +36,7 @@ class CreatePartyAddingGuests extends Component{
                                 <div className="imageContainer">
                                     {/* add by The Icon Z from the Noun Project */}
                                     <span aria-label="add"><img className="add" src={add} alt="" /></span>
-                                    <img className="guestImg" src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
+                                    <img className="guestImg" src={guest.guestInfo.photoURL} alt={guest.guestInfo.name}/>
                                 </div>
                                 <p className="guestName">{guest.guestInfo.name}</p>
                                 <p>{guest.guestInfo.email}</p>

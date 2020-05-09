@@ -1,110 +1,71 @@
-.createGuestSection{
-    padding: 40px 0;
 
-    & h2 {
-        margin-bottom: 3rem;
-        padding-bottom: 1.5rem;
+.petFriend {
+    width: 30%;
+    border: 1px solid $textColor;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0;
+    margin: 10px 0 20px 0;
+    display: flex;
+    padding: 10px 10px 5px 10px;
+
+    input {
+        justify-self: flex-start;
     }
 }
 
-.createGuestCenter {
-    padding-left: 11rem;
+.dietHeader {
+    padding-top: 50px;
 }
 
-.createGuestForm {
+.dietInput, 
+.intolerances {
     display: flex;
-    flex-direction: column;
-    align-items: start;
-        label {
-            padding: 5px 0;
-        }
-        input.textInput {
-            width: 90%;
-            padding: 10px 10px 5px 10px;
-            border-radius: 2px;
-            border: 1px solid lighten($mainColor, 50%);
-            margin-bottom: 5px;;
-        }
-        input.petFriendlinessInput {
-            margin: 10px 0;
-        }
-
-        & .imageInput {
-            margin-top: 8px;
-            margin-bottom: 20px;
-
-            & input {
-                margin-left: 10px;
-            }
-        }
-}
-
-
-.dietInput {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
     margin: 10px 0;
-    border: 1px solid lighten($mainColor, 50%);
+    border: 1px solid $textColor;
     padding: 10px;
-
-    & label {
-        margin-left: 30px;
-    }
+    background-color: #fff;
+    border-radius: 5px;
 }
 
 .intolerances {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    margin: 10px 0;
-    border: 1px solid lighten($mainColor, 50%);
+    justify-content: space-between;
     padding: 20px;
+}
 
-    & li {
-        margin: 10px 0;
-        margin-left: 50px;
-    }
+.createGuestForm button {
+    margin-bottom: 50px;
+}
+
+h5 {
+    padding-bottom: 20px;
 }
 
 .guestInformation {
-    border: 5px solid $mainColor;
+    border: 2px solid $textColor;
+    border-radius: 2px;
     padding: 20px 50px;
-    width: 90%;
+    display: flex;
+    justify-content: center;
+    background-color: lighten($secondaryColor, 40%);
+    box-shadow:0px 0px 15px rgba(152, 155, 146, 0.609);
 
-    & .guestInfoCenter {
-        width: 60%;
-        margin: 0 auto;
-
-        & p {
-        margin-bottom: .7rem;
-    }
-    }
 
     & .guestImage {
-        margin: 0 auto;
-        margin-bottom: 1.5rem;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        padding: 15px;
+        width: 200px;
+        height: 200px;
     }
 
-    & #guestImg {
-        width: 300px;
-    }
 }
 
-h2.secondaryH2 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-top: 2rem;
-    margin-bottom: .5rem;
-    border: none;
-    padding-bottom: 0;
+.guestInfoCenter {
+    background-color: #fff;
+    padding: 20px;
 }
 
-h4 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0;
-}
 

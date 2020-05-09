@@ -1,35 +1,38 @@
 // Create party form styling
-.createPartySection {
-
+.createPartySection, 
+.createGuestSection {
     padding: 50px 0;
-    background-color: lighten($accentColor, 35%);
 
         h2 {
             padding-bottom: 25px;
         }
 }
 
-.createPartyForm {
+.createPartyForm,
+.createGuestForm {
     display: flex;
     flex-direction: column;
+
+    input {
+        width: 55%;
+        padding: 35px 10px 5px 10px;
+        border-radius: 2px;
+        border: 1px solid $textColor;
+    }
+    label {
+            padding: 5px 0;
+        }
+}
+
+.createPartyForm{
     background-image: url(../assets/party.jpg);
     background-position: top right;
     background-size: 40%;
     background-repeat: no-repeat;
-    padding-bottom: 225px;
-    
-        label {
-            padding: 5px 0;
-        }
+    padding-bottom: 225px;  
 
-        input {
-            width: 55%;
-            padding: 35px 10px 5px 10px;
-            border-radius: 2px;
-            border: 1px solid $textColor;
-            margin-right: 20px;
-        }
 }
+
 
 .imageInput {
     display: flex;
@@ -40,7 +43,7 @@
         }
 
         button {
-            margin-top: 10px;
+            margin: 20px 0;
         }
 }
 
@@ -57,6 +60,7 @@
 h3 {
     padding: 50px 0 10px 0;
     text-transform: uppercase;
+    align-self: flex-start;
 }
 
 p.guestName {
