@@ -1,13 +1,17 @@
 // Global Settings
-html {
-  font-size: 62.5%;
-}
 
 body {
-  background-color: #fff;
-  color: #000;
-  font-family: "Raleway";
-  font-size: 2rem;
+  background-color: lighten($accentColor, 35%);
+}
+
+a {
+  color: inherit;
+}
+
+.wrapper {
+    width: 85%;
+    max-width: 1180px;
+    margin: 0 auto;
 }
 
 .bleed {
