@@ -164,7 +164,7 @@ class CreateParty extends Component {
         dietList: [],
         addedGuests: [],
         recipes: [],
-        guestKeys: [],
+        guestsKeys: [],
         showGuestList: false,
         photoURL: this.state.photoURL
           ? this.state.photoURL
