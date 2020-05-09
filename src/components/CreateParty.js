@@ -277,7 +277,7 @@ class CreateParty extends Component {
                       <img
                         className="guestImg"
                         src={invitedGuests.photoURL}
-                        alt={`Photo of ${invitedGuests.name}`}
+                        alt={invitedGuests.name}
                       />
                       </div>
                       <p className="guestName">{invitedGuests.name}</p>
