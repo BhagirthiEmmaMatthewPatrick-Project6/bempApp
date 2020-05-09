@@ -331,22 +331,24 @@ class CreateParty extends Component {
             <ul className="recipeGalleryUL">
               {this.state.recipes.map((recipeObj) => {
                 return (
-                  <li>
-                    <img
+                  <li className="recipeLI">
+                    <h4 className="recipeLink">
+                      <a
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href={recipeObj.sourceUrl}
+                      >
+                        {recipeObj.title}
+                      </a>
+                    </h4>
+                    <div className="imageContainer">
+                    <img className="recipeImg"
                       src={`https://spoonacular.com/recipeImages/${
                         recipeObj.id
                       }-${"480x360"}.${"jpg"}`}
                       alt={recipeObj.title}
                     />
-                    <h4>
-                        <a
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            href={recipeObj.sourceUrl}
-                        >
-                            {recipeObj.title}
-                        </a>
-                    </h4>
+                    </div>
                   </li>
                 );
               })}
