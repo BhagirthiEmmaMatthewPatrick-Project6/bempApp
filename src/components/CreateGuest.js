@@ -8,7 +8,7 @@ class CreateGuest extends Component {
     super();
     this.state = {
       files: null,
-      photoURL: '',
+      photoURL: "https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png",
       name: "",
       email: "",
       isPetFriendly: false,
@@ -33,40 +33,37 @@ class CreateGuest extends Component {
   populateAllergies = () => {
     const allergiesArray = [];
     this.state.isDairyFree
-      ? allergiesArray.push("dairy")
+      ? allergiesArray.push("Dairy")
       : console.log("dont push");
     this.state.isEggFree
-      ? allergiesArray.push("egg")
+      ? allergiesArray.push("Egg")
       : console.log("dont push");
-    // this.state.isGlutenFree Does not work with API(?)
-    //   ? allergiesArray.push("gluten")
-    //   : console.log("dont push");
     this.state.isGrainFree
-      ? allergiesArray.push("grain")
+      ? allergiesArray.push("Grain")
       : console.log("dont push");
     this.state.isPeanutFree
-      ? allergiesArray.push("peanut")
+      ? allergiesArray.push("Peanut")
       : console.log("dont push");
     this.state.isSeafoodFree
-      ? allergiesArray.push("seafood")
+      ? allergiesArray.push("Seafood")
       : console.log("dont push");
     this.state.isSesameFree
-      ? allergiesArray.push("sesame")
+      ? allergiesArray.push("Sesame")
       : console.log("dont push");
     this.state.isShellfishFree
-      ? allergiesArray.push("shellfish")
+      ? allergiesArray.push("Shellfish")
       : console.log("dont push");
     this.state.isSoyFree
-      ? allergiesArray.push("soy")
+      ? allergiesArray.push("Soy")
       : console.log("dont push");
     this.state.isSulfiteFree
-      ? allergiesArray.push("sulfite")
+      ? allergiesArray.push("Sulfite")
       : console.log("dont push");
     this.state.isTreeNutFree
-      ? allergiesArray.push("tree nut")
+      ? allergiesArray.push("Tree Nut")
       : console.log("dont push");
     this.state.isWheatFree
-      ? allergiesArray.push("shellfish")
+      ? allergiesArray.push("Shellfish")
       : console.log("dont push");
     return allergiesArray;
   };
@@ -394,11 +391,14 @@ class CreateGuest extends Component {
           <h5>Guest Information</h5>
           <div className="guestInformation">
             <div className="guestInfoCenter">
+              <div className="imageContainer">
               <img className="guestImage"
                 id="guestImg"
-                src="https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png"
+                src={this.state.photoURL}
                 alt=""
               />
+
+              </div>
               <p>Name: {this.state.name}</p>
               <p>Email: {this.state.email}</p>
               <p>

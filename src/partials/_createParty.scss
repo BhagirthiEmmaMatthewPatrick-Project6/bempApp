@@ -142,6 +142,11 @@ p.guestName {
 
 }
 
+.recipeLI:nth-of-type(3n+2) {
+    margin:10 2% 10px 2%;
+
+}
+
 .recipeLink {
     color: $mainColor;
     padding: 20px 25px;
@@ -149,10 +154,6 @@ p.guestName {
     padding-bottom: 10px;
 }
 
-.recipeLI:nth-of-type(3n+2) {
-    margin:0 2% 20px 2%;
-
-}
 
 .recipeImg {
     width: 200px;
