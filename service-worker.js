@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bempApp/precache-manifest.0af19b5477894f2d8755df06a197de29.js"
+  "/bempApp/precache-manifest.6392563667b30d39b564780a932200db.js"
 );
 
 self.addEventListener('message', (event) => {

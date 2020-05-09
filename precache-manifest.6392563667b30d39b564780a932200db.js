@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "447f5ebc03a174f68171968b221cb76b",
+    "revision": "e29579d8a45996edfb9934c4e37a689e",
     "url": "/bempApp/index.html"
   },
   {
-    "revision": "13e1fa275954f4d50ded",
+    "revision": "c0c815530b5b2808580d",
     "url": "/bempApp/static/css/main.56d62a01.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bempApp/static/js/2.a0a0bf1e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "13e1fa275954f4d50ded",
-    "url": "/bempApp/static/js/main.5eba1796.chunk.js"
+    "revision": "c0c815530b5b2808580d",
+    "url": "/bempApp/static/js/main.76e9a7bb.chunk.js"
   },
   {
     "revision": "bced3067d487011bdccd",
