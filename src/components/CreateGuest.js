@@ -144,7 +144,7 @@ class CreateGuest extends Component {
   render() {
     return (
       <section className="createGuestSection wrapper">
-        <h2>Create Guest Form</h2>
+        <h2>Create Your Guests</h2>
         <div className="createGuestCenter">
           <form className="createGuestForm" onSubmit={this.handleSubmit}>
             {/* Image input */}

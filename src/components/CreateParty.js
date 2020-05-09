@@ -4,6 +4,7 @@ import CreatePartyAddingGuests from './CreatePartyAddingGuests'
 import firebase from 'firebase'
 
 
+
 class CreateParty extends Component {
   constructor() {
     super();
@@ -210,10 +211,12 @@ class CreateParty extends Component {
 
   render() {
     return (
-      <section className="createPartySection wrapper">
+      <section className="createPartySection">
         {/*Form*/}
-        <h2>Enter the fields below and hit submit to create a party!</h2>
-        <form className="createPartyForm" action="">
+
+          <form className="wrapper" action="">
+          <h2>Create a Party</h2>
+          <div className="createPartyForm">
           <label htmlFor="Name of Party"></label>
           <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
 
@@ -224,18 +227,37 @@ class CreateParty extends Component {
           <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
 
           {/* Image Upload */}
+          
           <div className="imageInput">
-            <h4>Upload an image for the party</h4>
-            <div className="imageContainer photoURLImage">
-              <img src={this.state.photoURL} alt={this.state.partyDetails+' event picture'}/>
-            </div>
-            <label for="img">Select image:</label>
-            <input value={this.state.image} type="file" onChange={(e) => {this.handleImageChange(e);}}/>
-            <button onClick={(e) => {this.handleUploadImage(e);}}>Upload</button>
+            <label htmlFor="party image"></label>
+            <input
+              value={this.state.image}
+              type="file"
+              onChange={(e) => {
+                this.handleImageChange(e);
+              }}
+            />
+            <button
+              onClick={(e) => {
+                this.handleUploadImage(e);
+              }}
+            >
+              Upload Image
+            </button>
+          </div>
           </div>
 
           {/*Adding Guests Component*/}
-          <button className="addGuests" type="submit" onClick={(e) => this.toggleAddGuests(e)}>Add Existing Guests</button>
+
+          <div className="addExistingGuests">
+          <button
+            className="addGuests"
+            type="submit"
+            onClick={(e) => this.toggleAddGuests(e)}
+          >
+            Add Existing Guests
+          </button>
+          </div>
           <section className="viewSection">
             {this.state.showGuestList ? (
               <CreatePartyAddingGuests getChoice={(e) => this.getUserKey(e)}/>) 
@@ -244,14 +266,21 @@ class CreateParty extends Component {
 
           {/*Displaying Guests*/}
           <section className="viewSection">
-            <h2>Added Guest List</h2>
+            <h3>Added Guest List</h3>
             <ul className="viewUL">
               {this.state.addedGuests.map((invitedGuests) => {
                 return (
                   <div className="viewLIContainer">
                     <li className="viewLI">
-                      <img src={invitedGuests.photoURL} alt={`Photo of ${invitedGuests.name}`}/>
-                      <h3>{invitedGuests.name}</h3>
+
+                      <div className="imageContainer">
+                      <img
+                        className="guestImg"
+                        src={invitedGuests.photoURL}
+                        alt={`Photo of ${invitedGuests.name}`}
+                      />
+                      </div>
+                      <p className="guestName">{invitedGuests.name}</p>
                       <p>{invitedGuests.email}</p>
                     </li>
                   </div>
@@ -262,7 +291,7 @@ class CreateParty extends Component {
 
           {/*Diet List*/}
           <section className="dietsListSection">
-            <h2>Diet List</h2>
+            <h3>Diet List</h3>
             <ul>
               {this.state.dietList.map((diet) => {
                 return (
@@ -276,7 +305,7 @@ class CreateParty extends Component {
 
           {/*Intolerance List*/}
           <section className="intoleranceListSection">
-            <h2>Intolerance List</h2>
+            <h3>Intolerance List</h3>
             <ul>
               {this.state.intoleranceList.map((item) => {
                 return (
@@ -297,21 +326,28 @@ class CreateParty extends Component {
           </section>
 
           {/*Recipe API CALL */}
-          <section className="viewSection">
-            <h2>Suggested Recipes</h2>
-            <ul className="viewUL">
+
+          <section className="recipeGallerySection">
+            <ul className="recipeGalleryUL">
               {this.state.recipes.map((recipeObj) => {
                 return (
-                  <div className="viewLIContainer">
-                    <li className="viewLI">
-                        <a rel="noopener noreferrer" target="_blank" href={recipeObj.sourceUrl}>
-                          <h3>{recipeObj.title}</h3>
+                  <li>
+                    <img
+                      src={`https://spoonacular.com/recipeImages/${
+                        recipeObj.id
+                      }-${"480x360"}.${"jpg"}`}
+                      alt={recipeObj.title}
+                    />
+                    <h4>
+                        <a
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            href={recipeObj.sourceUrl}
+                        >
+                            {recipeObj.title}
                         </a>
-                        <div className="imageContainer">
-                          <img src={`https://spoonacular.com/recipeImages/${recipeObj.id}-${"480x360"}.${"jpg"}`} alt={recipeObj.title}/>
-                        </div>
-                    </li>
-                  </div>
+                    </h4>
+                  </li>
                 );
               })}
             </ul>

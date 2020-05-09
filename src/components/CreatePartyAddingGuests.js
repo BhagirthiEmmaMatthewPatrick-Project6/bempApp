@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import firebase from 'firebase'
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import add from '../assets/add.svg';
 
 class CreatePartyAddingGuests extends Component{
     constructor(){
@@ -33,9 +34,11 @@ class CreatePartyAddingGuests extends Component{
                         <div className="viewLIContainer">
                             <li classname="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
                                 <div className="imageContainer">
-                                    <img src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
+                                    {/* add by The Icon Z from the Noun Project */}
+                                    <span aria-label="add"><img className="add" src={add} alt="" /></span>
+                                    <img className="guestImg" src={guest.guestInfo.photoURL} alt={`Photo of ${guest.guestInfo.name}`}/>
                                 </div>
-                                <p>{guest.guestInfo.name}</p>
+                                <p className="guestName">{guest.guestInfo.name}</p>
                                 <p>{guest.guestInfo.email}</p>
                             </li>
                         </div>
