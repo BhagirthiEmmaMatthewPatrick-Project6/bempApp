@@ -36,7 +36,7 @@ class CreateGuest extends Component {
       if (this.state.isDairyFree) {
         allergiesArray.push("Dairy");
       }
-      if (this.state.isEggFreee) {
+      if (this.state.isEggFree) {
         allergiesArray.push("Egg");
       }
       if (this.state.isGrainFree) {
@@ -120,14 +120,36 @@ class CreateGuest extends Component {
     }
   };
 
+  clearState = () => {
+    this.setState({
+      files: null,
+      photoURL:
+        "https://www.rawlinsdavy.com/wp-content/uploads/2018/12/profile-placeholder-300x300.png",
+      name: "",
+      email: "",
+      isPetFriendly: false,
+      diet: "",
+      // Dietary Restrictions
+      isDairyFree: false,
+      isEggFree: false,
+      isGlutenFree: false,
+      isGrainFree: false,
+      isPeanutFree: false,
+      isSeafoodFree: false,
+      isSesameFree: false,
+      isShellfishFree: false,
+      isSoyFree: false,
+      isSulfiteFree: false,
+      isTreeNutFree: false,
+      isWheatFree: false,
+      allergies: [],
+    });
+  }
+
+
+
   handleSubmit = (e) => {
     e.preventDefault();
-    // const allergiesArray = this.populateAllergies();
-    // this.setState(
-    //   {
-    //     allergies: allergiesArray,
-    //   },
-    //   () => {
         if(this.state.name && this.state.email){
           const dbRef = firebase.database().ref(`/Guests/`);
           dbRef.push({
@@ -138,11 +160,11 @@ class CreateGuest extends Component {
             allergies: this.state.allergies,
             photoURL: this.state.photoURL
           });
+          this.clearState();
         } else {
           alert("Name and Email are mandatory fields");
         }
-      // }
-    // );
+
   };
 
   render() {
