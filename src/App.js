@@ -29,7 +29,7 @@ class App extends Component {
           {/* <CreatePartyAddingGuests /> */}
           <div className="App">
             {/* Navigation */}
-            <nav>
+            <nav className="globalNav">
               <div className="wrapper">
               <NavLink
                 exact
