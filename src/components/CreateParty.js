@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CreatePartyAddingGuests from './CreatePartyAddingGuests'
 import firebase from 'firebase'
+import mult from '../assets/mult.svg';
+
 
 
 
@@ -124,6 +126,7 @@ class CreateParty extends Component {
         .ref("/Guests/" + this.state.guestsKeys[i])
         .on("value", (response) => {
           const profile = response.val();
+          profile.key=this.state.guestsKeys[i]
           addedGuests.push(profile);
         });
     }
@@ -209,6 +212,20 @@ class CreateParty extends Component {
     }
   };
 
+  removeKey=(key)=>{
+    const guestsKeys = this.state.guestsKeys.filter(item=> item !== key)
+    this.setState(
+      {
+        guestsKeys,
+      },
+      () => {
+        this.convertKeys();
+        this.createIntolerancesList();
+        this.createDietList();
+      }
+    );
+  }
+
   render() {
     return (
       <section className="createPartySection">
@@ -271,8 +288,8 @@ class CreateParty extends Component {
               {this.state.addedGuests.map((invitedGuests) => {
                 return (
                   <div className="viewLIContainer">
-                    <li className="viewLI">
-
+                    <li className="viewLI" onClick={()=>this.removeKey(invitedGuests.key)}>
+                      <span aria-label="mult"><img className="mult" src={mult} alt="" /></span>
                       <div className="imageContainer">
                       <img
                         className="guestImg"
