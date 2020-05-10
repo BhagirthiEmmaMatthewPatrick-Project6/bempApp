@@ -282,9 +282,9 @@ class CreateParty extends Component {
           <section className="viewSection">
             <h3>Added Guest List</h3>
             <ul className="viewUL">
-              {this.state.addedGuests.map((invitedGuests) => {
+              {this.state.addedGuests.map((invitedGuests, i) => {
                 return (
-                  <div className="viewLIContainer">
+                  <div className="viewLIContainer" key={i}>
                     <li className="viewLI" onClick={()=>this.removeKey(invitedGuests.key)}>
                       {/* close by The Icon Z from the Noun Project */}
                       <span aria-label="close"><img className="close" src={close} alt="" /></span>
@@ -308,9 +308,9 @@ class CreateParty extends Component {
           <section className="dietsListSection">
             <h3>Diet List</h3>
             <ul>
-              {this.state.dietList.map((diet) => {
+              {this.state.dietList.map((diet, i) => {
                 return (
-                  <li>
+                  <li key={i}>
                     <p>{diet}</p>
                   </li>
                 );
@@ -322,9 +322,9 @@ class CreateParty extends Component {
           <section className="intoleranceListSection">
             <h3>Intolerance List</h3>
             <ul>
-              {this.state.intoleranceList.map((item) => {
+              {this.state.intoleranceList.map((item, i) => {
                 return (
-                  <li>
+                  <li key={i}>
                     <p>{item}</p>
                   </li>
                 );
@@ -344,9 +344,9 @@ class CreateParty extends Component {
 
           <section className="recipeGallerySection">
             <ul className="recipeGalleryUL">
-              {this.state.recipes.map((recipeObj) => {
+              {this.state.recipes.map((recipeObj, i) => {
                 return (
-                  <li className="recipeLI">
+                  <li className="recipeLI" key={i}>
                     <h4 className="recipeLink">
                       <a
                         rel="noopener noreferrer"

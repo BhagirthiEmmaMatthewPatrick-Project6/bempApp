@@ -53,8 +53,8 @@ class ViewPartiesFocus extends Component{
                     <div className="guestList">
                         <h3>Guest List</h3>
                         <ul className="guestListUL">
-                            {this.state.focusedParty.addedGuests.map((guest)=>{
-                                return <li className="guestLI"><p>{guest.name}</p></li>
+                            {this.state.focusedParty.addedGuests.map((guest, i)=>{
+                                return <li className="guestLI" key={i}><p>{guest.name}</p></li>
                             })}
                         </ul>
                     </div>
@@ -62,14 +62,14 @@ class ViewPartiesFocus extends Component{
                     <div className="restrictionsList">
                         <h3>Warning! Be careful of the following:</h3>
                         <ul className="dietListFocusUL">
-                            {this.state.focusedParty.dietList.map((diet)=>{
-                                return <li className="dietFocusLI"><p>{diet}</p></li>
+                            {this.state.focusedParty.dietList.map((diet, i)=>{
+                                return <li className="dietFocusLI" key={i}><p>{diet}</p></li>
                             })}
                         </ul>
 
                         <ul className="intoleranceListFocusUL">
-                            {this.state.focusedParty.intoleranceList.map((intolerance)=>{
-                                return <li className="intoleranceFocusLI"><p>{intolerance}</p></li>
+                            {this.state.focusedParty.intoleranceList.map((intolerance, i)=>{
+                                return <li className="intoleranceFocusLI" key={i}><p>{intolerance}</p></li>
                             })}
                         </ul>
                     </div>
@@ -77,9 +77,9 @@ class ViewPartiesFocus extends Component{
                     <section className="recipeGallerySection">
                         <h3>Suggested Recipes</h3>
                         <ul className="recipeGalleryUL">
-                        {this.state.focusedParty.recipes.map((recipeObj) => {
+                        {this.state.focusedParty.recipes.map((recipeObj, i) => {
                             return (
-                            <li className="recipeLI">
+                            <li className="recipeLI" key={i}>
                                 <h4 className="recipeLink">
                                 <a
                                     rel="noopener noreferrer"
