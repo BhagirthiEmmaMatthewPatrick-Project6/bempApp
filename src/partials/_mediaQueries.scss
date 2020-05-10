@@ -1,4 +1,18 @@
 
+@media (max-width:1240px){
+    .wrapper {
+        padding-right:30px;
+        padding-left:30px;
+    }
+
+    //Guets Focus
+    .profileCard .link {
+        margin-left:5%;
+        font-size: 1.5rem;
+    }
+}
+
+
 @media (max-width:1030px){
 
     //Nav
@@ -15,9 +29,37 @@
 
     .homeIntro p {
         font-size: 2rem;
-        
+    }
+
+    // Create Party / View Party / View Guest
+    .viewLILink p, 
+    .viewLIContainer p,
+    .viewLI h3{
+        font-size:1rem;
+    }
+
+    .viewUL .profileImage {
+        width:100px;
+        height:100px;
     }
     
+}
+
+@media (max-width:857px){
+    .recipeGalleryUL {
+        justify-content: center;
+    }
+
+    //Create Party Form
+    .createPartyForm input {
+        width:50%;
+        font-size:1.3rem;
+    }
+
+    .partyImg img {
+        height:50%;
+        width:210px;
+    }
 }
 
 @media (max-width:780px){
@@ -52,6 +94,48 @@
             padding:5px 10px;
         }
     }
+
+    // Create Party / View Party / View Guest
+    .viewUL {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .viewLILink,
+    .viewLIContainer {
+        width:80%;
+        padding-bottom:6%;
+    }
+
+   
+    .viewUL .profileImage {
+        width:110px;
+        height:110px;
+    }
+
+    .createPartySection{
+
+        .viewSection {
+            padding-top:0px;
+        }
+
+        button,
+        h3{
+            font-size:1.5rem;
+        }
+
+        button {
+            margin:10px 0;
+        }
+
+        .addExistingGuests {
+            .addGuests {
+                margin-top:100px;
+            }
+        }
+    }
+
 }
 
 @media (max-width:600px){
@@ -82,13 +166,17 @@
         }
 
     }
+
+    //Create Party Form
+    .partyImg img {
+        height:50%;
+        width:160px;
+    }
 }
 
 
 @media (max-width:500px){
 
-    // Nav
-    // Mobile/ Drop down
 
     //Home
     header h1 {
@@ -132,6 +220,43 @@
             width:120px;
         }
     }
+
+    .createPartyForm input {
+        width:100%;
+        font-size:1rem;
+    }
+
+    .partyImg img {
+       display:none;
+    }
+       
+    //Guest Focus
+     .profileCard {
+         
+         .link {
+            margin-left:10%;
+            font-size: 1.5rem;
+         }
+         
+         h2,
+         h3 {
+            font-size:1.7rem;
+         }
+
+         h3 {
+             padding-top:10px;
+         }
+
+         p {
+             font-size:1.3rem;
+         }
+    }
+
+    .recipeGalleryUL a,
+    .recipeGalleryUL h4 {
+        font-size:1.2rem;
+    }
+
 }
 
 @media (max-width:375px){
@@ -143,6 +268,28 @@
     .homeIntro p {
         font-size: 1.5rem;
     }
+
+    // Create Party / View Party / View Guest
+    .guestInformation .guestImage {
+            height:100px;
+            width:100px;
+        }
+
+        .recipeImg {
+            width: 110px;
+            height: 110px;
+        }
+
+        .createPartySection{
+
+            button,
+            h3{
+                font-size:1.3rem;
+            }
+    }
+        
+
+
 }
 
 

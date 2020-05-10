@@ -21,6 +21,7 @@ class CreateParty extends Component {
       dietList: [],
       intoleranceList: [],
       showGuestList: false,
+      error:false,
       photoURL: "../assets/party.jpg"
     };
   }
@@ -48,7 +49,12 @@ class CreateParty extends Component {
       },
     })
       .then((res) => {
-        this.setState({
+        const foodData = res.data.results;
+        foodData.length === 0
+        ? this.setState({
+          error:true
+        })
+        :this.setState({
           recipes: res.data.results,
         });
       })
@@ -344,6 +350,7 @@ class CreateParty extends Component {
 
           <section className="recipeGallerySection">
             <ul className="recipeGalleryUL">
+              {this.state.error ? <h4>Sorry we couldn't find a recipe. Maybe try serving water?</h4> : null}
               {this.state.recipes.map((recipeObj, i) => {
                 return (
                   <li className="recipeLI" key={i}>
