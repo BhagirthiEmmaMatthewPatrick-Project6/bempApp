@@ -4,6 +4,12 @@
         padding-right:30px;
         padding-left:30px;
     }
+
+    //Guets Focus
+    .profileCard .link {
+        margin-left:5%;
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -43,6 +49,17 @@
     .recipeGalleryUL {
         justify-content: center;
     }
+
+    //Create Party Form
+    .createPartyForm input {
+        width:50%;
+        font-size:1.3rem;
+    }
+
+    .partyImg img {
+        height:50%;
+        width:210px;
+    }
 }
 
 @media (max-width:780px){
@@ -79,7 +96,6 @@
     }
 
     // Create Party / View Party / View Guest
-
     .viewUL {
         flex-direction: column;
         align-items: center;
@@ -89,7 +105,6 @@
     .viewLILink,
     .viewLIContainer {
         width:80%;
-        // margin-top:10%;
         padding-bottom:6%;
     }
 
@@ -113,6 +128,12 @@
         button {
             margin:10px 0;
         }
+
+        .addExistingGuests {
+            .addGuests {
+                margin-top:100px;
+            }
+        }
     }
 
 }
@@ -126,9 +147,6 @@
 
     // Show Hamburger menu
     .menuButton {
-        position: absolute;
-        top: 10px;
-        left: 10px;
         display: block !important;
     }    
 
@@ -147,6 +165,12 @@
             font-size:1.3rem;
         }
 
+    }
+
+    //Create Party Form
+    .partyImg img {
+        height:50%;
+        width:160px;
     }
 }
 
@@ -195,8 +219,44 @@
             height:120px;
             width:120px;
         }
-
     }
+
+    .createPartyForm input {
+        width:100%;
+        font-size:1rem;
+    }
+
+    .partyImg img {
+       display:none;
+    }
+       
+    //Guest Focus
+     .profileCard {
+         
+         .link {
+            margin-left:10%;
+            font-size: 1.5rem;
+         }
+         
+         h2,
+         h3 {
+            font-size:1.7rem;
+         }
+
+         h3 {
+             padding-top:10px;
+         }
+
+         p {
+             font-size:1.3rem;
+         }
+    }
+
+    .recipeGalleryUL a,
+    .recipeGalleryUL h4 {
+        font-size:1.2rem;
+    }
+
 }
 
 @media (max-width:375px){
