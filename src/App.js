@@ -89,7 +89,7 @@ class App extends Component {
           <Route path="/bempApp/guests/:id" component={ViewGuestsFocus} />
 
           <Route exact path="/bempApp/viewParties" component={ViewParties} />
-          <Route path="/bempApp/Parties/:id" component={ViewPartiesFocus} />
+          <Route path="/bempApp/viewParties/:id" component={ViewPartiesFocus} />
         </div>
       </Router>
     );

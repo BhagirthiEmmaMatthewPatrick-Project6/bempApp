@@ -22,7 +22,7 @@ class MobileMenu extends Component {
         return(
             <div className="menuContainer">
                 <div className="menuButton" onClick={this.handleMenuButtonClick}>
-                    <i class="fas fa-bars"></i>
+                    <i className="fas fa-bars"></i>
                 </div>
 
                 {/* Sidebar */}                
@@ -31,7 +31,7 @@ class MobileMenu extends Component {
                         className="close" 
                         onClick={this.handleMenuButtonClick}
                     >
-                        <i class="fas fa-times"></i>
+                        <i className="fas fa-times"></i>
                     </div>
                     <ul className="menuItems">
                         <li>
@@ -43,44 +43,44 @@ class MobileMenu extends Component {
                             >
                                 Home
                             </NavLink>
-                            <li>
-                                <NavLink
-                                    exact
-                                    className="menuLink"
-                                    activeClassName="currentPage"
-                                    to="/bempApp/createGuest"
-                                >
-                                    Create Guest
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    className="menuLink"
-                                    activeClassName="currentPage"
-                                    to="/bempApp/createParty"
-                                >
-                                    Create Party{/* This is the API call */}
-                                    {/* <Recipe /> */}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    className="menuLink"
-                                    activeClassName="currentPage"
-                                    to="/bempApp/viewParties"
-                                >
-                                    View Parties
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    className="menuLink"
-                                    activeClassName="currentPage"
-                                    to="/bempApp/guests"
-                                >
-                                    View Guests
-                                </NavLink>
-                            </li>
+                        </li>
+                        <li>
+                            <NavLink
+                                exact
+                                className="menuLink"
+                                activeClassName="currentPage"
+                                to="/bempApp/createGuest"
+                            >
+                                Create Guest
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className="menuLink"
+                                activeClassName="currentPage"
+                                to="/bempApp/createParty"
+                            >
+                                Create Party{/* This is the API call */}
+                                {/* <Recipe /> */}
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className="menuLink"
+                                activeClassName="currentPage"
+                                to="/bempApp/viewParties"
+                            >
+                                View Parties
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className="menuLink"
+                                activeClassName="currentPage"
+                                to="/bempApp/guests"
+                            >
+                                View Guests
+                            </NavLink>
                         </li>
                     </ul>
                 </div>            

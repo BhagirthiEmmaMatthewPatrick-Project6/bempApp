@@ -221,6 +221,7 @@ class CreateParty extends Component {
   }
 
   render() {
+    console.log(this.state.photoURL)
     return (
       <section className="createPartySection">
         {/*Form*/}
