@@ -14,7 +14,7 @@ class ViewGuestsFocus extends Component{
         }
     }
 
-    syncGuests=()=>{
+    syncGuests=()=>{ //Gets the user from the key that was passed down from the parent --> from the link
         firebase.database().ref('/Guests/'+this.props.match.params.id).on('value',(results)=>{
             this.setState({
                 focusedUser: results.val()

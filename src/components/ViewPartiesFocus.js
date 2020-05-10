@@ -20,7 +20,7 @@ class ViewPartiesFocus extends Component{
         }
     }
 
-    syncParty=()=>{
+    syncParty=()=>{ //Get party from db using the key from the link passed from vuewoartues
         firebase.database().ref('/Parties/'+this.props.match.params.id).on('value',(results)=>{
             this.setState({
                 focusedParty: results.val()
@@ -39,7 +39,7 @@ class ViewPartiesFocus extends Component{
         })
     }
 
-    getRecipes = (e) => {
+    getRecipes = (e) => { //API call to get recipes if no recipes were saved prior
         e.preventDefault();
         // Spoonacular API call
         const url = "https://api.spoonacular.com/recipes/search";

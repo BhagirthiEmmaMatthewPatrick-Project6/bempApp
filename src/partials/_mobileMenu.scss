@@ -8,9 +8,11 @@
     position: absolute;
     top: 10px;
     z-index: 999;
-    background-color: $mainColor;
-    left: -42vw;
+    background-color: rgba(79, 106, 53, 0.787);
+    left: -100%;
     transition: left 0.3s ease-in;
+    width:40%;
+    height:100vh;
 }
 
 .close {
@@ -41,6 +43,7 @@
     padding: 0;
     margin: 0;
     color: #fff;
+    
 }
 
 .menuList {
@@ -49,7 +52,7 @@
 
 .menuLink {
     text-decoration: none;
-    padding: 10px 16px;
+    padding: 5% 16px;
     display: flex;
     border-bottom: 1px solid $mainColor;
 }

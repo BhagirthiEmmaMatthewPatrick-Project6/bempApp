@@ -19,7 +19,7 @@ class ViewGuests extends Component{
         }
     }
 
-    syncGuests=()=>{
+    syncGuests=()=>{ //Get the gets from the database and save it to state
         firebase.database().ref('/Guests').on('value',(results)=>{
             const guests = []
             const data = results.val()
@@ -37,7 +37,7 @@ class ViewGuests extends Component{
     }
 
 
-    focusUser=(e)=>{
+    focusUser=(e)=>{ //onClick, gets the profile of the guest the user is trying to access --> sends to child viewguestsfocus.js
         this.setState({
             focusedUser: e.target.id
         })

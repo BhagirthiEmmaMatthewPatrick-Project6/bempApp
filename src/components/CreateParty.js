@@ -28,17 +28,21 @@ class CreateParty extends Component {
 
   componentDidMount() {}
 
-  getRecipes = (e) => {
+  getRecipes = (e) => { //Axios call to get our recipes based on params from the state (diets, intolerances)
     e.preventDefault();
     // Spoonacular API call
     const url = "https://api.spoonacular.com/recipes/search";
     const key = "ac3ee15e730b4a6c9dbc8bfa56524854";
 
-    const intoleranceAxios = this.state.intoleranceList.join();
-    const dietAxios = this.state.dietList.join();
+    const intoleranceAxios = this.state.intoleranceList.join(); //Turning our array into string so we can use 1 API call for all the intolerances
+    const dietAxios = this.state.dietList.join(); // Same as above but for diets
 
     this.setState({
       recipes:[]
+    })
+
+    this.setState({ //Resets the error handling state so that if the user changed something the message would disapear
+      error:false
     })
 
     axios({
@@ -48,66 +52,66 @@ class CreateParty extends Component {
         apiKey: key,
         query: "dinner",
         format: "json",
-        intolerances: intoleranceAxios,
+        intolerances: intoleranceAxios, 
         diet: dietAxios,
       },
     })
       .then((res) => {
         const foodData = res.data.results
-        foodData.length === 0
+        foodData.length === 0 //If no results found, set error message 
         ? this.setState({
           error:true
         })
         : this.setState({
-          recipes: res.data.results,
+          recipes: res.data.results, //If results return, save to state
         });
       })
       .catch((error) => {
-        alert(error);
+        alert(error); //Alert if API explodes
       });
   };
 
-  updateState = (event) => {
+  updateState = (event) => { //Used to dynamically update state based on inputs and input ID (i.e. input ID is what the state name is and the input val will save as the state val)
     this.setState({
       [event.target.id]: event.target.value,
     });
   };
 
-  getUserKey = (key) => {
+  getUserKey = (key) => { //Get user key in reference to the firebase database keys- This will add the current keys and any other keys when the user adds a guest to their party so we can populate the data
     const guestsKeys = this.state.guestsKeys;
-    if (guestsKeys.includes(key) === false) guestsKeys.push(key);
+    if (guestsKeys.includes(key) === false) guestsKeys.push(key); //This makes it so you cannot add the same person more than once
     this.setState(
       {
         guestsKeys,
       },
       () => {
-        this.convertKeys();
-        this.createIntolerancesList();
-        this.createDietList();
+        this.convertKeys();//Convert the keys into profile objects 
+        this.createIntolerancesList(); //Create intol list from profile objects
+        this.createDietList(); // Crate diet list from profile objects
       }
     );
   };
 
-  createDietList = () => {
+  createDietList = () => { 
     const dietList = [];
-    for (let i = 0; i < this.state.guestsKeys.length; i++) {
+    for (let i = 0; i < this.state.guestsKeys.length; i++) { //Go through the saved keys of the guests that are going to the party --> push all their diets into a new array so we can save to state. Used to get multiple guests diets into one
       firebase
         .database()
         .ref("/Guests/" + this.state.guestsKeys[i])
         .on("value", (response) => {
           const diet = response.val().diet;
-          if (dietList.includes(diet) === false && diet !== undefined)
+          if (dietList.includes(diet) === false && diet !== undefined) //no duplicates
             dietList.push(diet);
         });
     }
-    this.setState({
+    this.setState({ // Save to state the new array
       dietList,
     });
   };
 
   createIntolerancesList = () => {
     const intoleranceList = [];
-    for (let i = 0; i < this.state.guestsKeys.length; i++) {
+    for (let i = 0; i < this.state.guestsKeys.length; i++) { //same as above but for getting intolerances
       firebase
         .database()
         .ref("/Guests/" + this.state.guestsKeys[i])
@@ -115,7 +119,7 @@ class CreateParty extends Component {
           const intolerance = response.val().allergies;
           for (let i = 0; i < intolerance.length; i++) {
             if (
-              intoleranceList.includes(intolerance[i]) === false &&
+              intoleranceList.includes(intolerance[i]) === false && // no dupes
               intolerance[i] !== undefined
             )
               intoleranceList.push(intolerance[i]);
@@ -129,7 +133,7 @@ class CreateParty extends Component {
 
   convertKeys = () => {
     const addedGuests = [];
-    for (let i = 0; i < this.state.guestsKeys.length; i++) {
+    for (let i = 0; i < this.state.guestsKeys.length; i++) { //convert saved keys into profiles
       firebase
         .database()
         .ref("/Guests/" + this.state.guestsKeys[i])
@@ -144,7 +148,7 @@ class CreateParty extends Component {
     });
   };
 
-  submitParty = (e) => {
+  submitParty = (e) => { //saving all our states and throwing it into firebase as an object
     e.preventDefault();
     if (
       this.state.partyName &&
@@ -163,7 +167,7 @@ class CreateParty extends Component {
 
       firebase.database().ref("/Parties").push(party);
 
-      this.setState({
+      this.setState({ //reset all states relevant
         partyName: "",
         partyAddress: "",
         partyDetails: "",
@@ -178,21 +182,21 @@ class CreateParty extends Component {
     }
   };
 
-  toggleAddGuests = (e) => {
+  toggleAddGuests = (e) => { //So we can display the existing guests menu
     e.preventDefault();
     this.setState({
       showGuestList: !this.state.showGuestList,
     });
   };
 
-  handleImageChange = (e) => {
+  handleImageChange = (e) => { //getting the file from user input file
     const files = e.target.files;
     this.setState({
       files: files,
     });
   };
 
-  handleUploadImage = (e) => {
+  handleUploadImage = (e) => { //uploading the file to firebase storage and getting the url to state
     e.preventDefault();
     const bucketName = "images";
     if (this.state.files[0]) {
@@ -217,14 +221,14 @@ class CreateParty extends Component {
     }
   };
 
-  removeKey=(key)=>{
+  removeKey=(key)=>{ //when the user wants to remove a user from the guest, it removes the key from guest keys which is what generates all of our data
     const guestsKeys = this.state.guestsKeys.filter(item=> item !== key)
     this.setState(
       {
         guestsKeys,
       },
       () => {
-        this.convertKeys();
+        this.convertKeys(); //run these functions to get new profiles, intols, and diets
         this.createIntolerancesList();
         this.createDietList();
       }

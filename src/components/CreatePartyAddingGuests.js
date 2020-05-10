@@ -9,7 +9,7 @@ class CreatePartyAddingGuests extends Component{
             guest:[]
         }
     }
-    componentDidMount(){
+    componentDidMount(){ //Get data from firebase - list of guests who are already save onto the database
         const dbRef = firebase.database().ref('/Guests');
         dbRef.on('value', (response) => {
 
@@ -25,7 +25,7 @@ class CreatePartyAddingGuests extends Component{
 
     }
 
-    render(){
+    render(){ // Creates an LI for each guest already created - onClick will get the key and return it to the parent
         return(
             <ul className="viewUL">
                 {this.state.guest.map((guest, i)=>{

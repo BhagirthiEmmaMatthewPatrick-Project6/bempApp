@@ -24,7 +24,7 @@ class ViewParties extends Component{
         }
     }
 
-    syncParties=()=>{
+    syncParties=()=>{ //Get parties from DB
         firebase.database().ref('/Parties').on('value',(results)=>{
             const parties = []
             const data = results.val()
@@ -42,7 +42,7 @@ class ViewParties extends Component{
     }
 
 
-    focusUser=(e)=>{
+    focusUser=(e)=>{ //onClick gets the key from the DB so we can pass it via link to focus party component
         this.setState({
             focusedParty: e.target.id
         })

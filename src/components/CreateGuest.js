@@ -29,7 +29,7 @@ class CreateGuest extends Component {
     };
   }
 
-  populateAllergies = () => {
+  populateAllergies = () => { //Checks the state to see if allergies or dietary restrictions is true (true when checkbox checked), if true pushes it to array which gets save into the guest profile
       const allergiesArray = [];
 
       if (this.state.isDairyFree) {
@@ -73,7 +73,7 @@ class CreateGuest extends Component {
       );
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => { // Pushes new array with old array values and new value added
     // make a copy of current state before you run setState
     const { name, value, type, checked } = e.target;
     type === "checkbox"
@@ -87,14 +87,14 @@ class CreateGuest extends Component {
         });    
   };
 
-  handleImageChange = (e) => {
+  handleImageChange = (e) => { // When image uploads set state of files to the image that was uploaded
     const files = e.target.files;
     this.setState({
       files: files
     })
   };
 
-  handleUploadImage = (e) => {
+  handleUploadImage = (e) => { // Uploads image to storage which will give us a url to reference for our user profile
     e.preventDefault();
     const bucketName = 'images';
     if(this.state.files){
@@ -119,7 +119,7 @@ class CreateGuest extends Component {
     }
   };
 
-  clearState = () => {
+  clearState = () => { //Resets the state of everything - run when guest created
     this.setState({
       files: null,
       photoURL:
@@ -145,7 +145,7 @@ class CreateGuest extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => { //Submit our guest into the database 
     e.preventDefault();
         if(this.state.name && this.state.email){
           const dbRef = firebase.database().ref(`/Guests/`);
@@ -222,6 +222,9 @@ class CreateGuest extends Component {
               >
                 Upload
               </button>
+              <div className="imageContainer profileImage">
+                <img src={this.state.photoURL} alt="user profile image"/>
+              </div>
             </div>
             {/* Diet Input */}
             <h3 className="dietHeader">Diet</h3>

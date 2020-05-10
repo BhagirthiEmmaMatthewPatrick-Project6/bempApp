@@ -32,6 +32,15 @@
     }
 }
 
+.profileImage {
+    width: 120px;
+    height:120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border:2px solid rgba(214, 214, 214, 0.548);
+    margin:0 auto;
+}
+
 .viewLILink:nth-of-type(3n+2),
 .viewLIContainer:nth-of-type(3n+2){
     margin:0 2% 20px 2%;
