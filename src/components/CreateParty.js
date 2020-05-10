@@ -20,6 +20,7 @@ class CreateParty extends Component {
       addedGuests: [],
       dietList: [],
       intoleranceList: [],
+      error:false,
       showGuestList: false,
       photoURL: party
     };
@@ -36,6 +37,10 @@ class CreateParty extends Component {
     const intoleranceAxios = this.state.intoleranceList.join();
     const dietAxios = this.state.dietList.join();
 
+    this.setState({
+      recipes:[]
+    })
+
     axios({
       method: "GET",
       url: url,
@@ -48,7 +53,12 @@ class CreateParty extends Component {
       },
     })
       .then((res) => {
-        this.setState({
+        const foodData = res.data.results
+        foodData.length === 0
+        ? this.setState({
+          error:true
+        })
+        : this.setState({
           recipes: res.data.results,
         });
       })
@@ -344,6 +354,7 @@ class CreateParty extends Component {
 
           <section className="recipeGallerySection">
             <ul className="recipeGalleryUL">
+              {this.state.error ?<h4>Sorry, we couldn't find any recipes. Maybe try serving water?</h4> : null}
               {this.state.recipes.map((recipeObj, i) => {
                 return (
                   <li className="recipeLI" key={i}>
