@@ -28,11 +28,11 @@ class CreatePartyAddingGuests extends Component{
     render(){
         return(
             <ul className="viewUL">
-                {this.state.guest.map((guest)=>{
+                {this.state.guest.map((guest, i)=>{
                     return (
-                        <div className="viewLIContainer">
-                            <li classname="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
-                                <div className="imageContainer profileImage">
+                        <div className="viewLIContainer" key={i}>
+                            <li className="viewLI" key={'cpag_'+guest.guestID} onClick={()=>this.props.getChoice(guest.guestID)} id={guest.guestID}>
+                                <div className="imageContainer profileImage" >
                                     {/* add by The Icon Z from the Noun Project */}
                                     <span aria-label="add"><img className="add" src={add} alt="" /></span>
                                     <img className="guestImg" src={guest.guestInfo.photoURL} alt={guest.guestInfo.name}/>
