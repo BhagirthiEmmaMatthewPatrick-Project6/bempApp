@@ -13,6 +13,7 @@ import ViewGuests from './components/ViewGuests'
 import ViewGuestsFocus from './components/ViewGuestsFocus';
 import ViewParties from './components/ViewParties'
 import ViewPartiesFocus from './components/ViewPartiesFocus'
+import MobileMenu from './components/MobileMenu';
 // import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
 // import FocusGuest from './components/FocusGuest';
 
@@ -25,12 +26,13 @@ class App extends Component {
   }
   render(){
     return (
-        <Router>
-          {/* <CreatePartyAddingGuests /> */}
-          <div className="App">
-            {/* Navigation */}
-            <nav className="globalNav">
-              <div className="wrapper">
+      <Router>
+        {/* <CreatePartyAddingGuests /> */}
+        <div className="App">
+          <MobileMenu />
+          {/* Navigation */}
+          <nav className="globalNav">
+            <div className="wrapper">
               <NavLink
                 exact
                 className="link"
@@ -58,7 +60,11 @@ class App extends Component {
                 {/* <Recipe /> */}
               </NavLink>
 
-              <NavLink className="link" activeClassName="currentPage" to="/bempApp/viewParties">
+              <NavLink
+                className="link"
+                activeClassName="currentPage"
+                to="/bempApp/viewParties"
+              >
                 View Parties
               </NavLink>
 
@@ -69,24 +75,23 @@ class App extends Component {
               >
                 View Guests
               </NavLink>
-              </div>
-            </nav>
+            </div>
+          </nav>
 
-            {/* Routes */}
-            <Route exact path="/bempApp/" component={Home} />
+          {/* Routes */}
+          <Route exact path="/bempApp/" component={Home} />
 
-            <Route path="/bempApp/createGuest" component={CreateGuest} />
+          <Route path="/bempApp/createGuest" component={CreateGuest} />
 
-            <Route path="/bempApp/createParty" component={CreateParty} />
+          <Route path="/bempApp/createParty" component={CreateParty} />
 
-            <Route exact path="/bempApp/guests" component={ViewGuests} />
-            <Route path="/bempApp/guests/:id" component={ViewGuestsFocus} />
+          <Route exact path="/bempApp/guests" component={ViewGuests} />
+          <Route path="/bempApp/guests/:id" component={ViewGuestsFocus} />
 
-            <Route exact path="/bempApp/viewParties" component={ViewParties}/>
-            <Route path="/bempApp/Parties/:id" component={ViewPartiesFocus}/>
-
-          </div>
-        </Router>
+          <Route exact path="/bempApp/viewParties" component={ViewParties} />
+          <Route path="/bempApp/Parties/:id" component={ViewPartiesFocus} />
+        </div>
+      </Router>
     );
   }  
 }
