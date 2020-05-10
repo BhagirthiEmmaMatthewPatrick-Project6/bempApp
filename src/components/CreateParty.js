@@ -20,7 +20,7 @@ class CreateParty extends Component {
       dietList: [],
       intoleranceList: [],
       showGuestList: false,
-      photoURL: "https://media3.s-nbcnews.com/j/newscms/2019_05/2736521/190131-stock-taco-bar-food-ew-1220p_bc7c9fc25ecd393bfa3d7d35f216edfc.fit-1240w.jpg"
+      photoURL: "../assets/party.jpg"
     };
   }
 
@@ -84,9 +84,7 @@ class CreateParty extends Component {
         .database()
         .ref("/Guests/" + this.state.guestsKeys[i])
         .on("value", (response) => {
-          // console.log(response.val().diet);
           const diet = response.val().diet;
-          // dietList.push(diet)
           if (dietList.includes(diet) === false && diet !== undefined)
             dietList.push(diet);
         });
@@ -137,7 +135,6 @@ class CreateParty extends Component {
 
   submitParty = (e) => {
     e.preventDefault();
-    // console.log('hello it me');
     if (
       this.state.partyName &&
       this.state.partyAddress &&
@@ -152,7 +149,6 @@ class CreateParty extends Component {
       party.addedGuests = this.state.addedGuests;
       party.photoURL = this.state.photoURL;
       party.recipes = this.state.recipes
-      // console.log(party);
 
       firebase.database().ref("/Parties").push(party);
 
@@ -179,7 +175,6 @@ class CreateParty extends Component {
   };
 
   handleImageChange = (e) => {
-    console.log(e.target.files);
     const files = e.target.files;
     this.setState({
       files: files,
@@ -202,7 +197,6 @@ class CreateParty extends Component {
             .child(file.name)
             .getDownloadURL()
             .then((url) => {
-              // console.log(url);
               this.setState({
                 photoURL: url,
               });

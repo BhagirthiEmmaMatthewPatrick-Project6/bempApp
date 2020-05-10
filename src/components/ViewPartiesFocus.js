@@ -21,7 +21,6 @@ class ViewPartiesFocus extends Component{
 
     syncParty=()=>{
         firebase.database().ref('/Parties/'+this.props.match.params.id).on('value',(results)=>{
-            console.log(results.val());
             this.setState({
                 focusedParty: results.val()
             })
@@ -40,7 +39,6 @@ class ViewPartiesFocus extends Component{
     }
 
     render(){
-        console.log(this.state.focusedParty);
         
         return(
             <section className="viewPartiesFocusSection wrapper">

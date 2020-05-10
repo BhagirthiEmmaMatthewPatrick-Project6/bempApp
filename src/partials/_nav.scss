@@ -16,3 +16,8 @@ nav .link{
     text-transform: lowercase;
     color:white;
 }
+
+nav .link:hover,
+nav .link:focus {
+    color: lighten($accentColor, 15%);
+}

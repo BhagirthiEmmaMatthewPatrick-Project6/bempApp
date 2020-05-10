@@ -28,7 +28,6 @@ class ViewParties extends Component{
         firebase.database().ref('/Parties').on('value',(results)=>{
             const parties = []
             const data = results.val()
-            console.log(results.val());
             for (let key in data){
                 parties.push({partyInfo: data[key], partyID : key})
             }            
