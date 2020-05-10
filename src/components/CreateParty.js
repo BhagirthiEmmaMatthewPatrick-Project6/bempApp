@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CreatePartyAddingGuests from './CreatePartyAddingGuests'
-import firebase from 'firebase'
+import CreatePartyAddingGuests from './CreatePartyAddingGuests';
+import firebase from 'firebase';
 import close from '../assets/close.svg';
+import party from '../assets/party.jpg';
 
 
 
@@ -223,18 +224,17 @@ class CreateParty extends Component {
     return (
       <section className="createPartySection">
         {/*Form*/}
+            <form className="wrapper" action="">
+            <h2>Create a Party</h2>
+            <div className="createPartyForm">
+            <label htmlFor="Name of Party"></label>
+            <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
 
-          <form className="wrapper" action="">
-          <h2>Create a Party</h2>
-          <div className="createPartyForm">
-          <label htmlFor="Name of Party"></label>
-          <input type="text" id="partyName" value={this.state.partyName} onChange={this.updateState} name="partyName" placeholder="Party Name"/>
+            <label htmlFor="Address"></label>
+            <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
 
-          <label htmlFor="Address"></label>
-          <input type="text" id="partyAddress" value={this.state.partyAddress} onChange={this.updateState} name="address" placeholder="Address"/>
-
-          <label htmlFor="Details"></label>
-          <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
+            <label htmlFor="Details"></label>
+            <input type="text" id="partyDetails" value={this.state.partyDetails} onChange={this.updateState} name="details" placeholder="Date and Time"/>
 
           {/* Image Upload */}
           
@@ -254,6 +254,9 @@ class CreateParty extends Component {
             >
               Upload Image
             </button>
+          </div>
+          <div className="partyImg">
+            <img src={party} alt="wine, cakes, and decorative plants"/>
           </div>
           </div>
 

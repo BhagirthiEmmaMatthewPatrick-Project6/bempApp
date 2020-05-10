@@ -57,7 +57,8 @@ button {
 
 button:hover,
 button:focus {
-    border: 1px solid white;
-    background-color: $accentColor;
+    border: 1px solid $textColor;
+    background-color: lighten($accentColor, 10%);
+    color: $textColor;
 
 }
