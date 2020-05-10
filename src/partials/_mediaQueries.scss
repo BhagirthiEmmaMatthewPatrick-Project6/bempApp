@@ -56,7 +56,19 @@
 
 @media (max-width:600px){
 
-    
+    // Hide main Nav
+    .globalNav {
+        display: none;
+        // visibility: hidden;
+    }
+
+    // Show Hamburger menu
+    .menuButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: block;
+    }    
 
     //Create Your Guest
     .createGuestSection {
