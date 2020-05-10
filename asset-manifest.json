@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/bempApp/static/css/main.28f6407c.chunk.css",
-    "main.js": "/bempApp/static/js/main.9e49aa37.chunk.js",
-    "main.js.map": "/bempApp/static/js/main.9e49aa37.chunk.js.map",
+    "main.css": "/bempApp/static/css/main.a9999a82.chunk.css",
+    "main.js": "/bempApp/static/js/main.50e953e3.chunk.js",
+    "main.js.map": "/bempApp/static/js/main.50e953e3.chunk.js.map",
     "runtime-main.js": "/bempApp/static/js/runtime-main.da7b2941.js",
     "runtime-main.js.map": "/bempApp/static/js/runtime-main.da7b2941.js.map",
     "static/js/2.c9b7c2a9.chunk.js": "/bempApp/static/js/2.c9b7c2a9.chunk.js",
     "static/js/2.c9b7c2a9.chunk.js.map": "/bempApp/static/js/2.c9b7c2a9.chunk.js.map",
     "index.html": "/bempApp/index.html",
-    "precache-manifest.322210ae9b9e58fd7f1e1dffb74b23c6.js": "/bempApp/precache-manifest.322210ae9b9e58fd7f1e1dffb74b23c6.js",
+    "precache-manifest.e6400366d6624f82554aa05ff6786e7e.js": "/bempApp/precache-manifest.e6400366d6624f82554aa05ff6786e7e.js",
     "service-worker.js": "/bempApp/service-worker.js",
-    "static/css/main.28f6407c.chunk.css.map": "/bempApp/static/css/main.28f6407c.chunk.css.map",
+    "static/css/main.a9999a82.chunk.css.map": "/bempApp/static/css/main.a9999a82.chunk.css.map",
     "static/js/2.c9b7c2a9.chunk.js.LICENSE.txt": "/bempApp/static/js/2.c9b7c2a9.chunk.js.LICENSE.txt",
     "static/media/add.svg": "/bempApp/static/media/add.0e671e9c.svg",
     "static/media/close.svg": "/bempApp/static/media/close.4c4413da.svg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.da7b2941.js",
     "static/js/2.c9b7c2a9.chunk.js",
-    "static/css/main.28f6407c.chunk.css",
-    "static/js/main.9e49aa37.chunk.js"
+    "static/css/main.a9999a82.chunk.css",
+    "static/js/main.50e953e3.chunk.js"
   ]
 }
