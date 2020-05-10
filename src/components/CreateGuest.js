@@ -165,6 +165,7 @@ class CreateGuest extends Component {
   };
 
   render() {
+    const intolerances = this.state.allergies.toString();
     return (
       <section className="createGuestSection wrapper">
         <h2>Create Your Guests</h2>
