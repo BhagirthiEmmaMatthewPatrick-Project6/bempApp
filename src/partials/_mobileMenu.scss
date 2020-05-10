@@ -4,7 +4,7 @@
 
 .nav {
     width: 40vw;
-    border: 2px solid #888;
+    border: 2px solid $mainColor;
     position: absolute;
     top: 0;
     z-index: 999;
@@ -32,7 +32,7 @@
     z-index: 99;
     font-size: 25px;
     cursor: pointer;
-    // display: none;
+    display: none;
 }
 
 .menuItems {
@@ -49,5 +49,5 @@
     text-decoration: none;
     padding: 10px 16px;
     display: flex;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid $mainColor;
 }
