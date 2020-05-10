@@ -46,6 +46,11 @@
 }
 
 @media (max-width:857px){
+    .homeIntro {
+        padding: 25px 0;
+        line-height: 25px;
+    }
+
     .recipeGalleryUL {
         justify-content: center;
     }
@@ -139,6 +144,9 @@
 }
 
 @media (max-width:600px){
+    header h1 {
+        font-size: 5rem;
+    }
 
     // Hide main Nav
     .globalNav {
@@ -181,7 +189,6 @@
     //Home
     header h1 {
         width:60%;
-        font-size: 5rem;
     }
 
     .homeIntro p {
