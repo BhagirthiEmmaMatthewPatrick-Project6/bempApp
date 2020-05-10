@@ -119,7 +119,18 @@
 
 @media (max-width:600px){
 
-    
+    // Hide main Nav
+    .globalNav {
+        display: none;
+    }
+
+    // Show Hamburger menu
+    .menuButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: block !important;
+    }    
 
     //Create Your Guest
     .createGuestSection {
