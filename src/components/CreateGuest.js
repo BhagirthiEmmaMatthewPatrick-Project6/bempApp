@@ -42,7 +42,7 @@ class CreateGuest extends Component {
         allergiesArray.push("Grain");
       }
       if (this.state.isPeanutFree) {
-        allergiesArray.push("Peanut ");
+        allergiesArray.push("Peanut");
       }
       if (this.state.isSeafoodFree) {
         allergiesArray.push("Seafood");
@@ -145,8 +145,6 @@ class CreateGuest extends Component {
     });
   }
 
-
-
   handleSubmit = (e) => {
     e.preventDefault();
         if(this.state.name && this.state.email){
@@ -172,7 +170,6 @@ class CreateGuest extends Component {
         <h2>Create Your Guests</h2>
         <div className="createGuestCenter">
           <form className="createGuestForm" onSubmit={this.handleSubmit}>
-            
             {/* Name input */}
             <label className="guestName" htmlFor="Guest Name"></label>
             <input
@@ -184,17 +181,17 @@ class CreateGuest extends Component {
               onChange={this.handleChange}
             />
             {/* email Input */}
-            
-              <label htmlFor="Guest email"></label>
-              <input
-                className="textInput"
-                type="email"
-                value={this.state.email}
-                name="email"
-                placeholder="Email"
-                onChange={this.handleChange}
-              />
-            
+
+            <label htmlFor="Guest email"></label>
+            <input
+              className="textInput"
+              type="email"
+              value={this.state.email}
+              name="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+
             {/* Pet friendliness input */}
             <div className="petFriend">
               <label htmlFor="">Are you ok with pets?</label>
@@ -421,21 +418,18 @@ class CreateGuest extends Component {
           <div className="guestInformation">
             <div className="guestInfoCenter">
               <div className="imageContainer">
-              <img className="guestImage"
-                id="guestImg"
-                src={this.state.photoURL}
-                alt=""
-              />
-
+                <img
+                  className="guestImage"
+                  id="guestImg"
+                  src={this.state.photoURL}
+                  alt=""
+                />
               </div>
               <p>Name: {this.state.name}</p>
               <p>Email: {this.state.email}</p>
-              <p>
-                Pets ok:{" "}
-                {this.state.isPetFriendly ? "pet friendly" : " "}
-              </p>
+              <p>Pets ok: {this.state.isPetFriendly ? "pet friendly" : " "}</p>
               <p>Diet: {this.state.diet}</p>
-              <p>Intolerances: {this.state.allergies}</p>
+              <p>Intolerances: {intolerances}</p>
             </div>
           </div>
         </div>
