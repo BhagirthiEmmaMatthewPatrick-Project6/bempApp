@@ -14,7 +14,6 @@
     flex-direction: column;
 
     input {
-        width: 55%;
         padding: 35px 10px 5px 10px;
         border-radius: 2px;
         border: 1px solid $textColor;
@@ -28,6 +27,10 @@
     background-size: 40%;
     background-repeat: no-repeat;
     padding-bottom: 225px;  
+
+    input {
+        width: 55%;
+    }
 
 }
 

@@ -1,13 +1,6 @@
-.createGuestForm {
-    background-image: url(../assets/guest.jpg);
-    background-position: top right;
-    background-size: 30%;
-    background-repeat: no-repeat;
-    padding-bottom: 225px;
-}
 
 .petFriend {
-    width: 30%;
+    width: 20%;
     border: 1px solid $textColor;
     background-color: #fff;
     border-radius: 2px;
@@ -19,10 +12,10 @@
     input {
         justify-self: flex-start;
     }
+}
 
-    p {
-        margin-bottom: 10px;
-    }
+.imageInput p {
+    margin-bottom: 10px;
 }
 
 .dietHeader {

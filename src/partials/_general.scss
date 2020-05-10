@@ -48,10 +48,16 @@ button {
     border: 1px solid $textColor;
     border-radius: 5px;
     color: #fff;
-    // background-color: $textColor;
-    background-color: darken($mainColor,5%);
+    background-color: $mainColor;
     font-size: 1.8rem;
     padding: 10px 20px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+}
+
+button:hover,
+button:focus {
+    border: 1px solid white;
+    background-color: $accentColor;
+
 }

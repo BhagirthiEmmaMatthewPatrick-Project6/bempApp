@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
-import storage from '../firebase';
 
 
 class CreateGuest extends Component {
@@ -168,8 +167,6 @@ class CreateGuest extends Component {
   };
 
   render() {
-    const intolerances = this.state.allergies.toString();
-    console.log(intolerances);
     return (
       <section className="createGuestSection wrapper">
         <h2>Create Your Guests</h2>

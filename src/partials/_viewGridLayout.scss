@@ -67,6 +67,13 @@
     position: relative;
 }
 
+.viewLIContainer:hover,
+.viewLIContainer:focus,
+.viewLILink:hover,
+.viewLILink:focus {
+    scale: 1.03;
+}
+
 .viewLI{
     display:flex;
     flex-direction: column;
