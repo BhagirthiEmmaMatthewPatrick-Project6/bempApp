@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   NavLink,
 } from "react-router-dom";
 import './App.scss';
@@ -14,8 +13,6 @@ import ViewGuestsFocus from './components/ViewGuestsFocus';
 import ViewParties from './components/ViewParties'
 import ViewPartiesFocus from './components/ViewPartiesFocus'
 import MobileMenu from './components/MobileMenu';
-// import CreatePartyAddingGuests from './components/CreatePartyAddingGuests'
-// import FocusGuest from './components/FocusGuest';
 
 class App extends Component {
   constructor(){

@@ -6,7 +6,7 @@
     width: 40vw;
     border: 2px solid $mainColor;
     position: absolute;
-    top: 0;
+    top: 10px;
     z-index: 999;
     background-color: $mainColor;
     left: -42vw;
@@ -51,3 +51,4 @@
     display: flex;
     border-bottom: 1px solid $mainColor;
 }
+

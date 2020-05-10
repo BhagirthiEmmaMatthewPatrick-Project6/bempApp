@@ -21,8 +21,7 @@ class CreateParty extends Component {
       dietList: [],
       intoleranceList: [],
       showGuestList: false,
-      error:false,
-      photoURL: "../assets/party.jpg"
+      photoURL: party
     };
   }
 
@@ -49,12 +48,7 @@ class CreateParty extends Component {
       },
     })
       .then((res) => {
-        const foodData = res.data.results;
-        foodData.length === 0
-        ? this.setState({
-          error:true
-        })
-        :this.setState({
+        this.setState({
           recipes: res.data.results,
         });
       })
@@ -207,6 +201,7 @@ class CreateParty extends Component {
               this.setState({
                 photoURL: url,
               });
+              document.getElementById("partyImg").src = url;
             });
         });
     }
@@ -227,7 +222,6 @@ class CreateParty extends Component {
   }
 
   render() {
-    console.log(this.state.photoURL)
     return (
       <section className="createPartySection">
         {/*Form*/}
@@ -262,8 +256,8 @@ class CreateParty extends Component {
               Upload Image
             </button>
           </div>
-          <div className="partyImg">
-            <img src={party} alt="wine, cakes, and decorative plants"/>
+          <div id="partyImg" className="partyImg">
+            <img src={this.state.photoURL} alt="wine, cakes, and decorative plants"/>
           </div>
           </div>
 
@@ -350,7 +344,6 @@ class CreateParty extends Component {
 
           <section className="recipeGallerySection">
             <ul className="recipeGalleryUL">
-              {this.state.error ? <h4>Sorry we couldn't find a recipe. Maybe try serving water?</h4> : null}
               {this.state.recipes.map((recipeObj, i) => {
                 return (
                   <li className="recipeLI" key={i}>
