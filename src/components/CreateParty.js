@@ -257,7 +257,7 @@ class CreateParty extends Component {
             </button>
           </div>
           <div id="partyImg" className="partyImg">
-            <img src={this.state.photoURL} alt="wine, cakes, and decorative plants"/>
+            <img src={this.state.photoURL} alt="party photo"/>
           </div>
           </div>
 
