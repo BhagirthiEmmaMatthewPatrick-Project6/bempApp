@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
 import {Link} from 'react-router-dom'
+import axios from 'axios';
 
 
 class ViewPartiesFocus extends Component{
@@ -37,6 +38,43 @@ class ViewPartiesFocus extends Component{
             focusedUser: e.target.id
         })
     }
+
+    getRecipes = (e) => {
+        e.preventDefault();
+        // Spoonacular API call
+        const url = "https://api.spoonacular.com/recipes/search";
+        const key = "ac3ee15e730b4a6c9dbc8bfa56524854";
+    
+        const intoleranceAxios = this.state.focusedParty.intoleranceList.join();
+        const dietAxios = this.state.focusedParty.dietList.join();
+    
+        axios({
+            method: "GET",
+            url: url,
+            params: {
+            apiKey: key,
+            query: "dinner",
+            format: "json",
+            intolerances: intoleranceAxios,
+            diet: dietAxios,
+            },
+        })
+            .then((res) => {
+            console.log(res.data);
+            
+            const focusedParty = {...this.state.focusedParty}
+            focusedParty.recipes=res.data.results
+            if (focusedParty.recipes.length===0){
+                focusedParty.recipes = [{title:'No results found'}]
+            }
+            this.setState({
+                focusedParty
+            });
+            })
+            .catch((error) => {
+            alert(error);
+            });
+        };
 
     render(){
         
@@ -77,29 +115,34 @@ class ViewPartiesFocus extends Component{
                     <section className="recipeGallerySection">
                         <h3>Suggested Recipes</h3>
                         <ul className="recipeGalleryUL">
-                        {this.state.focusedParty.recipes.map((recipeObj, i) => {
-                            return (
-                            <li className="recipeLI" key={i}>
-                                <h4 className="recipeLink">
-                                <a
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                    href={recipeObj.sourceUrl}
-                                >
-                                    {recipeObj.title}
-                                </a>
-                                </h4>
-                                <div className="imageContainer">
-                                <img className="recipeImg"
-                                src={`https://spoonacular.com/recipeImages/${
-                                    recipeObj.id
-                                }-${"480x360"}.${"jpg"}`}
-                                alt={recipeObj.title}
-                                />
-                                </div>
-                            </li>
-                            );
-                        })}
+                            {this.state.focusedParty.recipes!==undefined?this.state.focusedParty.recipes.map((recipeObj, i) => {
+                                return (
+                                <li className="recipeLI" key={i}>
+                                    <h4 className="recipeLink">
+                                    <a
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        href={recipeObj.sourceUrl}
+                                    >
+                                        {recipeObj.title}
+                                    </a>
+                                    </h4>
+                                    <div className="imageContainer">
+                                    <img className="recipeImg"
+                                    src={`https://spoonacular.com/recipeImages/${
+                                        recipeObj.id
+                                    }-${"480x360"}.${"jpg"}`}
+                                    alt={recipeObj.title}
+                                    />
+                                    </div>
+                                </li>
+                                );
+                                })
+                                :<>
+                                <button onClick={(e)=>this.getRecipes(e)}>Search Recipes</button>
+                                </>
+                            }
+                            
                         </ul>
                     </section>
                 </div>
